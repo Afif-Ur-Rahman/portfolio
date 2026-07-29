@@ -1,31 +1,19 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Download } from "lucide-react";
 import { handleNavClick } from "@/utils";
-
-const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "About Us", href: "#about" },
-  { label: "Projects", href: "#projects" },
-  { label: "Contact Us", href: "#contact" },
-];
+import { navLinks } from "./constants";
 
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 40);
-    };
-
+    const handleScroll = () => setIsScrolled(window.scrollY > 40);
     handleScroll();
-
     window.addEventListener("scroll", handleScroll);
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -38,13 +26,10 @@ export const Header = () => {
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8">
-        <Link href="/" className="flex items-center gap-3">
-          <Image
-            src="/images/logo.png"
-            alt="The Conqueror Developers"
-            width={96}
-            height={96}
-          />
+        <Link href="#home" className="flex items-center gap-2">
+          <span className="text-xl font-bold text-white">
+            Afif<span className="text-[#DAB025]">.</span>
+          </span>
         </Link>
 
         {/* Desktop Menu */}
@@ -54,7 +39,7 @@ export const Header = () => {
               key={item.label}
               href={item.href}
               onClick={(e) => handleNavClick(e, item.href)}
-              className={`font-medium transition hover:text-[#DAB025] hover:underline text-white`}
+              className="font-medium text-white transition hover:text-[#DAB025] hover:underline"
             >
               {item.label}
             </Link>
@@ -62,13 +47,14 @@ export const Header = () => {
         </nav>
 
         <div className="hidden lg:block">
-          <Link
-            href="#contact"
-            onClick={(e) => handleNavClick(e, "#contact")}
-            className="rounded-full bg-amber-500 px-6 py-3 font-semibold text-white transition hover:bg-amber-600"
+          <a
+            href="/resume.pdf"
+            download
+            className="flex items-center gap-2 rounded-full bg-amber-500 px-6 py-3 font-semibold text-white transition hover:bg-amber-600"
           >
-            Book Consultation
-          </Link>
+            <Download size={18} />
+            Resume
+          </a>
         </div>
 
         {/* Mobile Button */}
@@ -105,16 +91,15 @@ export const Header = () => {
             ))}
           </nav>
 
-          <Link
-            href="#contact"
-            onClick={(e) => {
-              handleNavClick(e, "#contact");
-              setMobileMenu(false);
-            }}
-            className="w-full rounded-full bg-[#DAB025] py-4 text-center font-semibold text-black transition hover:bg-amber-400"
+          <a
+            href="/resume.pdf"
+            download
+            onClick={() => setMobileMenu(false)}
+            className="flex w-full items-center justify-center gap-2 rounded-full bg-[#DAB025] py-4 text-center font-semibold text-black transition hover:bg-amber-400"
           >
-            Book Consultation
-          </Link>
+            <Download size={18} />
+            Download Resume
+          </a>
         </div>
       </div>
     </header>

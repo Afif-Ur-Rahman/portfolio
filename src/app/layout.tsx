@@ -1,15 +1,13 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Toaster } from "react-hot-toast";
 import { Theme } from "@radix-ui/themes";
 import { Poppins } from "next/font/google";
-import { ToastProvider } from "@/utils/toast-provider";
+import { ParticlesProviderWrapper } from "@/components/layout";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
     title: `Afif Ur Rahman - Portfolio`,
-    description:
-      "",
+    description: "",
   };
 }
 
@@ -31,20 +29,9 @@ export default async function RootLayout({
         className={`${poppins.variable} antialiased`}
         suppressHydrationWarning
       >
-        <ToastProvider>
-          <Toaster
-            position="top-center"
-            toastOptions={{
-              duration: 5000,
-              error: {
-                style: {
-                  wordBreak: "break-word",
-                },
-              },
-            }}
-          />
+        <ParticlesProviderWrapper>
           <Theme>{children}</Theme>
-        </ToastProvider>
+        </ParticlesProviderWrapper>
       </body>
     </html>
   );

@@ -7,3 +7,4 @@ export * from "./ui/nodata";
 export * from "./inputs";
 export * from "./comming-soon";
 export * from "./empty-component";
+export * from "./particle";
