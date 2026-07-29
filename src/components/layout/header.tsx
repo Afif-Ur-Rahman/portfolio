@@ -22,7 +22,7 @@ export const Header = () => {
       className={`fixed left-0 top-0 z-50 w-full transition-all duration-300 ${
         mobileMenu || isScrolled
           ? "bg-[#09113F] shadow-md py-4"
-          : "bg-[#09113F]/40 py-3"
+          : "transparent py-3"
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8">

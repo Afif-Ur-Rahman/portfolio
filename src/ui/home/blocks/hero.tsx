@@ -12,7 +12,7 @@ export const Hero = () => {
       id="home"
       className="relative flex min-h-screen w-full items-center overflow-hidden bg-[#09113F]"
     >
-      <ParticleBackground />
+      <ParticleBackground variant="hero" />
 
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(218,176,37,0.15),transparent_35%),radial-gradient(circle_at_80%_70%,rgba(10,74,138,0.35),transparent_40%)]" />
 

@@ -5,8 +5,8 @@ import { COUNTS, QUICK_FACTS, TECH_ICONS } from "./constants";
 
 export const AboutMe = () => {
   return (
-    <section id="about" className="scroll-mt-8 bg-white">
-      <div className="mx-auto mb-6 max-w-7xl px-6 py-16">
+    <section id="about" className="scroll-mt-16 bg-white">
+      <div className="mx-auto mb-6 max-w-7xl px-6 py-8">
         <div className="flex flex-col gap-4">
           <span className="w-fit inline-block rounded-full bg-[#DAB025]/10 px-4 py-2 text-sm font-semibold uppercase tracking-wider text-[#DAB025]">
             About Me
