@@ -28,7 +28,7 @@ export const Header = () => {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8">
         <Link href="#home" className="flex items-center gap-2">
           <span className="text-xl font-bold text-white">
-            Afif<span className="text-[#DAB025]">.</span>
+            <span className="text-[#DAB025]">Afif</span> Ur Rahman
           </span>
         </Link>
 
@@ -48,7 +48,7 @@ export const Header = () => {
 
         <div className="hidden lg:block">
           <a
-            href="/resume.pdf"
+            href="/assets/MERN-Afif-Ur-Rahman.pdf"
             download
             className="flex items-center gap-2 rounded-full bg-amber-500 px-6 py-3 font-semibold text-white transition hover:bg-amber-600"
           >
