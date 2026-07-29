@@ -17,6 +17,14 @@ export const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (mobileMenu) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+  }, [mobileMenu]);
+
   return (
     <header
       className={`fixed left-0 top-0 z-50 w-full transition-all duration-300 ${
@@ -68,28 +76,43 @@ export const Header = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed inset-0 top-20 z-40 bg-[#09113F] transition-all duration-300 lg:hidden ${
+        className={`fixed inset-0 z-40 bg-[#09113F] transition-all duration-300 lg:hidden ${
           mobileMenu
             ? "translate-y-0 opacity-100"
             : "-translate-y-full opacity-0 pointer-events-none"
         }`}
       >
-        <div className="flex h-full flex-col justify-between p-6">
-          <nav className="flex flex-col gap-2">
-            {navLinks.map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                onClick={(e) => {
-                  handleNavClick(e, item.href);
-                  setMobileMenu(false);
-                }}
-                className="rounded-lg px-4 py-4 text-lg font-medium text-white transition hover:bg-white/10 hover:text-[#DAB025]"
+        <div className="flex h-full justify-between flex-col p-6">
+          <div>
+            <div className="flex items-center justify-between mb-6">
+              <span className="text-xl font-bold text-white">
+                <span className="text-[#DAB025]">Afif</span> Ur Rahman
+              </span>
+
+              <button
+                onClick={() => setMobileMenu(false)}
+                className="text-white"
               >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
+                <X size={28} />
+              </button>
+            </div>
+
+            <nav className="flex flex-col gap-2">
+              {navLinks.map((item) => (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  onClick={(e) => {
+                    handleNavClick(e, item.href);
+                    setMobileMenu(false);
+                  }}
+                  className="rounded-lg px-4 py-4 text-lg font-medium text-white transition hover:bg-white/10 hover:text-[#DAB025]"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
 
           <a
             href="/resume.pdf"
