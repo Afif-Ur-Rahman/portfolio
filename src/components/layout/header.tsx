@@ -108,8 +108,8 @@ export const Header = ({
               <ArrowLeft size={18} />
             </Link>
           )}
-          <Link href="#home" className="flex items-center gap-2">
-            <span className="text-xl font-bold text-white">
+          <Link href="#" className="flex items-center gap-2">
+            <span className="font-bold text-white text-md md:text-xl">
               <span className="text-[#DAB025]">{firstName}</span>
               {lastName ? ` ${lastName}` : ""}
             </span>
@@ -170,6 +170,8 @@ export const Header = ({
 
       {/* Mobile Menu */}
       <MobileSidebar
+        title={title}
+        page={page}
         isOpen={mobileMenu}
         onClose={() => setMobileMenu(false)}
         navLinks={navLinks}

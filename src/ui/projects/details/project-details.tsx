@@ -21,7 +21,7 @@ export const ProjectDetails = ({ id }: ProjectDetailsProps) => {
   }
 
   return (
-    <div className="bg-white">
+    <>
       <Hero
         title={project.title}
         description={detail.description}
@@ -36,6 +36,6 @@ export const ProjectDetails = ({ id }: ProjectDetailsProps) => {
       />
       <TechnicalHighlights highlights={detail.technicalHighlights} />
       <Footer />
-    </div>
+    </>
   );
 };

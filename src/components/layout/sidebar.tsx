@@ -3,10 +3,12 @@
 
 import React from "react";
 import Link from "next/link";
-import { X, Download } from "lucide-react";
+import { X, Download, ArrowLeft } from "lucide-react";
 import { handleNavClick } from "@/utils";
 
 interface MobileNavDrawerProps {
+  title: string;
+  page: string;
   isOpen: boolean;
   onClose: () => void;
   navLinks: { label: string; href: string }[];
@@ -15,12 +17,17 @@ interface MobileNavDrawerProps {
 }
 
 export const MobileSidebar: React.FC<MobileNavDrawerProps> = ({
+  title,
+  page,
   isOpen,
   onClose,
   navLinks,
   activeSection,
   onNavigate,
 }) => {
+  const [firstName, ...rest] = title.split(" ");
+  const lastName = rest.join(" ");
+
   return (
     <div
       className={`fixed inset-0 z-110 transition-opacity duration-300 lg:hidden ${
@@ -44,8 +51,9 @@ export const MobileSidebar: React.FC<MobileNavDrawerProps> = ({
 
         <div className="relative flex h-full flex-col">
           <div className="flex items-center justify-between border-b border-white/10 px-5 py-4">
-            <span className="text-lg font-bold text-white">
-              <span className="text-[#DAB025]">Afif</span> Ur Rahman
+            <span className="text-xl font-bold text-white">
+              <span className="text-[#DAB025]">{firstName}</span>
+              {lastName ? ` ${lastName}` : ""}
             </span>
 
             <button
@@ -87,15 +95,25 @@ export const MobileSidebar: React.FC<MobileNavDrawerProps> = ({
           </nav>
 
           <div className="px-4 py-5">
-            <a
-              href="/resume.pdf"
-              download
-              onClick={onClose}
-              className="flex w-full items-center justify-center gap-2 rounded-2xl border border-[#DAB025]/20 bg-[#DAB025]/10 px-4 py-3 text-base font-medium text-white transition hover:bg-[#DAB025]/20"
-            >
-              <Download size={18} />
-              Download Resume
-            </a>
+            {page === "home" ? (
+              <a
+                href="/resume.pdf"
+                download
+                onClick={onClose}
+                className="flex w-full items-center justify-center gap-2 rounded-2xl border border-[#DAB025]/20 bg-[#DAB025]/10 px-4 py-3 text-base font-medium text-white transition hover:bg-[#DAB025]/20"
+              >
+                <Download size={18} />
+                Download Resume
+              </a>
+            ) : (
+              <Link
+                href="/#projects"
+                className="w-full inline-flex items-center justify-center gap-2 rounded-full border-2 border-[#DAB025] px-6 py-3 text-sm text-white transition-colors hover:bg-[#DAB025]"
+              >
+                <ArrowLeft size={15} />
+                Back to All Projects
+              </Link>
+            )}
           </div>
         </div>
       </div>

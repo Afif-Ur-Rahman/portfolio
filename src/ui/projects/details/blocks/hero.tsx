@@ -1,6 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { ExternalLink } from "lucide-react";
+import { ParticleBackground } from "@/components";
 
 type ProjectHeaderProps = {
   title: string;
@@ -18,7 +21,12 @@ export const Hero = ({
   liveUrl,
 }: ProjectHeaderProps) => {
   return (
-    <section className="relative overflow-hidden bg-[#09113F]">
+    <section
+      id="case-study"
+      className="relative flex min-h-screen w-full items-center overflow-hidden bg-[#09113F]"
+    >
+      <ParticleBackground variant="hero" />
+
       <div
         className="absolute inset-0 opacity-[0.06]"
         style={{
@@ -28,7 +36,7 @@ export const Hero = ({
         }}
       />
 
-      <div className="relative mx-auto max-w-7xl px-6 pb-14 pt-10">
+      <div className="relative z-10 mx-auto max-w-7xl px-6 py-14">
         <div className="mt-8 grid grid-cols-1 items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
             <span className="inline-block rounded-full bg-[#DAB025]/10 px-4 py-2 text-sm font-semibold uppercase tracking-wider text-[#DAB025]">
@@ -67,7 +75,7 @@ export const Hero = ({
             )}
           </div>
 
-          <div className="relative aspect-16/10 w-full overflow-hidden rounded-2xl border border-[#DAB025]/30 shadow-2xl">
+          <div className="relative aspect-16/14 w-full overflow-hidden rounded-xl border border-[#DAB025]/30 shadow-2xl">
             <Image
               src={image}
               alt={title}
