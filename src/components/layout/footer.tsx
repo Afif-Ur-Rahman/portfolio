@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Mail, MapPin } from "lucide-react";
 import { FaLinkedin, FaGithub, FaWhatsapp } from "react-icons/fa6";
 import { handleNavClick } from "@/utils";
-import { navLinks } from "./constants";
+import { HOME_MENU } from "./constants";
 import { ParticleBackground } from "@/components"; // ✅ same as Hero
 
 export const Footer = () => {
@@ -31,7 +31,7 @@ export const Footer = () => {
               Quick Links
             </h3>
             <ul className="mt-4 space-y-3">
-              {navLinks.map((link) => (
+              {HOME_MENU.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}

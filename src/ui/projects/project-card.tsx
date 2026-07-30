@@ -101,8 +101,7 @@ export const ProjectCard = ({
           )}
           {details && (
             <Link
-              href={`/projects/${id}`}
-              target="_blank"
+              href={`/project/${id}`}
               rel="noopener noreferrer"
               className="flex w-fit items-center gap-1 text-xs font-semibold text-[#0A4A8A] hover:text-[#DAB025] hover:underline"
             >
