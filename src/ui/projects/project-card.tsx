@@ -6,6 +6,7 @@ import { ExternalLink } from "lucide-react";
 import { FaGooglePlay, FaAppStore } from "react-icons/fa";
 
 type ProjectCardProps = {
+  id: string;
   title: string;
   description: string;
   image: string;
@@ -13,9 +14,11 @@ type ProjectCardProps = {
   liveUrl?: string;
   playStoreUrl?: string;
   appStoreUrl?: string;
+  details?: boolean;
 };
 
 export const ProjectCard = ({
+  id,
   title,
   description,
   image,
@@ -23,6 +26,7 @@ export const ProjectCard = ({
   liveUrl,
   playStoreUrl,
   appStoreUrl,
+  details = false,
 }: ProjectCardProps) => {
   return (
     <div className="group flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#DAB025] hover:shadow-lg">
@@ -83,17 +87,30 @@ export const ProjectCard = ({
           ))}
         </div>
 
-        {liveUrl && (
-          <Link
-            href={liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-2 flex w-fit items-center gap-1 text-xs font-semibold text-[#0A4A8A] hover:text-[#DAB025] hover:underline"
-          >
-            <ExternalLink size={13} />
-            Live Website
-          </Link>
-        )}
+        <div className="mt-2 flex items-center justify-between gap-3">
+          {liveUrl && (
+            <Link
+              href={liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex w-fit items-center gap-1 text-xs font-semibold text-[#0A4A8A] hover:text-[#DAB025] hover:underline"
+            >
+              <ExternalLink size={13} />
+              Live Website
+            </Link>
+          )}
+          {details && (
+            <Link
+              href={`/projects/${id}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex w-fit items-center gap-1 text-xs font-semibold text-[#0A4A8A] hover:text-[#DAB025] hover:underline"
+            >
+              <ExternalLink size={13} />
+              View Details
+            </Link>
+          )}
+        </div>
       </div>
     </div>
   );

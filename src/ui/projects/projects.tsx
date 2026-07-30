@@ -1,6 +1,6 @@
 "use client";
 
-import { PROJECTS } from "../constants";
+import { PROJECTS } from "./constants";
 import { ProjectCard } from "./project-card";
 
 export const Projects = () => {
@@ -27,7 +27,7 @@ export const Projects = () => {
 
         <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {PROJECTS.map((project) => (
-            <ProjectCard key={project.title} {...project} />
+            <ProjectCard key={project.id} {...project} />
           ))}
         </div>
       </div>

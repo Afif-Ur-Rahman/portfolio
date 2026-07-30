@@ -1,5 +1,6 @@
 import { Footer, Header } from "@/components/layout";
-import { AboutMe, FloatingIcons, Hero, Projects, Skills } from "@/ui/home";
+import { AboutMe, FloatingIcons, Hero, Skills } from "@/ui/home";
+import { Projects } from "@/ui/projects";
 
 export default async function HomePage() {
   return (
