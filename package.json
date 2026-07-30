@@ -21,6 +21,7 @@
     "dotenv": "^17.2.3",
     "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
+    "framer-motion": "^12.43.0",
     "lucide-react": "^0.553.0",
     "moment": "^2.30.1",
     "next": "16.1.4",

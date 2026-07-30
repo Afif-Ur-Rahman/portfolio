@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import {
   Features,
   Footer,
+  Gallery,
   Hero,
   SecurityAutomation,
   TechnicalHighlights,
@@ -29,6 +30,7 @@ export const ProjectDetails = ({ id }: ProjectDetailsProps) => {
         tags={project.tags}
         liveUrl={project.liveUrl}
       />
+      <Gallery gallery={detail.gallery} />
       <Features features={detail.features} />
       <SecurityAutomation
         security={detail.security}

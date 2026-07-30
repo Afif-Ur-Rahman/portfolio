@@ -131,5 +131,57 @@ export const PROJECTS_DETAILS = [
       "Printable PDF-friendly receipts and customer statements",
       "Scalable architecture with clean separation of concerns",
     ],
+    gallery: [
+      {
+        title: "Login",
+        description: "",
+        image: "/images/zaitoon-height/login.png",
+      },
+      {
+        title: "Customers",
+        description:
+          "Add, search, filter, and manage customers with instant UI updates, separate loading/submission states, and route-based customer profiles",
+        image: "/images/zaitoon-height/Customer-page.png",
+      },
+      {
+        title: "Units Information",
+        description:
+          "Book units, edit customer information, and manage property details with real-time financial calculations (received, outstanding, hold, and overdue amounts).",
+        image: "/images/zaitoon-height/unit-information.png",
+      },
+      {
+        title: "Payments",
+        description:
+          "Support custom and installment payment plans, auto-generate installment schedules, record/edit receipts, and automatically synchronize payment and unit balances. Generate printable A4 receipts and customer statements.",
+        image: "/images/zaitoon-height/payments.png",
+      },
+      {
+        title: "Receipts",
+        description: "Generate printable receipts.",
+        image: "/images/zaitoon-height/all-receipts.png",
+      },
+      {
+        title: "Leads",
+        description:
+          "Track incoming sales leads with pending/contacted statuses, live counters, and notification badges for pending follow-ups.",
+        image: "/images/zaitoon-height/leads.png",
+      },
+      {
+        title: "Employees",
+        description:
+          "Add, search, filter, and soft-delete employees with access restricted to authorized roles.",
+        image: "/images/zaitoon-height/employee.png",
+      },
+      {
+        title: "Profile",
+        description: "Secure password update flow with validation.",
+        image: "/images/zaitoon-height/profile.png",
+      },
+      {
+        title: "Calculator",
+        description: "Integrated custom Calculator to enhance calculations.",
+        image: "/images/zaitoon-height/calculator.png",
+      },
+    ],
   },
 ];

@@ -7,6 +7,7 @@ export const HOME_MENU = [
 
 export const PROJECTS_MENU = [
   { label: "Case Study", href: "#case-study" },
+  { label: "Gallery", href: "#gallery" },
   { label: "Features", href: "#features" },
   { label: "Security", href: "#security" },
   { label: "Tech. Highlights", href: "#highlights" },
