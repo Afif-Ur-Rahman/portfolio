@@ -8,7 +8,7 @@ export const TechnicalHighlights = ({
   highlights,
 }: ProjectTechnicalHighlightsProps) => {
   return (
-    <section className="mx-auto max-w-7xl px-6 py-16">
+    <section id="highlights" className="mx-auto max-w-7xl px-6 py-16">
       <div className="flex flex-col gap-3">
         <span className="w-fit rounded-full bg-[#DAB025]/10 px-4 py-2 text-sm font-semibold uppercase tracking-wider text-[#DAB025]">
           Under The Hood

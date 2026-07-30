@@ -15,9 +15,18 @@ export const SecurityAutomation = ({
   automation,
 }: ProjectSecurityAutomationProps) => {
   return (
-    <section className="bg-[#09113F]/3 border-y border-gray-200">
+    <section id="security" className="w-full bg-[#09113F]/3">
       <div className="mx-auto max-w-7xl px-6 py-16">
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+        <div className="flex flex-col gap-3">
+          <span className="w-fit rounded-full bg-[#DAB025]/10 px-4 py-2 text-sm font-semibold uppercase tracking-wider text-[#DAB025]">
+            Protection & Efficiency
+          </span>
+          <h2 className="text-3xl font-bold text-[#003B73] md:text-4xl">
+            Security & Automation
+          </h2>
+        </div>
+
+        <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
           <div className="rounded-xl border border-gray-200 bg-white p-6">
             <div className="flex items-center gap-3">
               <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#DAB025]/10 text-[#DAB025]">
