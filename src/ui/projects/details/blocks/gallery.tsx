@@ -104,7 +104,7 @@ export const Gallery = ({ gallery, isMobile = false }: GalleryProps) => {
           {isMobile ? (
             <div className="relative bg-[#0a1240] border-b border-white/10">
               {/* Notch */}
-              <div className="absolute left-1/2 -translate-x-1/2 top-2 h-5 w-28 bg-black rounded-2xl" />
+              <div className="absolute left-1/2 -translate-x-1/2 top-2 h-5 w-28 bg-[#DAB025]/40 rounded-2xl" />
 
               <div className="flex items-center justify-between px-5 py-2.5">
                 <span className="text-white/90 text-xs font-semibold tracking-wide">

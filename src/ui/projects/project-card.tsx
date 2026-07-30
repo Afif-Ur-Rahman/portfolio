@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { ExternalLink, FileText } from "lucide-react";
 import { FaGooglePlay, FaAppStore } from "react-icons/fa";
+import { useState } from "react";
+import { Skeleton } from "./skeleton";
 
 type ProjectCardProps = {
   id: string;
@@ -28,15 +30,21 @@ export const ProjectCard = ({
   appStoreUrl,
   details = false,
 }: ProjectCardProps) => {
+  const [isLoading, setIsLoading] = useState(true);
   return (
     <div className="group flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#DAB025] hover:shadow-lg">
       <div className="relative aspect-16/10 w-full overflow-hidden bg-[#09113F] border-b border-gray-200 transition-all duration-300 hover:border-[#DAB025]">
+        {isLoading && <Skeleton />}
+
         <Image
           src={image}
           alt={title}
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-          className="object-cover transition-transform duration-500"
+          className={`object-cover transition-transform duration-500 ${
+            isLoading ? "opacity-0" : "opacity-100"
+          }`}
+          onLoadingComplete={() => setIsLoading(false)}
         />
 
         {(playStoreUrl || appStoreUrl) && (
