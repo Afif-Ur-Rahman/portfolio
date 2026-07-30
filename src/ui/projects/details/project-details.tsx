@@ -30,7 +30,7 @@ export const ProjectDetails = ({ id }: ProjectDetailsProps) => {
         tags={project.tags}
         liveUrl={project.liveUrl}
       />
-      <Gallery gallery={detail.gallery} />
+      <Gallery gallery={detail.gallery} isMobile={project.isMobile} />
       <Features features={detail.features} />
       <SecurityAutomation
         security={detail.security}

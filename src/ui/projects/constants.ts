@@ -37,6 +37,8 @@ export const PROJECTS = [
       "https://play.google.com/store/apps/details?id=com.securevault.hasbi",
     appStoreUrl:
       "https://apps.apple.com/us/app/vault-top-security/id6761527136",
+    details: true,
+    isMobile: true,
   },
   {
     id: "yallahnshoof",
@@ -181,6 +183,94 @@ export const PROJECTS_DETAILS = [
         title: "Calculator",
         description: "Integrated custom Calculator to enhance calculations.",
         image: "/images/zaitoon-height/calculator.png",
+      },
+    ],
+  },
+  {
+    id: "secure-vault",
+    description:
+      "Built a secure file-vault mobile application using React Native, Expo, and TypeScript with three-layer authentication (PIN, secret word, and pattern lock), progressive lockout, and cross-device access via secure server storage. Supports in-app media playback, category filtering, soft-delete with recovery, and automatic permanent deletion of unrestored files.",
+    features: [
+      {
+        label: "Three-Layer Authentication",
+        detail:
+          "Enforces sequential PIN → Password (secret word) → Pattern lock on every app reopen. Includes progressive lockout after repeated failed attempts and smooth visual feedback at each step.",
+      },
+      {
+        label: "Secure Cross-Device Storage",
+        detail:
+          "Stores all user files and credentials on a secure backend so data can be fetched and managed from any device after successful authentication.",
+      },
+      {
+        label: "Media Management & Preview",
+        detail:
+          "Upload, download, delete, and restore files with full in-app support for image previews, audio playback, and video playback without leaving the vault.",
+      },
+      {
+        label: "Category Filtering",
+        detail:
+          "Filter vault contents instantly using tabs: All, Audio, Video, and Other for quick navigation and organization.",
+      },
+      {
+        label: "Soft-Delete & Recovery",
+        detail:
+          "Tracks deleted files so users can restore them. Unrestored files are automatically purged after the retention period to keep the vault clean and secure.",
+      },
+      {
+        label: "Admin & Credential Tools",
+        detail:
+          "Includes admin capabilities for user/file management and secure credential update flows.",
+      },
+    ],
+    security: {
+      label: "Security & Access Control",
+      detail:
+        "Implements strict three-step authentication with progressive lockout, secure server-side storage, and forced re-authentication on every app reopen to protect sensitive files across devices.",
+    },
+    automation: {
+      label: "Automation",
+      detail:
+        "Automatically permanently deletes unrestored soft-deleted files after the retention window and maintains synchronized vault state across devices without manual intervention.",
+    },
+    technicalHighlights: [
+      "React Native + Expo + TypeScript mobile architecture",
+      "Three sequential authentication screens with progressive lockout",
+      "Secure backend storage enabling cross-device access",
+      "In-app image preview, audio playback, and video playback",
+      "Tab-based category filtering (All / Audio / Video / Other)",
+      "Soft-delete tracking with restore capability and auto-purge",
+      "Clean separation of authentication flow and media vault UI",
+    ],
+    gallery: [
+      {
+        title: "Landing",
+        description:
+          "Entry screen with branding and a clear call-to-action to unlock the vault.",
+        image: "/images/secure-vault/landing.jpg",
+      },
+      {
+        title: "PIN",
+        description:
+          "First authentication layer with numeric PIN entry, visual feedback, and progressive lockout on failed attempts.",
+        image: "/images/secure-vault/pin.jpg",
+      },
+      {
+        title: "Password",
+        description:
+          "Second authentication layer for the secret word/password with secure input and continued lockout enforcement.",
+        image: "/images/secure-vault/password.jpg",
+      },
+      {
+        title: "Pattern",
+        description:
+          "Final authentication layer using a pattern lock grid with visual trail and error handling before granting vault access.",
+        image: "/images/secure-vault/pattern.jpg",
+      },
+      {
+        title: "Media",
+        description:
+          "Main vault screen with category tabs (All, Audio, Video, Other), in-app media playback/previews, upload/download, and soft-delete/restore management.",
+        image: "/images/secure-vault/media.jpg",
       },
     ],
   },

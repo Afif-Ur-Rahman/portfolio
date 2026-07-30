@@ -75,7 +75,7 @@ export const Hero = ({
             )}
           </div>
 
-          <div className="relative aspect-16/14 w-full overflow-hidden rounded-xl border border-[#DAB025]/30 shadow-2xl">
+          <div className="relative w-full overflow-hidden rounded-xl border border-[#DAB025]/30 shadow-2xl aspect-16/14 md:max-h-100 lg:max-h-none">
             <Image
               src={image}
               alt={title}

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, FileText } from "lucide-react";
 import { FaGooglePlay, FaAppStore } from "react-icons/fa";
 
 type ProjectCardProps = {
@@ -88,6 +88,16 @@ export const ProjectCard = ({
         </div>
 
         <div className="mt-2 flex items-center justify-between gap-3">
+          {details && (
+            <Link
+              href={`/project/${id}`}
+              rel="noopener noreferrer"
+              className="flex w-fit items-center gap-1 text-xs font-semibold text-[#0A4A8A] hover:text-[#DAB025] hover:underline"
+            >
+              <FileText size={13} />
+              View Details
+            </Link>
+          )}
           {liveUrl && (
             <Link
               href={liveUrl}
@@ -97,16 +107,6 @@ export const ProjectCard = ({
             >
               <ExternalLink size={13} />
               Live Website
-            </Link>
-          )}
-          {details && (
-            <Link
-              href={`/project/${id}`}
-              rel="noopener noreferrer"
-              className="flex w-fit items-center gap-1 text-xs font-semibold text-[#0A4A8A] hover:text-[#DAB025] hover:underline"
-            >
-              <ExternalLink size={13} />
-              View Details
             </Link>
           )}
         </div>
