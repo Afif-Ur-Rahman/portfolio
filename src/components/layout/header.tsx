@@ -1,14 +1,19 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Menu, X, Download } from "lucide-react";
 import { handleNavClick } from "@/utils";
 import { navLinks } from "./constants";
+import { MobileSidebar } from "./sidebar";
 
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false);
+  const [activeSection, setActiveSection] = useState("#home");
+  const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0 });
+
+  const navRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 40);
@@ -25,9 +30,56 @@ export const Header = () => {
     }
   }, [mobileMenu]);
 
+  useEffect(() => {
+    const sectionIds = navLinks.map((item) => item.href.replace("#", ""));
+    const sections = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null);
+
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+
+        if (visible.length > 0) {
+          setActiveSection(`#${visible[0].target.id}`);
+        }
+      },
+      {
+        rootMargin: "-96px 0px -60% 0px",
+        threshold: 0,
+      },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const updateIndicator = () => {
+      const activeEl = navRefs.current[activeSection];
+      if (activeEl) {
+        setIndicatorStyle({
+          left: activeEl.offsetLeft,
+          width: activeEl.offsetWidth,
+        });
+      }
+    };
+
+    updateIndicator();
+    window.addEventListener("resize", updateIndicator);
+    return () => window.removeEventListener("resize", updateIndicator);
+  }, [activeSection]);
+
+  const isActive = (href: string) => activeSection === href;
+
   return (
     <header
-      className={`fixed left-0 top-0 z-50 w-full transition-all duration-300 ${
+      className={`fixed left-0 top-0 z-50 w-full transition-all duration-300 ease-in-out ${
         mobileMenu || isScrolled
           ? "bg-[#09113F] shadow-md py-4"
           : "transparent py-3"
@@ -41,17 +93,33 @@ export const Header = () => {
         </Link>
 
         {/* Desktop Menu */}
-        <nav className="hidden items-center gap-8 lg:flex">
+        <nav className="relative hidden items-center gap-8 lg:flex">
           {navLinks.map((item) => (
             <Link
               key={item.label}
               href={item.href}
-              onClick={(e) => handleNavClick(e, item.href)}
-              className="font-medium text-white transition hover:text-[#DAB025] hover:underline"
+              ref={(el) => {
+                navRefs.current[item.href] = el;
+              }}
+              onClick={(e) => {
+                setActiveSection(item.href);
+                handleNavClick(e, item.href);
+              }}
+              className={`relative font-medium transition-colors duration-300 ease-in-out hover:text-[#DAB025] ${
+                isActive(item.href) ? "text-[#DAB025]" : "text-white"
+              }`}
             >
               {item.label}
             </Link>
           ))}
+
+          <span
+            className="absolute -bottom-0.5 h-0.5 rounded-full bg-[#DAB025] transition-all duration-300 ease-in-out"
+            style={{
+              left: `${indicatorStyle.left}px`,
+              width: `${indicatorStyle.width}px`,
+            }}
+          />
         </nav>
 
         <div className="hidden lg:block">
@@ -75,56 +143,13 @@ export const Header = () => {
       </div>
 
       {/* Mobile Menu */}
-      <div
-        className={`fixed inset-0 z-40 bg-[#09113F] transition-all duration-300 lg:hidden ${
-          mobileMenu
-            ? "translate-y-0 opacity-100"
-            : "-translate-y-full opacity-0 pointer-events-none"
-        }`}
-      >
-        <div className="flex h-full justify-between flex-col p-6">
-          <div>
-            <div className="flex items-center justify-between mb-6">
-              <span className="text-xl font-bold text-white">
-                <span className="text-[#DAB025]">Afif</span> Ur Rahman
-              </span>
-
-              <button
-                onClick={() => setMobileMenu(false)}
-                className="text-white"
-              >
-                <X size={28} />
-              </button>
-            </div>
-
-            <nav className="flex flex-col gap-2">
-              {navLinks.map((item) => (
-                <Link
-                  key={item.label}
-                  href={item.href}
-                  onClick={(e) => {
-                    handleNavClick(e, item.href);
-                    setMobileMenu(false);
-                  }}
-                  className="rounded-lg px-4 py-4 text-lg font-medium text-white transition hover:bg-white/10 hover:text-[#DAB025]"
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
-          </div>
-
-          <a
-            href="/resume.pdf"
-            download
-            onClick={() => setMobileMenu(false)}
-            className="flex w-full items-center justify-center gap-2 rounded-full bg-[#DAB025] py-4 text-center font-semibold text-black transition hover:bg-amber-400"
-          >
-            <Download size={18} />
-            Download Resume
-          </a>
-        </div>
-      </div>
+      <MobileSidebar
+        isOpen={mobileMenu}
+        onClose={() => setMobileMenu(false)}
+        navLinks={navLinks}
+        activeSection={activeSection}
+        onNavigate={setActiveSection}
+      />
     </header>
   );
 };

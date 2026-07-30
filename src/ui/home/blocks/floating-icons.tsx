@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Mail, Phone, X } from "lucide-react";
+import { Phone, X } from "lucide-react";
 import { FaLinkedin, FaGithub, FaWhatsapp } from "react-icons/fa6";
+import { GmailIcon } from "@/components/svgs";
 
 export const FloatingIcons = () => {
   const [showAll, setShowAll] = useState(true);
@@ -28,9 +29,9 @@ export const FloatingIcons = () => {
 
         <Link
           href="mailto:afifurrahman444@gmail.com"
-          className="flex h-12 w-12 items-center justify-center rounded-full bg-[#0A3D91] text-white shadow-lg transition hover:scale-105 hover:bg-[#082f6d]"
+          className="flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-lg ring-1 ring-black/5 transition hover:scale-105 hover:bg-gray-50"
         >
-          <Mail size={26} />
+          <GmailIcon size={24} />
         </Link>
 
         <Link
@@ -52,11 +53,17 @@ export const FloatingIcons = () => {
         </Link>
       </div>
 
-      <div
-        className="flex h-12 w-12 items-center justify-center rounded-full bg-[#0A3D91] text-white shadow-lg cursor-pointer transition-all duration-300 ease-in-out hover:scale-105 hover:bg-[#082f6d]"
-        onClick={() => setShowAll(!showAll)}
-      >
-        {showAll ? <X size={26} /> : <Phone size={26} />}
+      <div className="relative flex h-12 w-12 items-center justify-center">
+        <div
+          className="relative flex h-12 w-12 items-center justify-center rounded-full bg-[#DAB025] text-white cursor-pointer transition-all duration-300 ease-in-out hover:scale-105"
+          onClick={() => setShowAll(!showAll)}
+        >
+          {showAll ? (
+            <X size={26} color="#0A3D91" />
+          ) : (
+            <Phone size={26} color="#0A3D91" />
+          )}
+        </div>
       </div>
     </div>
   );

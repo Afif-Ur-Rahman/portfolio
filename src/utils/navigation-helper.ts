@@ -8,8 +8,13 @@ export const handleNavClick = (
   const target = document.getElementById(hash);
   if (target) {
     e.preventDefault();
-    target.scrollIntoView({ behavior: "smooth", block: "start" });
-    // keep the URL in sync without a full navigation
+
+    const headerOffset = 80;
+    const targetPosition =
+      target.getBoundingClientRect().top + window.scrollY - headerOffset;
+
+    window.scrollTo({ top: targetPosition, behavior: "smooth" });
+
     window.history.pushState(null, "", `#${hash}`);
   }
 };
