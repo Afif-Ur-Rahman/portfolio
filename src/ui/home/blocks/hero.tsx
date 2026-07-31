@@ -4,9 +4,12 @@ import Image from "next/image";
 import { handleNavClick } from "@/utils";
 import Link from "next/link";
 import { TypeAnimation } from "react-type-animation";
-import { ParticleBackground } from "@/components";
+import { ParticleBackground, Skeleton } from "@/components";
+import { useState } from "react";
 
 export const Hero = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
   return (
     <section
       id="home"
@@ -19,13 +22,20 @@ export const Hero = () => {
       <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col-reverse items-center gap-12 px-6 pt-24 pb-16 lg:flex-row lg:justify-between lg:pt-16">
         <div className="flex flex-1 w-full shrink-0 justify-center lg:w-auto lg:justify-start">
           <div className="relative h-64 w-64 overflow-hidden rounded-full border-4 border-[#DAB025]/30 shadow-[0_0_60px_rgba(218,176,37,0.25)] sm:h-80 sm:w-80 lg:h-96 lg:w-96">
+            {isLoading && (
+              <Skeleton loaderClassName="h-10 w-10 sm:h-12 sm:w-12" />
+            )}
+
             <Image
               src="/images/profile.jpg"
               alt="Afif Ur Rahman"
               fill
               sizes="(max-width: 1024px) 320px, 384px"
-              className="object-cover"
+              className={`object-cover transition-opacity duration-500 ${
+                isLoading ? "opacity-0" : "opacity-100"
+              }`}
               priority
+              onLoadingComplete={() => setIsLoading(false)}
             />
           </div>
         </div>

@@ -3,7 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ExternalLink } from "lucide-react";
-import { ParticleBackground } from "@/components";
+import { ParticleBackground, Skeleton } from "@/components";
+import { useState } from "react";
 
 type ProjectHeaderProps = {
   title: string;
@@ -20,6 +21,8 @@ export const Hero = ({
   tags,
   liveUrl,
 }: ProjectHeaderProps) => {
+  const [isLoading, setIsLoading] = useState(true);
+
   return (
     <section
       id="case-study"
@@ -76,13 +79,20 @@ export const Hero = ({
           </div>
 
           <div className="relative w-full overflow-hidden rounded-xl border border-[#DAB025]/30 shadow-2xl aspect-16/14 md:max-h-100 lg:max-h-none">
+            {isLoading && (
+              <Skeleton loaderClassName="h-8 w-8 sm:h-10 sm:w-10" />
+            )}
+
             <Image
               src={image}
               alt={title}
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover"
+              className={`object-cover transition-opacity duration-500 ${
+                isLoading ? "opacity-0" : "opacity-100"
+              }`}
               priority
+              onLoadingComplete={() => setIsLoading(false)}
             />
           </div>
         </div>

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { ExternalLink, FileText } from "lucide-react";
 import { FaGooglePlay, FaAppStore } from "react-icons/fa";
 import { useState } from "react";
-import { Skeleton } from "./skeleton";
+import { Skeleton } from "@/components";
 
 type ProjectCardProps = {
   id: string;
