@@ -4,7 +4,6 @@ import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/utils";
 import { Battery, Mac, Signal, Wifi } from "@/components/svgs";
-import { Skeleton } from "@/components";
 import { GalleryItem, useGallery } from "./useGallery";
 
 type GalleryProps = {
@@ -85,7 +84,7 @@ export const Gallery = ({ gallery, isMobile = false }: GalleryProps) => {
         <div
           className={cn(
             "rounded-xl overflow-hidden border border-[#DAB025]/30 shadow-2xl bg-[#0d1650]",
-            isMobile ? "max-w-xs mx-auto" : "",
+            isMobile ? "max-w-xs mx-auto" : "max-h-145",
           )}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
@@ -115,14 +114,6 @@ export const Gallery = ({ gallery, isMobile = false }: GalleryProps) => {
               isMobile ? "h-130" : "h-auto",
             )}
           >
-            {isLoading && (
-              <Skeleton
-                loaderClassName={
-                  isMobile ? "h-8 w-8" : "h-10 w-10 sm:h-12 sm:w-12"
-                }
-              />
-            )}
-
             <AnimatePresence mode="wait" custom={direction}>
               <motion.div
                 key={active.image}

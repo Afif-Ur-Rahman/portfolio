@@ -21,13 +21,20 @@ export const useGallery = (gallery: GalleryItem[]) => {
 
   useEffect(() => {
     const activeTab = tabRefs.current[activeIndex];
-    if (activeTab) {
-      activeTab.scrollIntoView({
-        behavior: "smooth",
-        inline: "center",
-        block: "nearest",
-      });
-    }
+    if (!activeTab) return;
+
+    const container = activeTab.parentElement;
+    if (!container) return;
+
+    const tabLeft = activeTab.offsetLeft;
+    const tabWidth = activeTab.offsetWidth;
+    const containerWidth = container.clientWidth;
+    const targetScrollLeft = tabLeft - containerWidth / 2 + tabWidth / 2;
+
+    container.scrollTo({
+      left: targetScrollLeft,
+      behavior: "smooth",
+    });
   }, [activeIndex]);
 
   useEffect(() => {
