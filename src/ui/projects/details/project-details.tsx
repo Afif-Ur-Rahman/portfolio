@@ -17,7 +17,7 @@ export const ProjectDetails = ({ id }: ProjectDetailsProps) => {
   const project = PROJECTS.find((p) => p.id === id);
   const detail = PROJECTS_DETAILS.find((p) => p.id === id);
 
-  if (!project || !detail) {
+  if (!project) {
     notFound();
   }
 
@@ -25,18 +25,22 @@ export const ProjectDetails = ({ id }: ProjectDetailsProps) => {
     <>
       <Hero
         title={project.title}
-        description={detail.description}
+        description={detail?.description || project.description}
         image={project.image}
         tags={project.tags}
         liveUrl={project.liveUrl}
       />
-      <Gallery gallery={detail.gallery} isMobile={project.isMobile} />
-      <Features features={detail.features} />
-      <SecurityAutomation
-        security={detail.security}
-        automation={detail.automation}
-      />
-      <TechnicalHighlights highlights={detail.technicalHighlights} />
+      {detail && (
+        <>
+          <Gallery gallery={detail.gallery} isMobile={project.isMobile} />
+          <Features features={detail.features} />
+          <SecurityAutomation
+            security={detail.security}
+            automation={detail.automation}
+          />
+          <TechnicalHighlights highlights={detail.technicalHighlights} />
+        </>
+      )}
       <Footer />
     </>
   );

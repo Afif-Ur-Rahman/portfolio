@@ -17,7 +17,6 @@ type ProjectCardProps = {
   liveUrl?: string;
   playStoreUrl?: string;
   appStoreUrl?: string;
-  details?: boolean;
 };
 
 export const ProjectCard = ({
@@ -29,7 +28,6 @@ export const ProjectCard = ({
   liveUrl,
   playStoreUrl,
   appStoreUrl,
-  details = false,
 }: ProjectCardProps) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
@@ -43,8 +41,8 @@ export const ProjectCard = ({
 
   return (
     <div
-      className={`group flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#DAB025] hover:shadow-lg ${details ? "cursor-pointer" : "cursor-default"}`}
-      onClick={details ? handleCardClick : () => {}}
+      className={`group flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#DAB025] hover:shadow-lg cursor-pointer`}
+      onClick={handleCardClick}
     >
       <div className="relative aspect-16/10 w-full overflow-hidden bg-[#09113F] border-b border-gray-200 transition-all duration-300 group-hover:border-[#DAB025]">
         {isLoading && <Skeleton />}
@@ -111,7 +109,6 @@ export const ProjectCard = ({
         </div>
 
         <div className="mt-2 flex items-center justify-between gap-3">
-          {details && (
             <Link
               href={`/project/${id}`}
               className="flex w-fit items-center gap-1 text-xs font-semibold text-[#0A4A8A] hover:text-[#DAB025] hover:underline"
@@ -120,7 +117,6 @@ export const ProjectCard = ({
               <FileText size={13} />
               View Details
             </Link>
-          )}
           {liveUrl && (
             <Link
               href={liveUrl}

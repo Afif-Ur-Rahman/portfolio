@@ -16,7 +16,6 @@ export const PROJECTS = [
       "Tailwind CSS",
     ],
     liveUrl: "https://theconquerordevelopers.com/",
-    details: true,
   },
   {
     id: "secure-vault",
@@ -37,7 +36,6 @@ export const PROJECTS = [
       "https://play.google.com/store/apps/details?id=com.securevault.hasbi",
     appStoreUrl:
       "https://apps.apple.com/us/app/vault-top-security/id6761527136",
-    details: true,
     isMobile: true,
   },
   {
@@ -58,7 +56,6 @@ export const PROJECTS = [
     playStoreUrl:
       "https://play.google.com/store/apps/details?id=com.yallahnshoof",
     appStoreUrl: "https://apps.apple.com/us/app/yallahnshoof/id6749572975",
-    details: true,
     isMobile: true,
   },
   {
