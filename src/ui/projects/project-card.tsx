@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { ExternalLink, FileText } from "lucide-react";
 import { FaGooglePlay, FaAppStore } from "react-icons/fa";
 import { useState } from "react";
@@ -30,10 +31,22 @@ export const ProjectCard = ({
   appStoreUrl,
   details = false,
 }: ProjectCardProps) => {
+  const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
+
+  const handleCardClick = (e: React.MouseEvent) => {
+    const target = e.target as HTMLElement;
+    if (target.closest("a")) return;
+
+    router.push(`/project/${id}`);
+  };
+
   return (
-    <div className="group flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#DAB025] hover:shadow-lg">
-      <div className="relative aspect-16/10 w-full overflow-hidden bg-[#09113F] border-b border-gray-200 transition-all duration-300 hover:border-[#DAB025]">
+    <div
+      className={`group flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#DAB025] hover:shadow-lg ${details ? "cursor-pointer" : "cursor-default"}`}
+      onClick={details ? handleCardClick : () => {}}
+    >
+      <div className="relative aspect-16/10 w-full overflow-hidden bg-[#09113F] border-b border-gray-200 transition-all duration-300 group-hover:border-[#DAB025]">
         {isLoading && <Skeleton />}
 
         <Image
@@ -44,7 +57,7 @@ export const ProjectCard = ({
           className={`object-cover transition-transform duration-500 ${
             isLoading ? "opacity-0" : "opacity-100"
           }`}
-          onLoadingComplete={() => setIsLoading(false)}
+          onLoad={() => setIsLoading(false)}
         />
 
         {(playStoreUrl || appStoreUrl) && (
@@ -56,6 +69,7 @@ export const ProjectCard = ({
                 rel="noopener noreferrer"
                 className="flex h-8 w-8 items-center justify-center rounded-full bg-black text-white shadow-[0_0_8px_2px_#DAB025]"
                 aria-label="Google Play"
+                onClick={(e) => e.stopPropagation()}
               >
                 <FaGooglePlay size={16} />
               </Link>
@@ -67,6 +81,7 @@ export const ProjectCard = ({
                 rel="noopener noreferrer"
                 className="flex h-8 w-8 items-center justify-center rounded-full bg-black text-white shadow-[0_0_8px_2px_#DAB025]"
                 aria-label="App Store"
+                onClick={(e) => e.stopPropagation()}
               >
                 <FaAppStore size={20} />
               </Link>
@@ -99,8 +114,8 @@ export const ProjectCard = ({
           {details && (
             <Link
               href={`/project/${id}`}
-              rel="noopener noreferrer"
               className="flex w-fit items-center gap-1 text-xs font-semibold text-[#0A4A8A] hover:text-[#DAB025] hover:underline"
+              onClick={(e) => e.stopPropagation()}
             >
               <FileText size={13} />
               View Details
@@ -112,6 +127,7 @@ export const ProjectCard = ({
               target="_blank"
               rel="noopener noreferrer"
               className="flex w-fit items-center gap-1 text-xs font-semibold text-[#0A4A8A] hover:text-[#DAB025] hover:underline"
+              onClick={(e) => e.stopPropagation()}
             >
               <ExternalLink size={13} />
               Live Website

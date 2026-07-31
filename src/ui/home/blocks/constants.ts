@@ -35,7 +35,7 @@ export const QUICK_FACTS = [
     value: "BS Information Technology",
     icon: GraduationCap,
   },
-  { label: "Experience", value: "3+ Years, Full-Stack", icon: Briefcase },
+  { label: "Experience", value: "3+ Years", icon: Briefcase },
   { label: "Availability", value: "Open to Opportunities", icon: Clock3 },
 ];
 

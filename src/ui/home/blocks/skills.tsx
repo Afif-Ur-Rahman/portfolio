@@ -4,7 +4,7 @@ import { SKILL_GROUPS } from "./constants";
 
 export const Skills = () => {
   return (
-    <section id="skills" className="scroll-mt-16 bg-gray-50 w-full">
+    <section id="skills" className="scroll-mt-8 bg-gray-50 w-full">
       <div className="flex flex-col gap-2 mx-auto max-w-7xl p-6">
         <div className="flex flex-col gap-4">
           <span className="w-fit inline-block rounded-full bg-[#DAB025]/10 px-4 py-2 text-sm font-semibold uppercase tracking-wider text-[#DAB025]">

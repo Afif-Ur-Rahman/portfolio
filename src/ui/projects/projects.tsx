@@ -5,7 +5,7 @@ import { ProjectCard } from "./project-card";
 
 export const Projects = () => {
   return (
-    <section id="projects" className="scroll-mt-16 bg-white">
+    <section id="projects" className="scroll-mt-8 bg-white">
       <div className="mx-auto max-w-7xl px-6 py-8">
         <div className="flex flex-col gap-4">
           <span className="w-fit inline-block rounded-full bg-[#DAB025]/10 px-4 py-2 text-sm font-semibold uppercase tracking-wider text-[#DAB025]">

@@ -151,10 +151,10 @@ export const Header = ({
             <a
               href="/assets/MERN-Afif-Ur-Rahman.pdf"
               download
-              className="flex items-center gap-2 rounded-full bg-amber-500 px-6 py-3 font-semibold text-white transition hover:bg-amber-600"
+              className="inline-flex items-center gap-2 rounded-md border border-[#DAB025]/60 bg-transparent px-5 py-2.5 text-sm font-semibold text-[#DAB025] transition-all duration-300 hover:border-[#DAB025] hover:bg-[#DAB025]/10 hover:text-[#E8C84A]"
             >
-              <Download size={18} />
-              Resume
+              <Download size={16} />
+              Download Resume
             </a>
           </div>
         )}

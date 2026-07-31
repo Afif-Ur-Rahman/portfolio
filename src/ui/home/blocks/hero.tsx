@@ -79,7 +79,7 @@ export const Hero = () => {
             <Link
               href="#projects"
               onClick={(e) => handleNavClick(e, "#projects")}
-              className="rounded-md bg-amber-500 px-8 py-3 font-semibold text-white transition hover:bg-amber-600"
+              className="rounded-md bg-[#DAB025] px-8 py-3 font-semibold text-[#09113F] transition hover:bg-[#c49a1f] hover:shadow-[0_0_20px_rgba(218,176,37,0.4)]"
             >
               View My Work
             </Link>
@@ -87,7 +87,7 @@ export const Hero = () => {
             <a
               href="/assets/MERN-Afif-Ur-Rahman.pdf"
               download
-              className="rounded-md border border-white px-8 py-3 font-semibold text-white transition hover:bg-[#0A4A8A] hover:border-[#0A4A8A]"
+              className="rounded-md border border-[#DAB025]/60 px-8 py-3 font-semibold text-[#DAB025] transition hover:border-[#DAB025] hover:bg-[#DAB025]/10 hover:text-[#E8C84A]"
             >
               Download Resume
             </a>
