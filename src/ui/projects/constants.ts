@@ -58,6 +58,8 @@ export const PROJECTS = [
     playStoreUrl:
       "https://play.google.com/store/apps/details?id=com.yallahnshoof",
     appStoreUrl: "https://apps.apple.com/us/app/yallahnshoof/id6749572975",
+    details: true,
+    isMobile: true,
   },
   {
     id: "restros",
@@ -271,6 +273,137 @@ export const PROJECTS_DETAILS = [
         description:
           "Main vault screen with category tabs (All, Audio, Video, Other), in-app media playback/previews, upload/download, and soft-delete/restore management.",
         image: "/images/secure-vault/media.jpg",
+      },
+    ],
+  },
+  {
+    id: "yallahnshoof",
+    description:
+      "Built an all-in-one marketplace mobile app that enables users to buy, sell, and rent houses, apartments, cars, and other items — connecting buyers, sellers, and renters through a simple, secure, and efficient platform.",
+    features: [
+      {
+        label: "Buy & Sell Properties",
+        detail:
+          "List and browse houses, apartments, plots, and other real estate with detailed information, photos, and pricing for seamless property transactions.",
+      },
+      {
+        label: "Cars & Vehicles",
+        detail:
+          "Buy, sell, or rent cars and other vehicles with dedicated listings, clear pricing, and easy discovery.",
+      },
+      {
+        label: "Rent Anything",
+        detail:
+          "Support rental listings for properties, vehicles, and other items so users can lease or rent with confidence.",
+      },
+      {
+        label: "Quick Listing Creation",
+        detail:
+          "Post new listings in minutes by adding photos, prices, and key details with a streamlined upload flow.",
+      },
+      {
+        label: "Smart Search & Filters",
+        detail:
+          "Find exactly what you need using powerful search and filter options across categories, locations, and price ranges.",
+      },
+      {
+        label: "Live Location on Google Maps",
+        detail:
+          "View the exact live location of each listing on an integrated Google Map for accurate navigation and better decision-making.",
+      },
+      {
+        label: "Direct Communication",
+        detail:
+          "Chat instantly with buyers and sellers to ask questions, negotiate, and close deals without leaving the app.",
+      },
+      {
+        label: "Favorites & Profile",
+        detail:
+          "Save preferred listings and manage personal profile settings for a personalized browsing experience.",
+      },
+    ],
+    security: {
+      label: "Security & User Experience",
+      detail:
+        "Designed with a secure and user-friendly interface that prioritizes smooth navigation, data protection, and a reliable experience for both casual and power users.",
+    },
+    automation: {
+      label: "Marketplace Efficiency",
+      detail:
+        "Streamlined listing creation, real-time search results, and instant messaging reduce friction so users can list, discover, and communicate without unnecessary steps.",
+    },
+    technicalHighlights: [
+      "Cross-platform React Native app for iOS and Android",
+      "Category-based marketplace covering properties, vehicles, and general items",
+      "Fast listing creation with photo upload and rich details",
+      "Smart search and filtering for precise discovery",
+      "Integrated Google Maps showing live item locations",
+      "In-app chat for direct buyer–seller communication",
+      "Favorites system and profile management for personalization",
+      "Clean, secure, and responsive mobile-first experience",
+    ],
+    gallery: [
+      {
+        title: "Landing",
+        description:
+          "Welcome screen introducing the all-in-one marketplace experience.",
+        image: "/images/yallahnshoof/landing.png",
+      },
+      {
+        title: "Login",
+        description: "Secure authentication screen for existing users.",
+        image: "/images/yallahnshoof/login.png",
+      },
+      {
+        title: "Signup",
+        description: "Simple registration flow for new users.",
+        image: "/images/yallahnshoof/signup.png",
+      },
+      {
+        title: "Home",
+        description:
+          "Main feed showcasing featured listings and quick access to categories.",
+        image: "/images/yallahnshoof/home.png",
+      },
+      {
+        title: "Property Listings",
+        description:
+          "Browse houses, apartments, and plots with clear pricing and details.",
+        image: "/images/yallahnshoof/property.png",
+      },
+      {
+        title: "Listing Detail",
+        description:
+          "Full property or item details with photos, price, and contact options.",
+        image: "/images/yallahnshoof/detail.png",
+      },
+      {
+        title: "Marketplace",
+        description:
+          "Explore a wide range of items available for sale or rent.",
+        image: "/images/yallahnshoof/marketplace.png",
+      },
+      {
+        title: "Market Details",
+        description:
+          "Detailed view of marketplace listings with key information and actions.",
+        image: "/images/yallahnshoof/market-details.png",
+      },
+      {
+        title: "Favorites",
+        description:
+          "Saved listings for quick access to preferred properties and items.",
+        image: "/images/yallahnshoof/favorite.png",
+      },
+      {
+        title: "Profile",
+        description: "User profile management and account settings.",
+        image: "/images/yallahnshoof/profile.png",
+      },
+      {
+        title: "Poll",
+        description: "Interactive poll feature for community engagement.",
+        image: "/images/yallahnshoof/poll.png",
       },
     ],
   },
