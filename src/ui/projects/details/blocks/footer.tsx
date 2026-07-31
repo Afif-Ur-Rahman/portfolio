@@ -3,7 +3,7 @@ import { ArrowLeft } from "lucide-react";
 
 export const Footer = () => {
   return (
-    <section className="border-t border-gray-200">
+    <section>
       <div className="mx-auto max-w-7xl px-6 py-14 text-center">
         <h2 className="text-2xl font-bold text-[#003B73] md:text-3xl">
           Want to see more of my work?
