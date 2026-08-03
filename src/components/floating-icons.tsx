@@ -10,7 +10,7 @@ export const FloatingIcons = () => {
   const [showAll, setShowAll] = useState(true);
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
+    <div className="fixed bottom-6 right-6 z-10 flex flex-col items-end gap-3">
       <div
         className={`flex flex-col gap-3 transition-all duration-300 ease-in-out origin-bottom ${
           showAll

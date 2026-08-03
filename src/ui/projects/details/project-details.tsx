@@ -1,13 +1,15 @@
+"use client";
+
 import { notFound } from "next/navigation";
 import {
   Features,
-  Footer,
   Gallery,
   Hero,
   SecurityAutomation,
   TechnicalHighlights,
 } from "./blocks";
 import { PROJECTS, PROJECTS_DETAILS } from "../constants";
+import { FloatingIcons } from "@/components";
 
 type ProjectDetailsProps = {
   id: string;
@@ -41,7 +43,7 @@ export const ProjectDetails = ({ id }: ProjectDetailsProps) => {
           <TechnicalHighlights highlights={detail.technicalHighlights} />
         </>
       )}
-      <Footer />
+      <FloatingIcons />
     </>
   );
 };

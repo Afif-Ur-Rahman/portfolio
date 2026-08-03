@@ -1,5 +1,5 @@
 import { Header } from "@/components/layout";
-import { ProjectDetails } from "@/ui/projects";
+import { Footer, ProjectDetails } from "@/ui/projects";
 import { PROJECTS } from "@/ui/projects/constants";
 
 type Props = {
@@ -16,6 +16,7 @@ async function ProjectDetailPage({ params }: Props) {
       <main className="flex min-h-screen flex-col items-center justify-between">
         <ProjectDetails id={id} />
       </main>
+      <Footer />
     </>
   );
 }

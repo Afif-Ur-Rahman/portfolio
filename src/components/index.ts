@@ -9,3 +9,4 @@ export * from "./comming-soon";
 export * from "./empty-component";
 export * from "./particle";
 export * from "./skeleton";
+export * from "./floating-icons";
