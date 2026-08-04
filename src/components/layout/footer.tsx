@@ -13,7 +13,7 @@ export const Footer = () => {
       <ParticleBackground variant="footer" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(218,176,37,0.15),transparent_35%),radial-gradient(circle_at_80%_70%,rgba(10,74,138,0.35),transparent_40%)]" />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6 pt-14 sm:px-10 lg:px-16">
+      <div className="relative mx-auto max-w-7xl px-6 pt-14 sm:px-10 lg:px-16">
         <div className="grid gap-12 md:grid-cols-[1.3fr_0.8fr_1.3fr]">
           <div>
             <span className="text-2xl font-bold text-white">
