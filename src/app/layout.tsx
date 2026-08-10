@@ -32,9 +32,9 @@ export async function generateMetadata(): Promise<Metadata> {
       siteName: "Afif Ur Rahman",
       images: [
         {
-          url: "/og-image.png",
-          width: 1200,
-          height: 630,
+          url: "/og-image.jpg",
+          width: 960,
+          height: 960,
         },
       ],
       locale: "en_US",
@@ -45,7 +45,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title: "Afif Ur Rahman - Full-Stack Developer",
       description:
         "Full-stack developer specializing in Next.js, React, TypeScript, and Node.js.",
-      images: ["/og-image.png"],
+      images: ["/og-image.jpg"],
     },
     robots: {
       index: true,
