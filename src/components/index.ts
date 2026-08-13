@@ -10,3 +10,4 @@ export * from "./empty-component";
 export * from "./particle";
 export * from "./skeleton";
 export * from "./floating-icons";
+export * from "./visitor-counter";

@@ -4,7 +4,7 @@ import Image from "next/image";
 import { handleNavClick } from "@/utils";
 import Link from "next/link";
 import { TypeAnimation } from "react-type-animation";
-import { ParticleBackground, Skeleton } from "@/components";
+import { ParticleBackground, Skeleton, VisitorCounter } from "@/components";
 import { useState } from "react";
 
 export const Hero = () => {
@@ -44,6 +44,8 @@ export const Hero = () => {
           <span className="mb-4 inline-block rounded-full bg-[#DAB025]/10 px-4 py-2 text-sm font-semibold uppercase tracking-wider text-[#DAB025]">
             Hi, I&apos;m Afif Ur Rahman
           </span>
+
+          <VisitorCounter />
 
           <h1 className="max-w-xl text-4xl font-bold leading-tight text-white">
             <span className="block">I build</span>

@@ -2,7 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 
 export const config = {
   matcher: [
-    "/((?!_next/static|_next/image|favicon.ico|images/|audio/|assets/|.*\\.png$|.*\\.jpg$|.*\\.jpeg$|.*\\.gif$|.*\\.svg$|.*\\.ico$|.*\\.mp3$|.*\\.mp4$|.*\\.webp$).*)",
+    "/((?!api|_next/static|_next/image|favicon.ico|images/|audio/|assets/|.*\\.png$|.*\\.jpg$|.*\\.jpeg$|.*\\.gif$|.*\\.svg$|.*\\.ico$|.*\\.mp3$|.*\\.mp4$|.*\\.webp$).*)",
     { source: "/" },
   ],
 };

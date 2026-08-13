@@ -1,38 +1,10 @@
 type AppEnv = "dev" | "stag" | "prod";
 
 // General
-const APP_NAME = process.env.APP_NAME ?? "The Conqueror Developers";
+const APP_NAME = process.env.APP_NAME ?? "Portfolio";
 const APP_VERSION = process.env.APP_VERSION ?? "1.0.0";
 const APP_ENV = (process.env.APP_ENV ?? "dev") as AppEnv;
 const ROOT_DOMAIN = process.env.ROOT_DOMAIN ?? "Root_Domain";
-const ALLOWED_SUPER_ADMIN_TYPES = ["superAdmin", "admin"];
+const DB_URI = process.env.MONGODB_URI ?? "mongodb://localhost:27017/portfolio";
 
-// The Conqueror Developers service URLs
-const API_URL = process.env.NEXT_APP_API_URL || "";
-
-// Cookies
-const USER_COOKIE = process.env.USER_COOKIE ?? "TheConquerorDevelopers_user";
-const ACCESS_TOKEN_COOKIE =
-  process.env.ACCESS_TOKEN_COOKIE ?? "TheConquerorDevelopers_access_token";
-const ACCESS_TOKEN_EXPIRY_COOKIE =
-  process.env.ACCESS_TOKEN_EXPIRY_COOKIE ??
-  "TheConquerorDevelopers_access_token_expiry";
-const REFRESH_TOKEN_COOKIE =
-  process.env.REFRESH_TOKEN_COOKIE ?? "TheConquerorDevelopers_refresh_token";
-
-// Third Party
-const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY || "";
-
-export {
-  APP_NAME,
-  APP_VERSION,
-  APP_ENV,
-  ROOT_DOMAIN,
-  API_URL,
-  USER_COOKIE,
-  ACCESS_TOKEN_COOKIE,
-  ACCESS_TOKEN_EXPIRY_COOKIE,
-  REFRESH_TOKEN_COOKIE,
-  GOOGLE_MAPS_API_KEY,
-  ALLOWED_SUPER_ADMIN_TYPES,
-};
+export { APP_NAME, APP_VERSION, APP_ENV, ROOT_DOMAIN, DB_URI };
