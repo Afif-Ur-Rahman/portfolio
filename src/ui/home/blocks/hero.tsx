@@ -20,7 +20,7 @@ export const Hero = ({ count }: { count: number | null }) => {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(218,176,37,0.15),transparent_35%),radial-gradient(circle_at_80%_70%,rgba(10,74,138,0.35),transparent_40%)]" />
 
       <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col-reverse items-center gap-12 px-6 pt-24 pb-16 lg:flex-row lg:justify-between lg:pt-16">
-        <div className="flex flex-1 w-full shrink-0 justify-center lg:w-auto lg:justify-start">
+        <div className="flex flex-1 w-full shrink-0 flex-col items-center justify-center lg:w-auto">
           <div className="relative h-64 w-64 overflow-hidden rounded-full border-4 border-[#DAB025]/30 shadow-[0_0_60px_rgba(218,176,37,0.25)] sm:h-80 sm:w-80 lg:h-96 lg:w-96">
             {isLoading && (
               <Skeleton loaderClassName="h-10 w-10 sm:h-12 sm:w-12" />
@@ -38,14 +38,16 @@ export const Hero = ({ count }: { count: number | null }) => {
               onLoadingComplete={() => setIsLoading(false)}
             />
           </div>
+
+          <div className="mt-5">
+            <VisitorCounter count={count} />
+          </div>
         </div>
 
         <div className="flex flex-2 flex-col items-center text-center lg:items-start lg:text-left">
           <span className="mb-4 inline-block rounded-full bg-[#DAB025]/10 px-4 py-2 text-sm font-semibold uppercase tracking-wider text-[#DAB025]">
             Hi, I&apos;m Afif Ur Rahman
           </span>
-
-          <VisitorCounter count={count} />
 
           <h1 className="max-w-xl text-4xl font-bold leading-tight text-white">
             <span className="block">I build</span>
