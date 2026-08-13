@@ -7,7 +7,7 @@ import { TypeAnimation } from "react-type-animation";
 import { ParticleBackground, Skeleton, VisitorCounter } from "@/components";
 import { useState } from "react";
 
-export const Hero = () => {
+export const Hero = ({ count }: { count: number | null }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   return (
@@ -45,7 +45,7 @@ export const Hero = () => {
             Hi, I&apos;m Afif Ur Rahman
           </span>
 
-          <VisitorCounter />
+          <VisitorCounter count={count} />
 
           <h1 className="max-w-xl text-4xl font-bold leading-tight text-white">
             <span className="block">I build</span>
