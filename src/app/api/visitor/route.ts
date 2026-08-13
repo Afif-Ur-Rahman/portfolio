@@ -1,3 +1,4 @@
+import { MODE } from "@/constants";
 import {
   COOKIE_NAME,
   getVisitorCount,
@@ -30,7 +31,7 @@ export const POST = async (req: NextRequest) => {
     if (isNewVisitor) {
       res.cookies.set(COOKIE_NAME, visitorId, {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
+        secure: MODE === "production",
         sameSite: "lax",
         maxAge: ONE_YEAR,
         path: "/",

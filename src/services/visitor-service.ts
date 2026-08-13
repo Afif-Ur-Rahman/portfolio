@@ -14,23 +14,17 @@ export const resolveVisitorId = (existingId?: string) => {
 
 export const getVisitorCount = async () => {
   await connectDB();
-  return Visitor.countDocuments();
+  const uniqueVisitors = await Visitor.distinct("visitorId");
+  return uniqueVisitors.length;
 };
 
 export const trackVisitor = async (visitorId: string) => {
   await connectDB();
 
-  const now = new Date();
+  const isExistingVisitor = await Visitor.exists({ visitorId });
+  if (!isExistingVisitor) {
+    await Visitor.create({ visitorId });
+  }
 
-  await Visitor.findOneAndUpdate(
-    { visitorId },
-    {
-      $set: { lastVisit: now },
-      $setOnInsert: { firstVisit: now },
-      $inc: { visitCount: 1 },
-    },
-    { upsert: true, new: true },
-  );
-
-  return Visitor.countDocuments();
+  return getVisitorCount();
 };
