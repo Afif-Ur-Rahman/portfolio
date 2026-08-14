@@ -11,3 +11,4 @@ export * from "./particle";
 export * from "./skeleton";
 export * from "./floating-icons";
 export * from "./visitor-counter";
+export * from "./tooltip"

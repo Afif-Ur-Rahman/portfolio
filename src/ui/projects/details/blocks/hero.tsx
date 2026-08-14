@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ExternalLink } from "lucide-react";
-import { ParticleBackground, Skeleton } from "@/components";
+import { ParticleBackground, Skeleton, VisitorCounter } from "@/components";
 import { useState } from "react";
 
 type ProjectHeaderProps = {
@@ -12,6 +12,7 @@ type ProjectHeaderProps = {
   image: string;
   tags: string[];
   liveUrl?: string;
+  count: number | null;
 };
 
 export const Hero = ({
@@ -20,6 +21,7 @@ export const Hero = ({
   image,
   tags,
   liveUrl,
+  count,
 }: ProjectHeaderProps) => {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -42,9 +44,16 @@ export const Hero = ({
       <div className="relative z-10 mx-auto max-w-7xl px-6 py-14">
         <div className="mt-8 grid grid-cols-1 items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
-            <span className="inline-block rounded-full bg-[#DAB025]/10 px-4 py-2 text-sm font-semibold uppercase tracking-wider text-[#DAB025]">
-              Case Study
-            </span>
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="inline-block rounded-full bg-[#DAB025]/10 px-4 py-2 text-sm font-semibold uppercase tracking-wider text-[#DAB025]">
+                Case Study
+              </span>
+
+              <VisitorCounter
+                count={count}
+                label="No. of people visited this project"
+              />
+            </div>
 
             <h1 className="mt-4 text-4xl font-bold leading-tight text-white md:text-5xl">
               {title}
@@ -92,7 +101,7 @@ export const Hero = ({
                 isLoading ? "opacity-0" : "opacity-100"
               }`}
               priority
-              onLoadingComplete={() => setIsLoading(false)}
+              onLoad={() => setIsLoading(false)}
             />
           </div>
         </div>

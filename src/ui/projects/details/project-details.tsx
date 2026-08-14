@@ -10,6 +10,7 @@ import {
 } from "./blocks";
 import { PROJECTS, PROJECTS_DETAILS } from "../constants";
 import { FloatingIcons } from "@/components";
+import { useTrackProjectVisitor } from "@/hooks";
 
 type ProjectDetailsProps = {
   id: string;
@@ -23,6 +24,8 @@ export const ProjectDetails = ({ id }: ProjectDetailsProps) => {
     notFound();
   }
 
+  const { count } = useTrackProjectVisitor(id);
+
   return (
     <>
       <Hero
@@ -31,6 +34,7 @@ export const ProjectDetails = ({ id }: ProjectDetailsProps) => {
         image={project.image}
         tags={project.tags}
         liveUrl={project.liveUrl}
+        count={count}
       />
       {detail && (
         <>
