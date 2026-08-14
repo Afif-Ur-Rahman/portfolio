@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ExternalLink } from "lucide-react";
 import { ParticleBackground, Skeleton, VisitorCounter } from "@/components";
 import { useState } from "react";
+import { useVisitorStore } from "@/store";
 
 type ProjectHeaderProps = {
   title: string;
@@ -12,7 +13,6 @@ type ProjectHeaderProps = {
   image: string;
   tags: string[];
   liveUrl?: string;
-  count: number | null;
 };
 
 export const Hero = ({
@@ -21,8 +21,8 @@ export const Hero = ({
   image,
   tags,
   liveUrl,
-  count,
 }: ProjectHeaderProps) => {
+  const { projectCounts: count, isLoading: isCountLoading } = useVisitorStore();
   const [isLoading, setIsLoading] = useState(true);
 
   return (
@@ -52,6 +52,7 @@ export const Hero = ({
               <VisitorCounter
                 count={count}
                 label="No. of people visited this project"
+                isLoading={isCountLoading}
               />
             </div>
 

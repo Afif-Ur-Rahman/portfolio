@@ -6,11 +6,11 @@ import { AboutMe, Hero, Skills } from "./blocks";
 import { useTrackVisitor } from "@/hooks";
 
 export const Home = () => {
-  const { count } = useTrackVisitor();
+  useTrackVisitor();
 
   return (
     <>
-      <Hero count={count} />
+      <Hero />
       <AboutMe />
       <Skills />
       <Projects />

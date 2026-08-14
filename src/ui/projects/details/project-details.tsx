@@ -19,12 +19,11 @@ type ProjectDetailsProps = {
 export const ProjectDetails = ({ id }: ProjectDetailsProps) => {
   const project = PROJECTS.find((p) => p.id === id);
   const detail = PROJECTS_DETAILS.find((p) => p.id === id);
+  useTrackProjectVisitor(id);
 
   if (!project) {
     notFound();
   }
-
-  const { count } = useTrackProjectVisitor(id);
 
   return (
     <>
@@ -34,7 +33,6 @@ export const ProjectDetails = ({ id }: ProjectDetailsProps) => {
         image={project.image}
         tags={project.tags}
         liveUrl={project.liveUrl}
-        count={count}
       />
       {detail && (
         <>

@@ -6,8 +6,10 @@ import Link from "next/link";
 import { TypeAnimation } from "react-type-animation";
 import { ParticleBackground, Skeleton, VisitorCounter } from "@/components";
 import { useState } from "react";
+import { useVisitorStore } from "@/store";
 
-export const Hero = ({ count }: { count: number | null }) => {
+export const Hero = () => {
+  const { siteCount: count, isLoading: isCountLoading } = useVisitorStore();
   const [isLoading, setIsLoading] = useState(true);
 
   return (
@@ -40,7 +42,7 @@ export const Hero = ({ count }: { count: number | null }) => {
           </div>
 
           <div className="mt-5">
-            <VisitorCounter count={count} />
+            <VisitorCounter count={count} isLoading={isCountLoading} />
           </div>
         </div>
 

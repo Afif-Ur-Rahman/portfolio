@@ -1,18 +1,20 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useVisitorStore } from "@/store";
 
 export const useTrackVisitor = () => {
-  const [count, setCount] = useState<number | null>(null);
+  const { setSiteCount, setIsLoading } = useVisitorStore();
 
   useEffect(() => {
+    setIsLoading(true);
     fetch("/api/visitor", { method: "POST" })
       .then((res) => res.json())
       .then((data) => {
-        if (data.success) setCount(data.totalVisitors);
+        if (data.success) setSiteCount(data.totalVisitors);
+        else setIsLoading(false);
       })
-      .catch(() => {});
+      .catch(() => setIsLoading(false));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  return { count };
 };

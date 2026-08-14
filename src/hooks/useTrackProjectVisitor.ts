@@ -1,20 +1,22 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useVisitorStore } from "@/store";
 
 export const useTrackProjectVisitor = (projectId: string) => {
-  const [count, setCount] = useState<number | null>(null);
+  const { setProjectCount, setIsLoading } = useVisitorStore();
 
   useEffect(() => {
     if (!projectId) return;
 
+    setIsLoading(true);
     fetch(`/api/project-visitor/${projectId}`, { method: "POST" })
       .then((res) => res.json())
       .then((data) => {
-        if (data.success) setCount(data.totalVisitors);
+        if (data.success) setProjectCount(data.totalVisitors);
+        else setIsLoading(false);
       })
-      .catch(() => {});
+      .catch(() => setIsLoading(false));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [projectId]);
-
-  return { count };
 };
