@@ -3,9 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { ExternalLink, FileText } from "lucide-react";
+import { ExternalLink, FileText, Loader2 } from "lucide-react";
 import { FaGooglePlay, FaAppStore } from "react-icons/fa";
-import { useState } from "react";
+import { useState, useTransition } from "react";
 import { Skeleton } from "@/components";
 
 type ProjectCardProps = {
@@ -31,19 +31,30 @@ export const ProjectCard = ({
 }: ProjectCardProps) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
+  const [isNavigating, startTransition] = useTransition();
 
   const handleCardClick = (e: React.MouseEvent) => {
     const target = e.target as HTMLElement;
     if (target.closest("a")) return;
 
-    router.push(`/project/${id}`);
+    startTransition(() => {
+      router.push(`/project/${id}`);
+    });
   };
 
   return (
     <div
-      className={`group flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#DAB025] hover:shadow-lg cursor-pointer`}
+      className={`group relative flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#DAB025] hover:shadow-lg ${
+        isNavigating ? "pointer-events-none cursor-wait" : "cursor-pointer"
+      }`}
       onClick={handleCardClick}
     >
+      {isNavigating && (
+        <div className="absolute inset-0 z-20 flex items-center justify-center bg-[#09113F]/60">
+          <Loader2 className="h-8 w-8 animate-spin text-[#DAB025]" />
+        </div>
+      )}
+
       <div className="relative aspect-16/10 w-full overflow-hidden bg-[#09113F] border-b border-gray-200 transition-all duration-300 group-hover:border-[#DAB025]">
         {isLoading && <Skeleton />}
 
@@ -109,14 +120,14 @@ export const ProjectCard = ({
         </div>
 
         <div className="mt-2 flex items-center justify-between gap-3">
-            <Link
-              href={`/project/${id}`}
-              className="flex w-fit items-center gap-1 text-xs font-semibold text-[#0A4A8A] hover:text-[#DAB025] hover:underline"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <FileText size={13} />
-              View Details
-            </Link>
+          <Link
+            href={`/project/${id}`}
+            className="flex w-fit items-center gap-1 text-xs font-semibold text-[#0A4A8A] hover:text-[#DAB025] hover:underline"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <FileText size={13} />
+            View Details
+          </Link>
           {liveUrl && (
             <Link
               href={liveUrl}
