@@ -404,4 +404,141 @@ export const PROJECTS_DETAILS = [
       },
     ],
   },
+  {
+    id: "restros",
+    description:
+      "Built a role-based restaurant management system with dedicated panels for Owners, Chefs, Waiters, Accountants, and Admins. It covers order management, table assignments with QR ordering, menu & stock control, real-time kitchen workflows, employee tools, tips, and analytics dashboards.",
+    features: [
+      {
+        label: "Dashboard & Analytics",
+        detail:
+          "View total revenue, pending revenue, and recent orders at a glance, along with interactive graphs for orders and payments to track performance in real time.",
+      },
+      {
+        label: "Order Management",
+        detail:
+          "Monitor all orders with live statuses (pending, ready, served, etc.) and filter them by date, week, or month for efficient kitchen and service workflows.",
+      },
+      {
+        label: "Table Management & QR Ordering",
+        detail:
+          "Add tables with seating types (indoor, outdoor, rooftop, etc.), assign or unassign waiters, and display QR codes. Customers scan the QR to open the menu and place orders directly.",
+      },
+      {
+        label: "AI-Assisted Ordering",
+        detail:
+          "Integrated AI helps customers order from the menu based on medical conditions, diet preferences, or meal type (lunch, dinner, etc.) for a personalized experience.",
+      },
+      {
+        label: "Menu Management",
+        detail:
+          "Add menu items and freely rearrange the order of items and categories so the digital menu always reflects the restaurant’s preferred layout.",
+      },
+      {
+        label: "Stock & Inventory",
+        detail:
+          "Add stock items (oil, sugar, salt, etc.) that are automatically deducted when an order is completed. Track and manage wastage for accurate inventory control.",
+      },
+      {
+        label: "Employee Management",
+        detail:
+          "Add or remove employees and control access according to their roles within the restaurant.",
+      },
+      {
+        label: "Tips Configuration",
+        detail:
+          "Define preset tip values (e.g., 5, 10, 20) so customers can quickly select a tip amount during checkout.",
+      },
+      {
+        label: "System Configuration",
+        detail:
+          "Update language and currency displayed on the menu, and set the AI API key used for intelligent food suggestions while ordering.",
+      },
+      {
+        label: "Profile Management",
+        detail:
+          "Change the account password and update the restaurant logo or cover image.",
+      },
+    ],
+    security: {
+      label: "Role-Based Access Control",
+      detail:
+        "Separate panels and permissions for Owners, Chefs, Waiters, Accountants, and Admins ensure each user only accesses the features relevant to their role.",
+    },
+    automation: {
+      label: "Automated Workflows",
+      detail:
+        "Stock is automatically deducted when orders are completed, QR codes enable self-service ordering, and AI provides real-time menu suggestions based on customer preferences or dietary needs.",
+    },
+    technicalHighlights: [
+      "Role-based dashboards for Owners, Chefs, Waiters, Accountants, and Admins",
+      "Real-time order status tracking with date/week/month filters",
+      "QR-code table ordering with AI-powered dietary and preference suggestions",
+      "Flexible menu builder with drag-and-drop item & category ordering",
+      "Automatic stock deduction and wastage tracking on order completion",
+      "Configurable tip presets, language, currency, and AI API key",
+      "Analytics dashboard with revenue metrics and interactive charts",
+      "Responsive Next.js frontend with clean separation of concerns",
+    ],
+    gallery: [
+      {
+        title: "Login",
+        description:
+          "Secure authentication screen for restaurant staff and admins.",
+        image: "/images/restaurant/login.png",
+      },
+      {
+        title: "Dashboard",
+        description:
+          "Overview of total revenue, pending revenue, recent orders, and graphs for orders and payments.",
+        image: "/images/restaurant/dashboard.png",
+      },
+      {
+        title: "Orders",
+        description:
+          "List of all orders with status (pending, ready, served, etc.) and filters by date, week, or month.",
+        image: "/images/restaurant/orders.png",
+      },
+      {
+        title: "Tables",
+        description:
+          "Manage tables by seating type, assign/unassign waiters, and generate QR codes for customer ordering.",
+        image: "/images/restaurant/tables.png",
+      },
+      {
+        title: "Menu",
+        description:
+          "Add menu items and rearrange the order of items and categories.",
+        image: "/images/restaurant/menu.png",
+      },
+      {
+        title: "Stocks",
+        description:
+          "Add stock items that auto-deduct on order completion and manage wastage.",
+        image: "/images/restaurant/stocks.png",
+      },
+      {
+        title: "Employees",
+        description: "Add or delete restaurant employees.",
+        image: "/images/restaurant/employee.png",
+      },
+      {
+        title: "Tips",
+        description: "Define preset tip values such as 5, 10, and 20.",
+        image: "/images/restaurant/tips.png",
+      },
+      {
+        title: "Configuration",
+        description:
+          "Update language, currency, and the AI API key used for menu suggestions.",
+        image: "/images/restaurant/configuration.png",
+      },
+      {
+        title: "Profile",
+        description:
+          "Change password and update restaurant logo or cover image.",
+        image: "/images/restaurant/profile.png",
+      },
+    ],
+  },
 ];
