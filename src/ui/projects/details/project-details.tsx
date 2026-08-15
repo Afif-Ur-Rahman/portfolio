@@ -33,6 +33,8 @@ export const ProjectDetails = ({ id }: ProjectDetailsProps) => {
         image={project.image}
         tags={project.tags}
         liveUrl={project.liveUrl}
+        appStoreUrl={project.appStoreUrl}
+        playStoreUrl={project.playStoreUrl}
       />
       {detail && (
         <>

@@ -13,6 +13,8 @@ type ProjectHeaderProps = {
   image: string;
   tags: string[];
   liveUrl?: string;
+  playStoreUrl?: string;
+  appStoreUrl?: string;
 };
 
 export const Hero = ({
@@ -21,6 +23,8 @@ export const Hero = ({
   image,
   tags,
   liveUrl,
+  playStoreUrl,
+  appStoreUrl,
 }: ProjectHeaderProps) => {
   const { projectCounts: count, isLoading: isCountLoading } = useVisitorStore();
   const [isLoading, setIsLoading] = useState(true);
@@ -75,17 +79,53 @@ export const Hero = ({
               ))}
             </div>
 
-            {liveUrl && (
-              <Link
-                href={liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#DAB025] px-6 py-3 text-sm font-bold text-[#09113F] transition-transform hover:-translate-y-0.5 hover:shadow-[0_0_20px_2px_rgba(218,176,37,0.4)]"
-              >
-                Visit Live Site
-                <ExternalLink size={15} />
-              </Link>
-            )}
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              {liveUrl && (
+                <Link
+                  href={liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full bg-[#DAB025] px-6 py-3 text-sm font-bold text-[#09113F] transition-transform hover:-translate-y-0.5 hover:shadow-[0_0_20px_2px_rgba(218,176,37,0.4)]"
+                >
+                  Visit Live Site
+                  <ExternalLink size={15} />
+                </Link>
+              )}
+
+              {playStoreUrl && (
+                <Link
+                  href={playStoreUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block transition-transform hover:-translate-y-0.5"
+                >
+                  <Image
+                    src="/assets/svgs/google-store.svg"
+                    alt="Get it on Google Play"
+                    width={160}
+                    height={48}
+                    className="h-12 w-auto"
+                  />
+                </Link>
+              )}
+
+              {appStoreUrl && (
+                <Link
+                  href={appStoreUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block transition-transform hover:-translate-y-0.5"
+                >
+                  <Image
+                    src="/assets/svgs/apple-store.svg"
+                    alt="Download on the App Store"
+                    width={160}
+                    height={48}
+                    className="h-12 w-auto"
+                  />
+                </Link>
+              )}
+            </div>
           </div>
 
           <div className="relative w-full overflow-hidden rounded-xl border border-[#DAB025]/30 shadow-2xl aspect-16/14 md:max-h-100 lg:max-h-none">
