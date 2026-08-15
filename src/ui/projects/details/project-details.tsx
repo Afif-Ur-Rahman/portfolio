@@ -19,7 +19,7 @@ type ProjectDetailsProps = {
 export const ProjectDetails = ({ id }: ProjectDetailsProps) => {
   const project = PROJECTS.find((p) => p.id === id);
   const detail = PROJECTS_DETAILS.find((p) => p.id === id);
-  useTrackProjectVisitor(id);
+  const { isContact, setIsContact } = useTrackProjectVisitor(id);
 
   if (!project) {
     notFound();
@@ -45,7 +45,7 @@ export const ProjectDetails = ({ id }: ProjectDetailsProps) => {
           <TechnicalHighlights highlights={detail.technicalHighlights} />
         </>
       )}
-      <FloatingIcons />
+      <FloatingIcons isContact={isContact} setIsContact={setIsContact} />
     </>
   );
 };

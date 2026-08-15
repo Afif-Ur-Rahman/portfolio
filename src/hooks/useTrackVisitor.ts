@@ -4,7 +4,8 @@ import { useEffect } from "react";
 import { useVisitorStore } from "@/store";
 
 export const useTrackVisitor = () => {
-  const { setSiteCount, setIsLoading } = useVisitorStore();
+  const { setSiteCount, setIsLoading, isContact, setIsContact } =
+    useVisitorStore();
 
   useEffect(() => {
     setIsLoading(true);
@@ -17,4 +18,6 @@ export const useTrackVisitor = () => {
       .catch(() => setIsLoading(false));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  return { isContact, setIsContact };
 };

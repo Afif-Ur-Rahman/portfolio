@@ -4,7 +4,8 @@ import { useEffect } from "react";
 import { useVisitorStore } from "@/store";
 
 export const useTrackProjectVisitor = (projectId: string) => {
-  const { setProjectCount, setIsLoading } = useVisitorStore();
+  const { setProjectCount, setIsLoading, isContact, setIsContact } =
+    useVisitorStore();
 
   useEffect(() => {
     if (!projectId) return;
@@ -19,4 +20,6 @@ export const useTrackProjectVisitor = (projectId: string) => {
       .catch(() => setIsLoading(false));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [projectId]);
+
+  return { isContact, setIsContact };
 };

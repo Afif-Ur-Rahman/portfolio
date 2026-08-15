@@ -6,7 +6,7 @@ import { AboutMe, Hero, Skills } from "./blocks";
 import { useTrackVisitor } from "@/hooks";
 
 export const Home = () => {
-  useTrackVisitor();
+  const { isContact, setIsContact } = useTrackVisitor();
 
   return (
     <>
@@ -14,7 +14,7 @@ export const Home = () => {
       <AboutMe />
       <Skills />
       <Projects />
-      <FloatingIcons />
+      <FloatingIcons isContact={isContact} setIsContact={setIsContact} />
     </>
   );
 };
