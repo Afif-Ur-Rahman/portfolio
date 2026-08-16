@@ -21,19 +21,15 @@ export const SuggestionForm = ({ onSubmit }: SuggestionFormProps) => {
   const methods = useForm<SuggestionFormValues>({
     defaultValues: { name: "", message: "" },
   });
+
   const { handleSubmit, control, reset } = methods;
-
   const [isSubmitting, setIsSubmitting] = useState(false);
-
   const messageValue = useWatch({ control, name: "message" }) || "";
 
   const onFormSubmit = async (values: SuggestionFormValues) => {
     setIsSubmitting(true);
-
     const res = await onSubmit(values.name.trim(), values.message.trim());
-
     setIsSubmitting(false);
-
     if (res.success) reset();
   };
 

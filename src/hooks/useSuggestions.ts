@@ -15,7 +15,7 @@ export type Suggestion = {
 export const useSuggestions = () => {
   const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [activeId, setActiveId] = useState<string | null>(null); // which row's admin panel is open
+  const [activeId, setActiveId] = useState<string | null>(null);
   const { secret } = useAdminStore();
 
   const fetchSuggestions = useCallback(async () => {

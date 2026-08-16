@@ -29,17 +29,26 @@ export const POST = catchAsync(async (req: NextRequest) => {
     );
   }
 
+  let finalName = name?.trim();
+
+  if (!finalName) {
+    const anonymousCount = await Suggestion.countDocuments({
+      name: { $regex: /^Anonymous \d+$/ },
+    });
+    finalName = `Anonymous ${anonymousCount + 1}`;
+  }
+
   const suggestion = await Suggestion.create({
-    name,
+    name: finalName,
     message,
     visitorId,
   });
 
   sendSuggestionAlert({
     suggestionId: suggestion._id.toString(),
-    name,
+    name: finalName,
     message,
-  }); // fire-and-forget, not awaited
+  });
 
   return NextResponse.json({
     success: true,
