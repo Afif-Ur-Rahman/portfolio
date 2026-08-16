@@ -22,7 +22,7 @@ export const Suggestions = () => {
             Suggestions
           </span>
 
-          <h2 className="text-4xl font-bold leading-tight text-[#003B73] md:text-5xl">
+          <h2 className="text-2xl font-bold leading-tight text-[#003B73] md:text-5xl">
             Got feedback on the portfolio?
           </h2>
 
@@ -33,13 +33,9 @@ export const Suggestions = () => {
             </span>{" "}
             and reply right here, so feel free to check back.
           </p>
-        </div>
 
-        <div className="mt-8">
           <SuggestionForm onSubmit={submitSuggestion} />
-        </div>
 
-        <div className="mt-10">
           <SuggestionList
             suggestions={suggestions}
             isLoading={isLoading}

@@ -24,20 +24,15 @@ export const SuggestionForm = ({ onSubmit }: SuggestionFormProps) => {
   const { handleSubmit, control, reset } = methods;
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [status, setStatus] = useState<string | null>(null);
 
   const messageValue = useWatch({ control, name: "message" }) || "";
 
   const onFormSubmit = async (values: SuggestionFormValues) => {
     setIsSubmitting(true);
-    setStatus(null);
 
     const res = await onSubmit(values.name.trim(), values.message.trim());
 
     setIsSubmitting(false);
-    setStatus(
-      res.success ? "Thanks! Your suggestion has been posted." : res.message,
-    );
 
     if (res.success) reset();
   };
@@ -76,7 +71,7 @@ export const SuggestionForm = ({ onSubmit }: SuggestionFormProps) => {
             type="button"
             onClick={handleSubmit(onFormSubmit)}
             disabled={isSubmitting || !messageValue.trim()}
-            className="inline-flex items-center gap-2 rounded-full bg-[#DAB025] px-5 py-2 text-sm font-bold text-[#09113F] transition-transform hover:-translate-y-0.5 disabled:opacity-50 disabled:hover:translate-y-0"
+            className="inline-flex items-center gap-2 rounded-full bg-[#DAB025] px-5 py-2 text-sm font-bold text-[#09113F] transition-transform hover:-translate-y-0.5 disabled:opacity-50 disabled:hover:translate-y-0 cursor-pointer"
           >
             {isSubmitting ? (
               <Loader2 size={15} className="animate-spin" />
@@ -86,10 +81,6 @@ export const SuggestionForm = ({ onSubmit }: SuggestionFormProps) => {
             Submit
           </button>
         </div>
-
-        {status && (
-          <p className="mt-3 text-xs font-medium text-[#0A4A8A]">{status}</p>
-        )}
       </div>
     </FormProvider>
   );

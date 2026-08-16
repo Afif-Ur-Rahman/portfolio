@@ -1,7 +1,8 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { Skeleton } from "@/components";
+import { MessageSquareText } from "lucide-react";
+import { Skeleton, EmptyComponent } from "@/components";
 import type { Suggestion } from "@/hooks";
 import { AdminControls } from "./admin-controls";
 
@@ -37,9 +38,12 @@ export const SuggestionList = ({
 
   if (!suggestions.length) {
     return (
-      <p className="text-sm text-gray-500">
-        No suggestions yet — be the first!
-      </p>
+      <EmptyComponent
+        icon={MessageSquareText}
+        heading="No suggestions yet"
+        description="Be the first to share your feedback."
+        variant="light"
+      />
     );
   }
 
@@ -49,7 +53,7 @@ export const SuggestionList = ({
         <div
           key={s._id}
           id={`suggestion-${s._id}`}
-          className="rounded-xl border border-gray-200 bg-white p-4 shadow-sm transition-all duration-300 hover:border-[#DAB025] hover:shadow-md"
+          className="rounded-xl border border-gray-200 bg-white p-4 transition-all duration-300 hover:border-[#DAB025]"
         >
           <div className="flex items-center justify-between">
             <span className="text-sm font-semibold text-[#0A4A8A]">
