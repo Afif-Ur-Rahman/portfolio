@@ -15,17 +15,25 @@ export const Suggestions = () => {
   } = useSuggestions();
 
   return (
-    <section id="suggestions" className="w-full bg-[#09113F] px-6 py-20">
-      <div className="mx-auto max-w-3xl">
-        <span className="inline-block rounded-full bg-[#DAB025]/10 px-4 py-2 text-sm font-semibold uppercase tracking-wider text-[#DAB025]">
-          Suggestions
-        </span>
-        <h2 className="mt-4 text-3xl font-bold text-white md:text-4xl">
-          Got feedback on the portfolio?
-        </h2>
-        <p className="mt-2 text-gray-300">
-          Drop a suggestion below — I read every one and reply here.
-        </p>
+    <section id="suggestions" className="scroll-mt-8 w-full bg-gray-50">
+      <div className="mx-auto max-w-7xl px-6 py-8">
+        <div className="flex flex-col gap-4">
+          <span className="w-fit inline-block rounded-full bg-[#DAB025]/10 px-4 py-2 text-sm font-semibold uppercase tracking-wider text-[#DAB025]">
+            Suggestions
+          </span>
+
+          <h2 className="text-4xl font-bold leading-tight text-[#003B73] md:text-5xl">
+            Got feedback on the portfolio?
+          </h2>
+
+          <p className="text-lg leading-8 text-gray-600">
+            Drop a suggestion below —{" "}
+            <span className="font-semibold text-[#003B73]">
+              I read every one
+            </span>{" "}
+            and reply right here, so feel free to check back.
+          </p>
+        </div>
 
         <div className="mt-8">
           <SuggestionForm onSubmit={submitSuggestion} />

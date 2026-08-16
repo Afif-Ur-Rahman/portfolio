@@ -31,11 +31,11 @@ export const AdminControls = ({
           value={secretInput}
           onChange={(e) => setSecretInput(e.target.value)}
           placeholder="Admin secret"
-          className="rounded-lg border border-[#DAB025]/30 bg-transparent px-3 py-1.5 text-xs text-white focus:border-[#DAB025] focus:outline-none"
+          className="rounded-lg border border-gray-200 bg-gray-50 px-3 py-1.5 text-xs text-[#09113F] focus:border-[#DAB025] focus:outline-none"
         />
         <button
           onClick={() => setSecret(secretInput)}
-          className="rounded-full bg-[#DAB025]/20 px-3 py-1.5 text-xs font-semibold text-[#DAB025]"
+          className="rounded-full bg-[#DAB025]/10 px-3 py-1.5 text-xs font-semibold text-[#DAB025]"
         >
           Unlock
         </button>
@@ -44,18 +44,18 @@ export const AdminControls = ({
   }
 
   return (
-    <div className="mt-3">
-      <div className="flex gap-2">
+    <div className="mt-3 border-t border-gray-100 pt-3">
+      <div className="flex gap-3">
         <button
           onClick={onToggle}
-          className="inline-flex items-center gap-1 text-xs font-semibold text-[#DAB025] hover:underline"
+          className="inline-flex items-center gap-1 text-xs font-semibold text-[#0A4A8A] hover:text-[#DAB025] hover:underline"
         >
           <CornerDownRight size={13} />
           Reply
         </button>
         <button
           onClick={() => onDelete(suggestionId)}
-          className="inline-flex items-center gap-1 text-xs font-semibold text-red-400 hover:underline"
+          className="inline-flex items-center gap-1 text-xs font-semibold text-red-500 hover:underline"
         >
           <Trash2 size={13} />
           Delete
@@ -68,7 +68,7 @@ export const AdminControls = ({
             value={replyText}
             onChange={(e) => setReplyText(e.target.value)}
             placeholder="Write a reply..."
-            className="flex-1 rounded-lg border border-[#DAB025]/30 bg-transparent px-3 py-1.5 text-xs text-white focus:border-[#DAB025] focus:outline-none"
+            className="flex-1 rounded-lg border border-gray-200 bg-gray-50 px-3 py-1.5 text-xs text-[#09113F] focus:border-[#DAB025] focus:outline-none"
           />
           <button
             onClick={() => onReply(suggestionId, replyText)}

@@ -2,7 +2,7 @@
 
 import { useSearchParams } from "next/navigation";
 import { Skeleton } from "@/components";
-import { Suggestion } from "@/hooks";
+import type { Suggestion } from "@/hooks";
 import { AdminControls } from "./admin-controls";
 
 type SuggestionListProps = {
@@ -37,7 +37,7 @@ export const SuggestionList = ({
 
   if (!suggestions.length) {
     return (
-      <p className="text-sm text-gray-400">
+      <p className="text-sm text-gray-500">
         No suggestions yet — be the first!
       </p>
     );
@@ -49,25 +49,25 @@ export const SuggestionList = ({
         <div
           key={s._id}
           id={`suggestion-${s._id}`}
-          className="rounded-xl border border-[#DAB025]/20 bg-white/5 p-4"
+          className="rounded-xl border border-gray-200 bg-white p-4 shadow-sm transition-all duration-300 hover:border-[#DAB025] hover:shadow-md"
         >
           <div className="flex items-center justify-between">
-            <span className="text-sm font-semibold text-white">
+            <span className="text-sm font-semibold text-[#0A4A8A]">
               {s.name || "Anonymous"}
             </span>
-            <span className="text-xs text-gray-500">
+            <span className="text-xs text-gray-400">
               {new Date(s.createdAt).toLocaleDateString()}
             </span>
           </div>
 
-          <p className="mt-1.5 text-sm text-gray-300">{s.message}</p>
+          <p className="mt-1.5 text-sm text-gray-600">{s.message}</p>
 
           {s.reply && (
             <div className="mt-3 rounded-lg border-l-2 border-[#DAB025] bg-[#DAB025]/5 px-3 py-2">
               <span className="text-xs font-semibold text-[#DAB025]">
                 Afif replied:
               </span>
-              <p className="mt-1 text-sm text-gray-200">{s.reply}</p>
+              <p className="mt-1 text-sm text-[#09113F]">{s.reply}</p>
             </div>
           )}
 

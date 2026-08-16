@@ -7,10 +7,19 @@ import { Select } from "@radix-ui/themes";
 import { format, parse, isValid } from "date-fns";
 import { FormFieldError } from "../form";
 
+type FormInputVariant = "dark" | "light";
+
 interface FormInputProps {
   field: string;
   label: string;
-  type?: "text" | "number" | "password" | "email" | "select" | "date";
+  type?:
+    | "text"
+    | "number"
+    | "password"
+    | "email"
+    | "select"
+    | "date"
+    | "textarea";
   placeholder: string;
   icon?: React.ElementType;
   rules?: RegisterOptions;
@@ -22,7 +31,49 @@ interface FormInputProps {
   required?: boolean;
   onValueChange?: (value: string) => void;
   max?: number;
+  maxLength?: number;
+  rows?: number;
+  variant?: FormInputVariant;
 }
+
+const VARIANT_STYLES: Record<
+  FormInputVariant,
+  {
+    label: string;
+    container: string;
+    text: string;
+    icon: string;
+    dropdown: string;
+    dropdownItem: string;
+    dropdownEmpty: string;
+    scheme: string;
+  }
+> = {
+  dark: {
+    label: "text-[#DAB025]",
+    container:
+      "border-[#DAB025]/20 bg-[#09113F] focus-within:border-[#DAB025] focus-within:ring-[#DAB025]/10",
+    text: "text-white placeholder:text-slate-400",
+    icon: "text-slate-400",
+    dropdown: "border-[#DAB025]/20! bg-[#09113F]!",
+    dropdownItem:
+      "text-white data-highlighted:bg-[#DAB025]/20! data-highlighted:text-[#DAB025]! data-[state=checked]:bg-[#DAB025]/15!",
+    dropdownEmpty: "text-slate-500!",
+    scheme: "scheme-dark",
+  },
+  light: {
+    label: "text-[#003B73]",
+    container:
+      "border-gray-200 bg-gray-50 focus-within:border-[#DAB025] focus-within:ring-[#DAB025]/10",
+    text: "text-[#09113F] placeholder:text-gray-400",
+    icon: "text-gray-400",
+    dropdown: "border-gray-200! bg-white!",
+    dropdownItem:
+      "text-[#09113F] data-highlighted:bg-[#DAB025]/10! data-highlighted:text-[#DAB025]! data-[state=checked]:bg-[#DAB025]/10!",
+    dropdownEmpty: "text-gray-400!",
+    scheme: "scheme-light",
+  },
+};
 
 const FormInput = ({
   field,
@@ -35,14 +86,20 @@ const FormInput = ({
   required = false,
   onValueChange,
   max,
+  maxLength,
+  rows = 4,
+  variant = "dark",
 }: FormInputProps) => {
   const { register, control } = useFormContext();
   const [show, setShow] = useState(false);
+
+  const styles = VARIANT_STYLES[variant];
 
   const isPassword = type === "password";
   const isNumber = type === "number";
   const isSelect = type === "select";
   const isDate = type === "date";
+  const isTextarea = type === "textarea";
 
   const inputType = isPassword ? (show ? "text" : "password") : type;
 
@@ -87,13 +144,21 @@ const FormInput = ({
 
   return (
     <div className="flex flex-col gap-1.5">
-      <label className="text-[11px] font-semibold uppercase tracking-widest text-[#DAB025]">
+      <label
+        className={`text-[11px] font-semibold uppercase tracking-widest ${styles.label}`}
+      >
         {label}{" "}
         {required && <span className="text-red-500 text-[14px]">*</span>}
       </label>
 
-      <div className="flex items-center gap-2.5 rounded-lg border border-[#DAB025]/20 bg-[#09113F] px-4 py-3 text-sm shadow-sm transition-all focus-within:border-[#DAB025] focus-within:ring-2 focus-within:ring-[#DAB025]/30">
-        {Icon && <Icon className="h-4 w-4 shrink-0 text-slate-400" />}
+      <div
+        className={`flex items-center gap-2.5 rounded-lg border px-4 py-3 text-sm shadow-sm transition-all focus-within:ring-2 ${styles.container} ${isTextarea ? "items-start" : ""}`}
+      >
+        {Icon && (
+          <Icon
+            className={`h-4 w-4 shrink-0 ${styles.icon} ${isTextarea ? "mt-1" : ""}`}
+          />
+        )}
 
         {isSelect ? (
           <Controller
@@ -111,13 +176,13 @@ const FormInput = ({
                 <div className="flex min-w-0 flex-1 cursor-pointer">
                   <Select.Trigger
                     placeholder={placeholder}
-                    className="text-white! h-auto! w-full! border-0! bg-transparent! p-0! shadow-none!"
+                    className={`${variant === "dark" ? "text-white!" : "text-[#09113F]!"} h-auto! w-full! border-0! bg-transparent! p-0! shadow-none!`}
                   />
                 </div>
 
                 <Select.Content
                   position="popper"
-                  className="rounded-lg! border! border-[#DAB025]/20! bg-[#09113F]! shadow-xl! shadow-black/30!"
+                  className={`rounded-lg! border! shadow-xl! shadow-black/30! ${styles.dropdown}`}
                 >
                   {options.length ? (
                     options.map((option) => (
@@ -125,7 +190,7 @@ const FormInput = ({
                         key={option.value}
                         value={option.value}
                         disabled={option.disabled}
-                        className="cursor-pointer! rounded-md! text-white transition-colors! data-highlighted:bg-[#DAB025]/20! data-highlighted:text-[#DAB025]! data-[state=checked]:bg-[#DAB025]/15!"
+                        className={`cursor-pointer! rounded-md! transition-colors! ${styles.dropdownItem}`}
                       >
                         {option.label}
                       </Select.Item>
@@ -134,7 +199,7 @@ const FormInput = ({
                     <Select.Item
                       value="empty"
                       disabled
-                      className="text-slate-500!"
+                      className={styles.dropdownEmpty}
                     >
                       No data
                     </Select.Item>
@@ -172,10 +237,19 @@ const FormInput = ({
                   }}
                   onBlur={controllerField.onBlur}
                   placeholder={placeholder}
-                  className="min-w-0 flex-1 bg-transparent text-sm text-white outline-none placeholder:text-slate-400 scheme-dark"
+                  className={`min-w-0 flex-1 bg-transparent text-sm outline-none ${styles.text} ${styles.scheme}`}
                 />
               );
             }}
+          />
+        ) : isTextarea ? (
+          <textarea
+            {...registerRest}
+            onChange={registerOnChange}
+            placeholder={placeholder}
+            rows={rows}
+            maxLength={maxLength}
+            className={`min-w-0 flex-1 resize-none bg-transparent text-sm outline-none ${styles.text}`}
           />
         ) : (
           <>
@@ -193,6 +267,7 @@ const FormInput = ({
               type={inputType}
               min={isNumber ? 0 : undefined}
               max={isNumber ? max : undefined}
+              maxLength={maxLength}
               step={isNumber ? "any" : undefined}
               inputMode={isNumber ? "decimal" : undefined}
               placeholder={placeholder}
@@ -211,7 +286,7 @@ const FormInput = ({
                   e.preventDefault();
                 }
               }}
-              className={`min-w-0 flex-1 bg-transparent text-sm text-white outline-none placeholder:text-slate-400 ${
+              className={`min-w-0 flex-1 bg-transparent text-sm outline-none ${styles.text} ${
                 isNumber
                   ? "[appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
                   : ""
@@ -222,7 +297,7 @@ const FormInput = ({
               <button
                 type="button"
                 onClick={() => setShow((s) => !s)}
-                className="shrink-0 text-slate-400 transition-colors hover:text-[#DAB025]"
+                className={`shrink-0 transition-colors hover:text-[#DAB025] ${styles.icon}`}
               >
                 {show ? (
                   <EyeOff className="h-4 w-4" />

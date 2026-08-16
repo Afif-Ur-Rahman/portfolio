@@ -3,6 +3,7 @@ export const HOME_MENU = [
   { label: "About", href: "#about" },
   { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },
+  { label: "Suggestions", href: "#suggestions" },
 ];
 
 export const PROJECTS_MENU = [
