@@ -7,6 +7,7 @@ export type Suggestion = {
   _id: string;
   name?: string;
   message: string;
+  visitorId: string;
   reply?: string;
   repliedAt?: string;
   createdAt: string;
@@ -68,6 +69,21 @@ export const useSuggestions = () => {
     return json;
   };
 
+  const updateSuggestion = async (id: string, message: string) => {
+    const res = await fetch(`/api/suggestions/${id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message }),
+    });
+    const json = await res.json();
+    if (json.success) {
+      setSuggestions((prev) =>
+        prev.map((s) => (s._id === id ? { ...s, message } : s)),
+      );
+    }
+    return json;
+  };
+
   const deleteSuggestion = async (id: string) => {
     const res = await fetch(`/api/suggestions/${id}`, {
       method: "DELETE",
@@ -87,6 +103,7 @@ export const useSuggestions = () => {
     setActiveId,
     submitSuggestion,
     replyToSuggestion,
+    updateSuggestion,
     deleteSuggestion,
   };
 };

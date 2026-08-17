@@ -12,6 +12,7 @@ export const Suggestions = () => {
     submitSuggestion,
     replyToSuggestion,
     deleteSuggestion,
+    updateSuggestion,
   } = useSuggestions();
 
   return (
@@ -43,6 +44,7 @@ export const Suggestions = () => {
             setActiveId={setActiveId}
             onReply={replyToSuggestion}
             onDelete={deleteSuggestion}
+            onUpdate={updateSuggestion}
           />
         </div>
       </div>
