@@ -6,13 +6,22 @@ import { SuggestionForm, SuggestionList } from "./blocks";
 export const Suggestions = () => {
   const {
     suggestions,
+    visibleSuggestions,
+    hasMore,
     isLoading,
+    isAdmin,
+    visitorId,
     activeId,
     setActiveId,
+    editingSuggestion,
+    startEdit,
+    cancelEdit,
+    showAll,
+    toggleShowAll,
     submitSuggestion,
+    updateSuggestion,
     replyToSuggestion,
     deleteSuggestion,
-    updateSuggestion,
   } = useSuggestions();
 
   return (
@@ -35,16 +44,27 @@ export const Suggestions = () => {
             and reply right here, so feel free to check back.
           </p>
 
-          <SuggestionForm onSubmit={submitSuggestion} />
+          <SuggestionForm
+            editingSuggestion={editingSuggestion}
+            onSubmit={submitSuggestion}
+            onUpdate={updateSuggestion}
+            onCancel={cancelEdit}
+          />
 
           <SuggestionList
             suggestions={suggestions}
+            visibleSuggestions={visibleSuggestions}
+            hasMore={hasMore}
             isLoading={isLoading}
+            isAdmin={isAdmin}
+            visitorId={visitorId}
             activeId={activeId}
             setActiveId={setActiveId}
+            startEdit={startEdit}
+            showAll={showAll}
+            toggleShowAll={toggleShowAll}
             onReply={replyToSuggestion}
             onDelete={deleteSuggestion}
-            onUpdate={updateSuggestion}
           />
         </div>
       </div>

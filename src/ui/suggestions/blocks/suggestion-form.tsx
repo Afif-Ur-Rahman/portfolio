@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FormProvider, useForm, useWatch } from "react-hook-form";
-import { Send, Loader2 } from "lucide-react";
+import { Send, Loader2, X } from "lucide-react";
 import { FormInput } from "@/components";
+import type { Suggestion } from "@/hooks";
 
 type SuggestionFormValues = {
   name: string;
@@ -11,13 +12,24 @@ type SuggestionFormValues = {
 };
 
 type SuggestionFormProps = {
+  editingSuggestion: Suggestion | null;
   onSubmit: (
     name: string,
     message: string,
   ) => Promise<{ success: boolean; message: string }>;
+  onUpdate: (
+    id: string,
+    message: string,
+  ) => Promise<{ success: boolean; message: string }>;
+  onCancel: () => void;
 };
 
-export const SuggestionForm = ({ onSubmit }: SuggestionFormProps) => {
+export const SuggestionForm = ({
+  editingSuggestion,
+  onSubmit,
+  onUpdate,
+  onCancel,
+}: SuggestionFormProps) => {
   const methods = useForm<SuggestionFormValues>({
     defaultValues: { name: "", message: "" },
   });
@@ -25,12 +37,29 @@ export const SuggestionForm = ({ onSubmit }: SuggestionFormProps) => {
   const { handleSubmit, control, reset } = methods;
   const [isSubmitting, setIsSubmitting] = useState(false);
   const messageValue = useWatch({ control, name: "message" }) || "";
+  const isEditing = !!editingSuggestion;
+
+  useEffect(() => {
+    reset({
+      name: editingSuggestion?.name ?? "",
+      message: editingSuggestion?.message ?? "",
+    });
+  }, [editingSuggestion, reset]);
 
   const onFormSubmit = async (values: SuggestionFormValues) => {
     setIsSubmitting(true);
-    const res = await onSubmit(values.name.trim(), values.message.trim());
+
+    const res = isEditing
+      ? await onUpdate(editingSuggestion._id, values.message.trim())
+      : await onSubmit(values.name.trim(), values.message.trim());
+
     setIsSubmitting(false);
-    if (res.success) reset();
+    if (res.success && !isEditing) reset();
+  };
+
+  const handleCancel = () => {
+    reset({ name: "", message: "" });
+    onCancel();
   };
 
   return (
@@ -63,19 +92,32 @@ export const SuggestionForm = ({ onSubmit }: SuggestionFormProps) => {
             {messageValue.length}/1000
           </span>
 
-          <button
-            type="button"
-            onClick={handleSubmit(onFormSubmit)}
-            disabled={isSubmitting || !messageValue.trim()}
-            className="inline-flex items-center gap-2 rounded-full bg-[#DAB025] px-5 py-2 text-sm font-bold text-[#09113F] transition-transform hover:-translate-y-0.5 disabled:opacity-50 disabled:hover:translate-y-0 cursor-pointer"
-          >
-            {isSubmitting ? (
-              <Loader2 size={15} className="animate-spin" />
-            ) : (
-              <Send size={15} />
+          <div className="flex items-center gap-2">
+            {isEditing && (
+              <button
+                type="button"
+                onClick={handleCancel}
+                className="inline-flex items-center gap-2 rounded-full border border-gray-200 px-5 py-2 text-sm font-semibold text-gray-500 transition-colors hover:border-gray-300 cursor-pointer"
+              >
+                <X size={15} />
+                Cancel
+              </button>
             )}
-            Submit
-          </button>
+
+            <button
+              type="button"
+              onClick={handleSubmit(onFormSubmit)}
+              disabled={isSubmitting || !messageValue.trim()}
+              className="inline-flex items-center gap-2 rounded-full bg-[#DAB025] px-5 py-2 text-sm font-bold text-[#09113F] transition-transform hover:-translate-y-0.5 disabled:opacity-50 disabled:hover:translate-y-0 cursor-pointer"
+            >
+              {isSubmitting ? (
+                <Loader2 size={15} className="animate-spin" />
+              ) : (
+                <Send size={15} />
+              )}
+              {isEditing ? "Update" : "Submit"}
+            </button>
+          </div>
         </div>
       </div>
     </FormProvider>

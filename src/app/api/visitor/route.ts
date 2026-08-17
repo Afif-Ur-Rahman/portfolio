@@ -26,11 +26,10 @@ export const POST = async (req: NextRequest) => {
 
     const totalVisitors = await trackVisitor(visitorId);
 
-    const res = NextResponse.json({ success: true, totalVisitors });
+    const res = NextResponse.json({ success: true, totalVisitors, visitorId });
 
     if (isNewVisitor) {
       res.cookies.set(COOKIE_NAME, visitorId, {
-        httpOnly: true,
         secure: MODE === "production",
         sameSite: "lax",
         maxAge: ONE_YEAR,

@@ -1,7 +1,9 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
-import { useAdminStore } from "@/store";
+import { useSearchParams } from "next/navigation";
+import { useAdminStore, useVisitorStore } from "@/store";
+import { ADMIN_ACCESS } from "@/constants";
 
 export type Suggestion = {
   _id: string;
@@ -13,11 +15,21 @@ export type Suggestion = {
   createdAt: string;
 };
 
+const VISIBLE_COUNT = 3;
+
 export const useSuggestions = () => {
+  const { visitorId } = useVisitorStore();
   const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [activeId, setActiveId] = useState<string | null>(null);
+  const [editingSuggestion, setEditingSuggestion] = useState<Suggestion | null>(
+    null,
+  );
+  const [showAll, setShowAll] = useState(false);
+
   const { secret } = useAdminStore();
+  const searchParams = useSearchParams();
+  const isAdmin = searchParams.has(ADMIN_ACCESS);
 
   const fetchSuggestions = useCallback(async () => {
     try {
@@ -80,6 +92,7 @@ export const useSuggestions = () => {
       setSuggestions((prev) =>
         prev.map((s) => (s._id === id ? { ...s, message } : s)),
       );
+      setEditingSuggestion(null);
     }
     return json;
   };
@@ -92,18 +105,39 @@ export const useSuggestions = () => {
     const json = await res.json();
     if (json.success) {
       setSuggestions((prev) => prev.filter((s) => s._id !== id));
+      if (editingSuggestion?._id === id) setEditingSuggestion(null);
     }
     return json;
   };
 
+  const startEdit = (suggestion: Suggestion) =>
+    setEditingSuggestion(suggestion);
+  const cancelEdit = () => setEditingSuggestion(null);
+
+  const toggleShowAll = () => setShowAll((prev) => !prev);
+
+  const visibleSuggestions = showAll
+    ? suggestions
+    : suggestions.slice(0, VISIBLE_COUNT);
+  const hasMore = suggestions.length > VISIBLE_COUNT;
+
   return {
     suggestions,
+    visibleSuggestions,
+    hasMore,
     isLoading,
+    isAdmin,
+    visitorId,
     activeId,
     setActiveId,
+    editingSuggestion,
+    startEdit,
+    cancelEdit,
+    showAll,
+    toggleShowAll,
     submitSuggestion,
-    replyToSuggestion,
     updateSuggestion,
+    replyToSuggestion,
     deleteSuggestion,
   };
 };
