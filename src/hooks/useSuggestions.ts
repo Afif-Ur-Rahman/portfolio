@@ -81,16 +81,21 @@ export const useSuggestions = () => {
     return json;
   };
 
-  const updateSuggestion = async (id: string, message: string) => {
+  const updateSuggestion = async (
+    id: string,
+    data: { name: string; message: string },
+  ) => {
     const res = await fetch(`/api/suggestions/${id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message }),
+      body: JSON.stringify(data),
     });
     const json = await res.json();
     if (json.success) {
       setSuggestions((prev) =>
-        prev.map((s) => (s._id === id ? { ...s, message } : s)),
+        prev.map((s) =>
+          s._id === id ? { ...s, name: data.name, message: data.message } : s,
+        ),
       );
       setEditingSuggestion(null);
     }

@@ -19,7 +19,7 @@ type SuggestionFormProps = {
   ) => Promise<{ success: boolean; message: string }>;
   onUpdate: (
     id: string,
-    message: string,
+    data: { name: string; message: string },
   ) => Promise<{ success: boolean; message: string }>;
   onCancel: () => void;
 };
@@ -50,7 +50,10 @@ export const SuggestionForm = ({
     setIsSubmitting(true);
 
     const res = isEditing
-      ? await onUpdate(editingSuggestion._id, values.message.trim())
+      ? await onUpdate(editingSuggestion._id, {
+          name: values.name.trim(),
+          message: values.message.trim(),
+        })
       : await onSubmit(values.name.trim(), values.message.trim());
 
     setIsSubmitting(false);

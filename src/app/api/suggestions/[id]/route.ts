@@ -4,8 +4,6 @@ import { Suggestion } from "@/models";
 import { COOKIE_NAME, resolveVisitorId } from "@/services";
 import { NextRequest, NextResponse } from "next/server";
 
-console.log("admin", ADMIN_SECRET);
-
 const isAdmin = (req: NextRequest) => {
   const secret = req.headers.get("x-admin-secret");
   return secret && secret === ADMIN_SECRET;
@@ -50,7 +48,7 @@ export const PATCH = catchAsync<{ id: string }>(async (req, { params }) => {
     );
   }
 
-  const { message } = await req.json();
+  const { name, message } = await req.json();
   if (!message?.trim()) {
     return NextResponse.json(
       { success: false, message: "Message is required" },
@@ -60,7 +58,7 @@ export const PATCH = catchAsync<{ id: string }>(async (req, { params }) => {
 
   const updated = await Suggestion.findByIdAndUpdate(
     id,
-    { message: message.trim() },
+    { name, message },
     { new: true },
   );
 
