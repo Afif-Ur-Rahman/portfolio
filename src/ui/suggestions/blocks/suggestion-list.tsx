@@ -1,10 +1,11 @@
 "use client";
 
-import { MessageSquareText, ChevronDown, Pencil, Trash2 } from "lucide-react";
+import { MessageSquareText, ChevronDown } from "lucide-react";
 import { Avatar } from "@radix-ui/themes";
 import { EmptyComponent } from "@/components";
 import type { Suggestion } from "@/hooks";
 import { AdminControls } from "./admin-controls";
+import { ActionButtons } from "./action-buttons";
 import { getInitials } from "@/utils";
 import { SuggestionCardSkeleton } from "./skeleton";
 
@@ -83,22 +84,10 @@ export const SuggestionList = ({
                   </span>
                   <div className="flex gap-3">
                     {isOwner && (
-                      <div className="flex items-center gap-3">
-                        <button
-                          type="button"
-                          onClick={() => startEdit(s)}
-                          className="flex items-center gap-1 text-xs font-semibold text-[#0A4A8A] hover:text-[#DAB025]"
-                        >
-                          <Pencil size={13} /> Edit
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() => onDelete(s._id)}
-                          className="flex items-center gap-1 text-xs font-semibold text-rose-500 hover:text-rose-600"
-                        >
-                          <Trash2 size={13} /> Delete
-                        </button>
-                      </div>
+                      <ActionButtons
+                        onEdit={() => startEdit(s)}
+                        onDelete={() => onDelete(s._id)}
+                      />
                     )}
                     <span className="shrink-0 text-xs text-gray-400">
                       {new Date(s.createdAt).toLocaleDateString()}

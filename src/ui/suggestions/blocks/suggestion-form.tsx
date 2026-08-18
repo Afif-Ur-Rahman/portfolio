@@ -67,7 +67,10 @@ export const SuggestionForm = ({
 
   return (
     <FormProvider {...methods}>
-      <div className="flex flex-col gap-3 rounded-xl border border-gray-200 bg-white p-6">
+      <div
+        id="suggestion-form"
+        className="flex flex-col gap-3 rounded-xl border border-gray-200 bg-white p-6"
+      >
         <FormInput
           field="name"
           label="Name"

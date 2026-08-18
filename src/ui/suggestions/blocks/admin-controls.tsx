@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { useAdminStore } from "@/store";
-import { Trash2, CornerDownRight } from "lucide-react";
+import { Loader2 } from "lucide-react";
+import { ActionButtons } from "./action-buttons";
 
 type AdminControlsProps = {
   suggestionId: string;
@@ -22,6 +23,7 @@ export const AdminControls = ({
   const { secret, setSecret } = useAdminStore();
   const [secretInput, setSecretInput] = useState("");
   const [replyText, setReplyText] = useState("");
+  const [isSending, setIsSending] = useState(false);
 
   if (!secret) {
     return (
@@ -43,24 +45,22 @@ export const AdminControls = ({
     );
   }
 
+  const handleSend = async () => {
+    if (!replyText.trim()) return;
+    setIsSending(true);
+    try {
+      await onReply(suggestionId, replyText);
+    } finally {
+      setIsSending(false);
+    }
+  };
+
   return (
     <div className="mt-3 border-t border-gray-100 pt-3">
-      <div className="flex gap-3">
-        <button
-          onClick={onToggle}
-          className="inline-flex items-center gap-1 text-xs font-semibold text-[#0A4A8A] hover:text-[#DAB025] hover:underline"
-        >
-          <CornerDownRight size={13} />
-          Reply
-        </button>
-        <button
-          onClick={() => onDelete(suggestionId)}
-          className="inline-flex items-center gap-1 text-xs font-semibold text-red-500 hover:underline"
-        >
-          <Trash2 size={13} />
-          Delete
-        </button>
-      </div>
+      <ActionButtons
+        onToggle={onToggle}
+        onDelete={() => onDelete(suggestionId)}
+      />
 
       {isOpen && (
         <div className="mt-2 flex gap-2">
@@ -68,14 +68,16 @@ export const AdminControls = ({
             value={replyText}
             onChange={(e) => setReplyText(e.target.value)}
             placeholder="Write a reply..."
-            className="flex-1 rounded-lg border border-gray-200 bg-gray-50 px-3 py-1.5 text-xs text-[#09113F] focus:border-[#DAB025] focus:outline-none"
+            disabled={isSending}
+            className="flex-1 rounded-lg border border-gray-200 bg-gray-50 px-3 py-1.5 text-xs text-[#09113F] focus:border-[#DAB025] focus:outline-none disabled:opacity-50"
           />
           <button
-            onClick={() => onReply(suggestionId, replyText)}
-            disabled={!replyText.trim()}
-            className="rounded-full bg-[#DAB025] px-3 py-1.5 text-xs font-bold text-[#09113F] disabled:opacity-50"
+            onClick={handleSend}
+            disabled={!replyText.trim() || isSending}
+            className="inline-flex items-center gap-1.5 rounded-full bg-[#DAB025] px-3 py-1.5 text-xs font-bold text-[#09113F] disabled:opacity-50 cursor-pointer"
           >
-            Send
+            {isSending && <Loader2 size={12} className="animate-spin" />}
+            {isSending ? "Sending..." : "Send"}
           </button>
         </div>
       )}
