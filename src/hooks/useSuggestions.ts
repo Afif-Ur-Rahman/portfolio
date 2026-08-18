@@ -115,8 +115,12 @@ export const useSuggestions = () => {
     return json;
   };
 
-  const startEdit = (suggestion: Suggestion) =>
+  const startEdit = (suggestion: Suggestion) => {
     setEditingSuggestion(suggestion);
+    document
+      .getElementById("suggestion-form")
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
   const cancelEdit = () => setEditingSuggestion(null);
 
   const toggleShowAll = () => setShowAll((prev) => !prev);

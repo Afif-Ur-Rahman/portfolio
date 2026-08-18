@@ -82,20 +82,20 @@ export const SuggestionList = ({
                   <span className="text-sm font-semibold text-[#0A4A8A]">
                     {s.name}
                   </span>
-                  <div className="flex gap-3">
-                    {isOwner && (
-                      <ActionButtons
-                        onEdit={() => startEdit(s)}
-                        onDelete={() => onDelete(s._id)}
-                      />
-                    )}
-                    <span className="shrink-0 text-xs text-gray-400">
-                      {new Date(s.createdAt).toLocaleDateString()}
-                    </span>
-                  </div>
                 </div>
 
                 <p className="mt-1.5 text-sm text-gray-600">{s.message}</p>
+              </div>
+              <div className="flex gap-3 flex-col sm:flex-row items-center">
+                {isOwner && (
+                  <ActionButtons
+                    onEdit={() => startEdit(s)}
+                    onDelete={() => onDelete(s._id)}
+                  />
+                )}
+                <span className="shrink-0 text-xs text-gray-400">
+                  {new Date(s.createdAt).toLocaleDateString()}
+                </span>
               </div>
             </div>
 

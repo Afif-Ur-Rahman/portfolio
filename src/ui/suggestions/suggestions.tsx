@@ -2,6 +2,8 @@
 
 import { useSuggestions } from "@/hooks";
 import { SuggestionForm, SuggestionList } from "./blocks";
+import { useConfirmDelete } from "./blocks/useConfirmDelete";
+import { ConfirmDialog } from "@/components";
 
 export const Suggestions = () => {
   const {
@@ -24,6 +26,14 @@ export const Suggestions = () => {
     deleteSuggestion,
   } = useSuggestions();
 
+  const {
+    isConfirmOpen,
+    isDeleting,
+    requestDelete,
+    cancelDelete,
+    confirmDelete,
+  } = useConfirmDelete(deleteSuggestion);
+
   return (
     <section id="suggestions" className="scroll-mt-8 w-full bg-gray-50">
       <div className="mx-auto max-w-7xl px-6 py-8">
@@ -44,12 +54,14 @@ export const Suggestions = () => {
             and reply right here, so feel free to check back.
           </p>
 
-          <SuggestionForm
-            editingSuggestion={editingSuggestion}
-            onSubmit={submitSuggestion}
-            onUpdate={updateSuggestion}
-            onCancel={cancelEdit}
-          />
+          <div id="suggestion-form" className="scroll-mt-20">
+            <SuggestionForm
+              editingSuggestion={editingSuggestion}
+              onSubmit={submitSuggestion}
+              onUpdate={updateSuggestion}
+              onCancel={cancelEdit}
+            />
+          </div>
 
           <SuggestionList
             suggestions={suggestions}
@@ -64,10 +76,17 @@ export const Suggestions = () => {
             showAll={showAll}
             toggleShowAll={toggleShowAll}
             onReply={replyToSuggestion}
-            onDelete={deleteSuggestion}
+            onDelete={requestDelete}
           />
         </div>
       </div>
+
+      <ConfirmDialog
+        open={isConfirmOpen}
+        isLoading={isDeleting}
+        onConfirm={confirmDelete}
+        onCancel={cancelDelete}
+      />
     </section>
   );
 };

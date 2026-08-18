@@ -57,7 +57,10 @@ export const SuggestionForm = ({
       : await onSubmit(values.name.trim(), values.message.trim());
 
     setIsSubmitting(false);
-    if (res.success && !isEditing) reset();
+
+    if (res.success && !isEditing) {
+      reset();
+    }
   };
 
   const handleCancel = () => {
@@ -67,17 +70,20 @@ export const SuggestionForm = ({
 
   return (
     <FormProvider {...methods}>
-      <div
-        id="suggestion-form"
-        className="flex flex-col gap-3 rounded-xl border border-gray-200 bg-white p-6"
-      >
+      <div className="flex flex-col gap-3 rounded-xl border border-gray-200 bg-white p-6">
         <FormInput
           field="name"
           label="Name"
           placeholder="Your name (optional)"
           variant="light"
-          rules={{ maxLength: { value: 80, message: "Name is too long" } }}
+          rules={{
+            maxLength: {
+              value: 80,
+              message: "Name is too long",
+            },
+          }}
         />
+
         <FormInput
           field="message"
           label="Message"
@@ -89,7 +95,10 @@ export const SuggestionForm = ({
           maxLength={1000}
           rules={{
             required: "Please write a message",
-            maxLength: { value: 1000, message: "Message is too long" },
+            maxLength: {
+              value: 1000,
+              message: "Message is too long",
+            },
           }}
         />
 
@@ -103,10 +112,12 @@ export const SuggestionForm = ({
               <button
                 type="button"
                 onClick={handleCancel}
-                className="inline-flex items-center gap-2 rounded-full border border-gray-200 px-5 py-2 text-sm font-semibold text-gray-500 transition-colors hover:border-gray-300 cursor-pointer"
+                aria-label="Cancel"
+                title="Cancel"
+                className="inline-flex items-center gap-2 rounded-full border border-gray-200 px-4 py-2 text-sm font-semibold text-gray-500 transition-colors hover:border-gray-300 cursor-pointer sm:px-5"
               >
                 <X size={15} />
-                Cancel
+                <span className="hidden sm:inline">Cancel</span>
               </button>
             )}
 
@@ -114,14 +125,19 @@ export const SuggestionForm = ({
               type="button"
               onClick={handleSubmit(onFormSubmit)}
               disabled={isSubmitting || !messageValue.trim()}
-              className="inline-flex items-center gap-2 rounded-full bg-[#DAB025] px-5 py-2 text-sm font-bold text-[#09113F] transition-transform hover:-translate-y-0.5 disabled:opacity-50 disabled:hover:translate-y-0 cursor-pointer"
+              aria-label={isEditing ? "Update" : "Submit"}
+              title={isEditing ? "Update" : "Submit"}
+              className="inline-flex items-center gap-2 rounded-full bg-[#DAB025] px-4 py-2 text-sm font-bold text-[#09113F] transition-transform hover:-translate-y-0.5 disabled:opacity-50 disabled:hover:translate-y-0 cursor-pointer sm:px-5"
             >
               {isSubmitting ? (
                 <Loader2 size={15} className="animate-spin" />
               ) : (
                 <Send size={15} />
               )}
-              {isEditing ? "Update" : "Submit"}
+
+              <span className="hidden sm:inline">
+                {isEditing ? "Update" : "Submit"}
+              </span>
             </button>
           </div>
         </div>
