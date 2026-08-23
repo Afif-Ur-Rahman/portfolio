@@ -58,6 +58,8 @@ export const Hero = () => {
                 sequence={[
                   "Full-Stack Web Apps",
                   1500,
+                  "MERN stack Projects",
+                  1500,
                   "Next.js Applications",
                   1500,
                   "Scalable REST APIs",
@@ -91,7 +93,7 @@ export const Hero = () => {
             </Link>
 
             <a
-              href="/assets/MERN-Afif-Ur-Rahman.pdf"
+              href="/assets/Fullstack-Afif-Ur-Rahman.pdf"
               download
               className="rounded-md border border-[#DAB025]/60 px-8 py-3 font-semibold text-[#DAB025] transition hover:border-[#DAB025] hover:bg-[#DAB025]/10 hover:text-[#E8C84A]"
             >

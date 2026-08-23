@@ -149,7 +149,7 @@ export const Header = ({
         {isHome && (
           <div className="hidden lg:block">
             <a
-              href="/assets/MERN-Afif-Ur-Rahman.pdf"
+              href="/assets/Fullstack-Afif-Ur-Rahman.pdf"
               download
               className="inline-flex items-center gap-2 rounded-md border border-[#DAB025]/60 bg-transparent px-5 py-2.5 text-sm font-semibold text-[#DAB025] transition-all duration-300 hover:border-[#DAB025] hover:bg-[#DAB025]/10 hover:text-[#E8C84A]"
             >
