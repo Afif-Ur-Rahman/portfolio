@@ -45,7 +45,6 @@ export const POST = catchAsync(async (req: NextRequest) => {
   });
 
   sendSuggestionAlert({
-    suggestionId: suggestion._id.toString(),
     name: finalName,
     message,
   });

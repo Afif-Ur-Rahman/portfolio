@@ -13,9 +13,9 @@ const ADMIN_EMAIL = process.env.NEXT_PUBLIC_ADMIN_EMAIL ?? "";
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "";
 
 const BREVO = {
-  API_KEY: process.env.BREVO_API_KEY || "",
-  NAME: process.env.SENDER_NAME || "",
-  EMAIL: process.env.SENDER_EMAIL || "",
+  API_KEY: process.env.NEXT_PUBLIC_BREVO_API_KEY || "",
+  NAME: process.env.NEXT_PUBLIC_SENDER_NAME || "",
+  EMAIL: process.env.NEXT_PUBLIC_ADMIN_EMAIL || "",
 };
 
 export {

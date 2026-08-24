@@ -2,7 +2,6 @@ import { SITE_URL } from "@/constants";
 import { BASE_STYLES, sanitize } from "./styles";
 
 interface SuggestionAlertTemplateOptions {
-  suggestionId: string;
   name?: string;
   message: string;
   brandName?: string;
@@ -12,7 +11,6 @@ export const suggestionAlertTemplate = (
   options: SuggestionAlertTemplateOptions,
 ) => {
   const {
-    suggestionId,
     name = "Anonymous",
     message,
     brandName = "Afif Ur Rahman — Portfolio",
@@ -20,7 +18,7 @@ export const suggestionAlertTemplate = (
 
   const safeName = sanitize(name);
   const safeMessage = sanitize(message).replace(/\n/g, "<br>");
-  const manageUrl = `${SITE_URL}?admin#suggestion-${suggestionId}`;
+  const manageUrl = `${SITE_URL}?admin`;
 
   const previewText = `New suggestion from ${safeName}`;
 
