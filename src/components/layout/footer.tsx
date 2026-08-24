@@ -5,7 +5,7 @@ import { Mail, MapPin } from "lucide-react";
 import { FaLinkedin, FaGithub, FaWhatsapp } from "react-icons/fa6";
 import { handleNavClick } from "@/utils";
 import { HOME_MENU } from "./constants";
-import { ParticleBackground } from "@/components"; // ✅ same as Hero
+import { ParticleBackground } from "@/components";
 
 export const Footer = () => {
   return (
