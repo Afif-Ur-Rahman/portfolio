@@ -1,7 +1,8 @@
-import { cn } from "@/utils";
 import { Cross2Icon } from "@radix-ui/react-icons";
 import { Flex, Text } from "@radix-ui/themes";
 import { CheckIcon, CircleAlert, Clock3Icon } from "lucide-react";
+
+import { cn } from "@/utils";
 
 const Badge = ({
   label,
@@ -40,7 +41,7 @@ const Badge = ({
   return (
     <Flex
       className={cn(
-        "items-center rounded-6 border px-2 py-0.5 text-[12px] font-regular rounded-xl",
+        "rounded-6 font-regular items-center rounded-xl border px-2 py-0.5 text-[12px]",
         getBadgeColor(),
         className,
       )}
@@ -58,9 +59,7 @@ const Badge = ({
 const Icon = ({ type, label }: { type: string; label: string }) => {
   switch (type) {
     case "success":
-      return (
-        <CheckIcon height="14" width="14" strokeWidth={2.5} color="green" />
-      );
+      return <CheckIcon height="14" width="14" strokeWidth={2.5} color="green" />;
     case "danger":
       return <Cross2Icon height="14" width="14" color="#E5484D" />;
 

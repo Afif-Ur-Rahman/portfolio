@@ -1,12 +1,7 @@
-import { MODE } from "@/constants";
-import {
-  COOKIE_NAME,
-  getVisitorCount,
-  ONE_YEAR,
-  resolveVisitorId,
-  trackVisitor,
-} from "@/services";
 import { NextRequest, NextResponse } from "next/server";
+
+import { MODE } from "@/constants";
+import { COOKIE_NAME, getVisitorCount, ONE_YEAR, resolveVisitorId, trackVisitor } from "@/services";
 
 export const GET = async () => {
   try {
@@ -20,9 +15,7 @@ export const GET = async () => {
 
 export const POST = async (req: NextRequest) => {
   try {
-    const { visitorId, isNewVisitor } = resolveVisitorId(
-      req.cookies.get(COOKIE_NAME)?.value,
-    );
+    const { visitorId, isNewVisitor } = resolveVisitorId(req.cookies.get(COOKIE_NAME)?.value);
 
     const totalVisitors = await trackVisitor(visitorId);
 

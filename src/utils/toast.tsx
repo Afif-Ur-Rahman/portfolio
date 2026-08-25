@@ -1,7 +1,8 @@
 "use client";
 
-import { CustomToast, ToastType } from "@/components/ui/toast";
 import toast from "react-hot-toast";
+
+import { CustomToast, ToastType } from "@/components/ui/toast";
 
 export const showToast = (
   type: ToastType,
@@ -11,7 +12,7 @@ export const showToast = (
   onClick?: () => void,
 ) => {
   toast.custom(
-    (t) => (
+    t => (
       <CustomToast
         t={t}
         type={type}
@@ -33,23 +34,11 @@ export const showSuccess = (
   onClick?: () => void,
 ) => showToast("success", title, message, image, onClick);
 
-export const showError = (
-  title: string,
-  message: string,
-  image?: string,
-  onClick?: () => void,
-) => showToast("error", title, message, image, onClick);
+export const showError = (title: string, message: string, image?: string, onClick?: () => void) =>
+  showToast("error", title, message, image, onClick);
 
-export const showWarning = (
-  title: string,
-  message: string,
-  image?: string,
-  onClick?: () => void,
-) => showToast("warning", title, message, image, onClick);
+export const showWarning = (title: string, message: string, image?: string, onClick?: () => void) =>
+  showToast("warning", title, message, image, onClick);
 
-export const showInfo = (
-  title: string,
-  message: string,
-  image?: string,
-  onClick?: () => void,
-) => showToast("info", title, message, image, onClick);
+export const showInfo = (title: string, message: string, image?: string, onClick?: () => void) =>
+  showToast("info", title, message, image, onClick);

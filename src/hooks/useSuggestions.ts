@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
 import { useSearchParams } from "next/navigation";
-import { useAdminStore, useVisitorStore } from "@/store";
+import { useEffect, useState, useCallback } from "react";
+
 import { ADMIN_ACCESS } from "@/constants";
+import { useAdminStore, useVisitorStore } from "@/store";
 
 export type Suggestion = {
   _id: string;
@@ -22,9 +23,7 @@ export const useSuggestions = () => {
   const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [activeId, setActiveId] = useState<string | null>(null);
-  const [editingSuggestion, setEditingSuggestion] = useState<Suggestion | null>(
-    null,
-  );
+  const [editingSuggestion, setEditingSuggestion] = useState<Suggestion | null>(null);
   const [showAll, setShowAll] = useState(false);
 
   const { secret } = useAdminStore();
@@ -53,7 +52,7 @@ export const useSuggestions = () => {
     });
     const json = await res.json();
     if (json.success) {
-      setSuggestions((prev) => [json.data, ...prev]);
+      setSuggestions(prev => [json.data, ...prev]);
     }
     return json;
   };
@@ -69,22 +68,15 @@ export const useSuggestions = () => {
     });
     const json = await res.json();
     if (json.success) {
-      setSuggestions((prev) =>
-        prev.map((s) =>
-          s._id === id
-            ? { ...s, reply, repliedAt: new Date().toISOString() }
-            : s,
-        ),
+      setSuggestions(prev =>
+        prev.map(s => (s._id === id ? { ...s, reply, repliedAt: new Date().toISOString() } : s)),
       );
       setActiveId(null);
     }
     return json;
   };
 
-  const updateSuggestion = async (
-    id: string,
-    data: { name: string; message: string },
-  ) => {
+  const updateSuggestion = async (id: string, data: { name: string; message: string }) => {
     const res = await fetch(`/api/suggestions/${id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
@@ -92,10 +84,8 @@ export const useSuggestions = () => {
     });
     const json = await res.json();
     if (json.success) {
-      setSuggestions((prev) =>
-        prev.map((s) =>
-          s._id === id ? { ...s, name: data.name, message: data.message } : s,
-        ),
+      setSuggestions(prev =>
+        prev.map(s => (s._id === id ? { ...s, name: data.name, message: data.message } : s)),
       );
       setEditingSuggestion(null);
     }
@@ -109,7 +99,7 @@ export const useSuggestions = () => {
     });
     const json = await res.json();
     if (json.success) {
-      setSuggestions((prev) => prev.filter((s) => s._id !== id));
+      setSuggestions(prev => prev.filter(s => s._id !== id));
       if (editingSuggestion?._id === id) setEditingSuggestion(null);
     }
     return json;
@@ -123,11 +113,9 @@ export const useSuggestions = () => {
   };
   const cancelEdit = () => setEditingSuggestion(null);
 
-  const toggleShowAll = () => setShowAll((prev) => !prev);
+  const toggleShowAll = () => setShowAll(prev => !prev);
 
-  const visibleSuggestions = showAll
-    ? suggestions
-    : suggestions.slice(0, VISIBLE_COUNT);
+  const visibleSuggestions = showAll ? suggestions : suggestions.slice(0, VISIBLE_COUNT);
   const hasMore = suggestions.length > VISIBLE_COUNT;
 
   return {

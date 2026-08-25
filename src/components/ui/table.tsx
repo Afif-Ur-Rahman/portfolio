@@ -1,8 +1,10 @@
 "use client";
 
-import React from "react";
 import { Box, Table as RadixTable } from "@radix-ui/themes";
+import React from "react";
+
 import Loader from "@/components/ui/loader";
+
 import Nodata from "./nodata";
 
 type Column<T> =
@@ -30,14 +32,7 @@ interface TableProps<T> {
   getRowClassName?: (row: T) => string;
 }
 
-function Table<T>({
-  data,
-  columns,
-  isLoading,
-  onRowClick,
-  title,
-  getRowClassName,
-}: TableProps<T>) {
+function Table<T>({ data, columns, isLoading, onRowClick, title, getRowClassName }: TableProps<T>) {
   const getAlign = (index: number, col?: Column<T>) => {
     if (col?.align) return col.align;
     if (index === 0) return "left";
@@ -53,12 +48,12 @@ function Table<T>({
       <div className="relative z-10 overflow-x-auto">
         <RadixTable.Root className="min-w-full text-nowrap!">
           <RadixTable.Header>
-            <RadixTable.Row className="border-b border-white/10 bg-[#09113F]/30 cursor-default">
+            <RadixTable.Row className="cursor-default border-b border-white/10 bg-[#09113F]/30">
               {columns.map((col, index) => (
                 <RadixTable.ColumnHeaderCell
                   key={String(col.key)}
                   align={getAlign(index, col)}
-                  className={`px-4! py-4! text-xs! font-semibold! uppercase! tracking-widest! text-slate-400! ${
+                  className={`px-4! py-4! text-xs! font-semibold! tracking-widest! text-slate-400! uppercase! ${
                     col.className || ""
                   }`}
                 >
@@ -71,10 +66,7 @@ function Table<T>({
           <RadixTable.Body>
             {isLoading ? (
               <RadixTable.Row>
-                <RadixTable.Cell
-                  colSpan={columns.length}
-                  className="py-10! text-center!"
-                >
+                <RadixTable.Cell colSpan={columns.length} className="py-10! text-center!">
                   <Loader label={title} />
                 </RadixTable.Cell>
               </RadixTable.Row>
@@ -92,7 +84,7 @@ function Table<T>({
                 <RadixTable.Row
                   key={rowIndex}
                   onClick={() => onRowClick?.(row)}
-                  className={`group border-b border-white/5 align-middle! transition last:border-b-0 cursor-pointer ${
+                  className={`group cursor-pointer border-b border-white/5 align-middle! transition last:border-b-0 ${
                     onRowClick ? "hover:bg-[#DAB025]/5" : "hover:bg-white/5"
                   } ${getRowClassName?.(row) || ""}`}
                 >
@@ -100,13 +92,9 @@ function Table<T>({
                     <RadixTable.Cell
                       key={String(col.key)}
                       align={getAlign(colIndex, col)}
-                      className={`px-4! py-4! text-sm! text-slate-300! ${
-                        col.className || ""
-                      }`}
+                      className={`px-4! py-4! text-sm! text-slate-300! ${col.className || ""}`}
                     >
-                      {col.render
-                        ? col.render(row, rowIndex)
-                        : String(row[col.key])}
+                      {col.render ? col.render(row, rowIndex) : String(row[col.key])}
                     </RadixTable.Cell>
                   ))}
                 </RadixTable.Row>

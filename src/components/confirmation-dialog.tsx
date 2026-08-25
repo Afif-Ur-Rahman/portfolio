@@ -1,11 +1,13 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { Button, Dialog, Flex, Text } from "@radix-ui/themes";
-import { CloseDialogIcon } from "./dialog";
 import { AlertTriangle, Trash2, CheckCircle } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+
 import { showToast } from "@/utils/toast";
+
+import { CloseDialogIcon } from "./dialog";
 
 interface ConfirmationDialogProps<T = { state: string; error?: string }> {
   trigger: React.ReactElement;
@@ -18,9 +20,7 @@ interface ConfirmationDialogProps<T = { state: string; error?: string }> {
   description: string;
 }
 
-const ConfirmationDialog = <
-  T extends { state: boolean; message?: string; error?: string },
->({
+const ConfirmationDialog = <T extends { state: boolean; message?: string; error?: string }>({
   trigger,
   onCancel,
   onSuccess,
@@ -41,16 +41,12 @@ const ConfirmationDialog = <
     const result = await confirmAction();
 
     if (result.state === false) {
-      showToast(
-        "error",
-        result?.error || "An error occurred. Please try again.",
-      );
+      showToast("error", result?.error || "An error occurred. Please try again.");
       setLoading(false);
       return;
     }
 
-    if (result.state === true && result.message)
-      showToast("success", result?.message || "");
+    if (result.state === true && result.message) showToast("success", result?.message || "");
 
     router.refresh();
     setOpen(false);
@@ -65,7 +61,7 @@ const ConfirmationDialog = <
       <Flex align="start" className="group cursor-pointer">
         <Dialog.Trigger>{trigger}</Dialog.Trigger>
       </Flex>
-      <Dialog.Content className="relative max-w-md bg-[#09113F]! border! border-[#DAB025]/10!">
+      <Dialog.Content className="relative max-w-md border! border-[#DAB025]/10! bg-[#09113F]!">
         <CloseDialogIcon />
 
         <Flex justify="center" className="mb-4">
@@ -75,21 +71,18 @@ const ConfirmationDialog = <
             }`}
           >
             {hasRemoveOrDelete ? (
-              <Trash2 className="w-8 h-8 text-red-400" />
+              <Trash2 className="h-8 w-8 text-red-400" />
             ) : (
-              <CheckCircle className="w-8 h-8 text-[#DAB025]" />
+              <CheckCircle className="h-8 w-8 text-[#DAB025]" />
             )}
           </div>
         </Flex>
 
-        <Dialog.Title className="font-sans text-center text-xl font-bold mb-3 tracking-[-0.25px] text-white">
+        <Dialog.Title className="mb-3 text-center font-sans text-xl font-bold tracking-[-0.25px] text-white">
           {title}
         </Dialog.Title>
 
-        <Dialog.Description
-          size="3"
-          className="text-center text-slate-300 mb-6"
-        >
+        <Dialog.Description size="3" className="mb-6 text-center text-slate-300">
           {description}
         </Dialog.Description>
 
@@ -97,9 +90,9 @@ const ConfirmationDialog = <
           <Flex
             align="center"
             gap="2"
-            className="bg-amber-500/10 border border-amber-500/30 rounded-lg p-3 mb-4"
+            className="mb-4 rounded-lg border border-amber-500/30 bg-amber-500/10 p-3"
           >
-            <AlertTriangle className="w-5 h-5 text-amber-400 shrink-0" />
+            <AlertTriangle className="h-5 w-5 shrink-0 text-amber-400" />
             <Text size="2" className="text-amber-200">
               This action cannot be undone. Please confirm to proceed.
             </Text>
@@ -114,7 +107,7 @@ const ConfirmationDialog = <
               color="gray"
               highContrast
               onClick={onCancel}
-              className="w-full sm:w-auto px-6 py-3 cursor-pointer border-[#DAB025]/40! text-[#DAB025]! hover:bg-[#DAB025]/10! hover:border-[#DAB025]! transition-all duration-200"
+              className="w-full cursor-pointer border-[#DAB025]/40! px-6 py-3 text-[#DAB025]! transition-all duration-200 hover:border-[#DAB025]! hover:bg-[#DAB025]/10! sm:w-auto"
               disabled={loading}
             >
               {cancelButtonTitle ?? "Cancel"}
@@ -127,12 +120,12 @@ const ConfirmationDialog = <
             highContrast={!hasRemoveOrDelete}
             onClick={onConfrim}
             disabled={loading}
-            className={`w-full sm:w-auto px-6 py-3 cursor-pointer font-semibold transition-all duration-200 ${
-              loading ? "opacity-50 cursor-not-allowed" : ""
+            className={`w-full cursor-pointer px-6 py-3 font-semibold transition-all duration-200 sm:w-auto ${
+              loading ? "cursor-not-allowed opacity-50" : ""
             } ${
               hasRemoveOrDelete
                 ? // Delete button - Danger variant with theme accents
-                  "bg-red-600! text-white! hover:bg-red-700! border-red-600! hover:shadow-lg hover:shadow-red-600/30!"
+                  "border-red-600! bg-red-600! text-white! hover:bg-red-700! hover:shadow-lg hover:shadow-red-600/30!"
                 : // Update/Save button - Primary theme
                   "bg-[#DAB025]! text-[#09113F]! hover:bg-[#C49C1E]! hover:shadow-lg hover:shadow-[#DAB025]/40! active:scale-[0.98]!"
             }`}

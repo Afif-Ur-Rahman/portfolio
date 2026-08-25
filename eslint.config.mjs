@@ -27,6 +27,7 @@ const eslintConfig = defineConfig([
     rules: {
       "prettier/prettier": "error",
       "@typescript-eslint/member-delimiter-style": "off",
+      "no-console": "warn",
       "import/order": [
         "error",
         {

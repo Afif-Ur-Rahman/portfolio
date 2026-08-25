@@ -1,8 +1,10 @@
 "use client";
 
 import { FloatingIcons } from "@/components";
-import { AboutMe, Hero, Skills } from "./blocks";
 import { useTrackVisitor } from "@/hooks";
+
+import { AboutMe, Hero, Skills } from "./blocks";
+
 import { Projects } from "../projects";
 import { Suggestions } from "../suggestions";
 

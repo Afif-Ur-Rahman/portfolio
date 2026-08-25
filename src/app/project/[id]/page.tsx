@@ -8,7 +8,7 @@ type Props = {
 
 async function ProjectDetailPage({ params }: Props) {
   const { id } = await params;
-  const project = PROJECTS.find((p) => p.id === id);
+  const project = PROJECTS.find(p => p.id === id);
 
   return (
     <>

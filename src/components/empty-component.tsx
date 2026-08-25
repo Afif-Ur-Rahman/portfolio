@@ -36,9 +36,7 @@ export const EmptyComponent = ({
     <div
       className={`relative overflow-hidden rounded-3xl border px-6 py-24 text-center shadow-2xl backdrop-blur-xl ${styles.wrapper}`}
     >
-      <div
-        className={`pointer-events-none absolute inset-0 ${styles.overlay}`}
-      />
+      <div className={`pointer-events-none absolute inset-0 ${styles.overlay}`} />
 
       <div className="relative z-10 flex flex-col items-center justify-center">
         {Icon && (
@@ -49,13 +47,9 @@ export const EmptyComponent = ({
           </div>
         )}
 
-        <h3 className={`mb-1 text-base font-semibold ${styles.heading}`}>
-          {heading}
-        </h3>
+        <h3 className={`mb-1 text-base font-semibold ${styles.heading}`}>{heading}</h3>
 
-        {description && (
-          <p className={`text-sm ${styles.description}`}>{description}</p>
-        )}
+        {description && <p className={`text-sm ${styles.description}`}>{description}</p>}
       </div>
     </div>
   );

@@ -42,8 +42,8 @@ const ReuseableDialog = ({
             </Dialog.Title>
 
             <Dialog.Close
-              className="flex h-9 w-9 rounded-xl p-2 text-slate-300 transition hover:bg-[#DAB025]/10 hover:text-[#DAB025] cursor-pointer"
-              onClick={(e) => e.stopPropagation()}
+              className="flex h-9 w-9 cursor-pointer rounded-xl p-2 text-slate-300 transition hover:bg-[#DAB025]/10 hover:text-[#DAB025]"
+              onClick={e => e.stopPropagation()}
               aria-label="Close dialog"
             >
               <VscChromeClose size="1.15rem" />
@@ -51,9 +51,7 @@ const ReuseableDialog = ({
           </div>
 
           {/* Content */}
-          <div className="flex-1 overflow-y-auto overscroll-contain px-5 py-5 pr-4">
-            {content}
-          </div>
+          <div className="flex-1 overflow-y-auto overscroll-contain px-5 py-5 pr-4">{content}</div>
 
           {/* Portal target for dropdowns — inside Dialog.Content so Radix overlay doesn't intercept clicks */}
           <div id="dialog-dropdown-portal" />

@@ -48,9 +48,7 @@ export const formatDateTime = (dateString: string, fullDate?: boolean) => {
   });
 };
 
-export const toDateInputValue = (
-  date: string | Date | undefined | null,
-): string => {
+export const toDateInputValue = (date: string | Date | undefined | null): string => {
   if (!date) return "";
   return format(new Date(date), "yyyy-MM-dd");
 };

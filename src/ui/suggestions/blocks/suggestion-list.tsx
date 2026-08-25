@@ -1,12 +1,14 @@
 "use client";
 
-import { MessageSquareText, ChevronDown } from "lucide-react";
 import { Avatar } from "@radix-ui/themes";
+import { MessageSquareText, ChevronDown } from "lucide-react";
+
 import { EmptyComponent } from "@/components";
 import type { Suggestion } from "@/hooks";
-import { AdminControls } from "./admin-controls";
-import { ActionButtons } from "./action-buttons";
 import { getInitials } from "@/utils";
+
+import { ActionButtons } from "./action-buttons";
+import { AdminControls } from "./admin-controls";
 import { SuggestionCardSkeleton } from "./skeleton";
 
 const VISIBLE_COUNT = 3;
@@ -65,7 +67,7 @@ export const SuggestionList = ({
 
   return (
     <div className="space-y-4">
-      {visibleSuggestions.map((s) => {
+      {visibleSuggestions.map(s => {
         const isOwner = !!visitorId && s.visitorId === visitorId;
 
         return (
@@ -79,19 +81,14 @@ export const SuggestionList = ({
 
               <div className="min-w-0 flex-1">
                 <div className="flex items-center justify-between gap-3">
-                  <span className="text-sm font-semibold text-[#0A4A8A]">
-                    {s.name}
-                  </span>
+                  <span className="text-sm font-semibold text-[#0A4A8A]">{s.name}</span>
                 </div>
 
                 <p className="mt-1.5 text-sm text-gray-600">{s.message}</p>
               </div>
-              <div className="flex gap-3 flex-col sm:flex-row items-center">
+              <div className="flex flex-col items-center gap-3 sm:flex-row">
                 {isOwner && (
-                  <ActionButtons
-                    onEdit={() => startEdit(s)}
-                    onDelete={() => onDelete(s._id)}
-                  />
+                  <ActionButtons onEdit={() => startEdit(s)} onDelete={() => onDelete(s._id)} />
                 )}
                 <span className="shrink-0 text-xs text-gray-400">
                   {new Date(s.createdAt).toLocaleDateString()}
@@ -101,9 +98,7 @@ export const SuggestionList = ({
 
             {s.reply && (
               <div className="mt-3 rounded-lg border-l-2 border-[#DAB025] bg-[#DAB025]/5 px-3 py-2">
-                <span className="text-xs font-semibold text-[#DAB025]">
-                  Owner:
-                </span>
+                <span className="text-xs font-semibold text-[#DAB025]">Owner:</span>
                 <p className="mt-1 text-sm text-[#09113F]">{s.reply}</p>
               </div>
             )}
@@ -127,9 +122,7 @@ export const SuggestionList = ({
           onClick={toggleShowAll}
           className="mx-auto flex items-center gap-1.5 rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-[#0A4A8A] transition-all hover:border-[#DAB025] hover:text-[#DAB025]"
         >
-          {showAll
-            ? "Show less"
-            : `See more (${suggestions.length - VISIBLE_COUNT})`}
+          {showAll ? "Show less" : `See more (${suggestions.length - VISIBLE_COUNT})`}
           <ChevronDown
             size={15}
             className={`transition-transform duration-300 ${showAll ? "rotate-180" : ""}`}

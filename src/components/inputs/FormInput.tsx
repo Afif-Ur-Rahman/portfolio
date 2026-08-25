@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
-import { Controller, RegisterOptions, useFormContext } from "react-hook-form";
-import { Eye, EyeOff } from "lucide-react";
 import { Select } from "@radix-ui/themes";
 import { format, parse, isValid } from "date-fns";
+import { Eye, EyeOff } from "lucide-react";
+import React, { useState } from "react";
+import { Controller, RegisterOptions, useFormContext } from "react-hook-form";
+
 import { FormFieldError } from "../form";
 
 type FormInputVariant = "dark" | "light";
@@ -12,14 +13,7 @@ type FormInputVariant = "dark" | "light";
 interface FormInputProps {
   field: string;
   label: string;
-  type?:
-    | "text"
-    | "number"
-    | "password"
-    | "email"
-    | "select"
-    | "date"
-    | "textarea";
+  type?: "text" | "number" | "password" | "email" | "select" | "date" | "textarea";
   placeholder: string;
   icon?: React.ElementType;
   rules?: RegisterOptions;
@@ -110,10 +104,8 @@ const FormInput = ({
           value: 0,
           message: `${label} cannot be negative`,
         },
-        setValueAs: (value) => {
-          const transformedValue = rules?.setValueAs
-            ? rules.setValueAs(value)
-            : value;
+        setValueAs: value => {
+          const transformedValue = rules?.setValueAs ? rules.setValueAs(value) : value;
 
           if (
             transformedValue === "" ||
@@ -137,28 +129,18 @@ const FormInput = ({
       }
     : (rules ?? {});
 
-  const { onChange: registerOnChange, ...registerRest } = register(
-    field,
-    numberRules,
-  );
+  const { onChange: registerOnChange, ...registerRest } = register(field, numberRules);
 
   return (
     <div className="flex flex-col gap-1.5">
-      <label
-        className={`text-[11px] font-semibold uppercase tracking-widest ${styles.label}`}
-      >
-        {label}{" "}
-        {required && <span className="text-red-500 text-[14px]">*</span>}
+      <label className={`text-[11px] font-semibold tracking-widest uppercase ${styles.label}`}>
+        {label} {required && <span className="text-[14px] text-red-500">*</span>}
       </label>
 
       <div
         className={`flex items-center gap-2.5 rounded-lg border px-4 py-3 text-sm shadow-sm transition-all focus-within:ring-2 ${styles.container} ${isTextarea ? "items-start" : ""}`}
       >
-        {Icon && (
-          <Icon
-            className={`h-4 w-4 shrink-0 ${styles.icon} ${isTextarea ? "mt-1" : ""}`}
-          />
-        )}
+        {Icon && <Icon className={`h-4 w-4 shrink-0 ${styles.icon} ${isTextarea ? "mt-1" : ""}`} />}
 
         {isSelect ? (
           <Controller
@@ -168,7 +150,7 @@ const FormInput = ({
             render={({ field: controllerField }) => (
               <Select.Root
                 value={controllerField.value}
-                onValueChange={(value) => {
+                onValueChange={value => {
                   controllerField.onChange(value);
                   onValueChange?.(value);
                 }}
@@ -185,7 +167,7 @@ const FormInput = ({
                   className={`rounded-lg! border! shadow-xl! shadow-black/30! ${styles.dropdown}`}
                 >
                   {options.length ? (
-                    options.map((option) => (
+                    options.map(option => (
                       <Select.Item
                         key={option.value}
                         value={option.value}
@@ -196,11 +178,7 @@ const FormInput = ({
                       </Select.Item>
                     ))
                   ) : (
-                    <Select.Item
-                      value="empty"
-                      disabled
-                      className={styles.dropdownEmpty}
-                    >
+                    <Select.Item value="empty" disabled className={styles.dropdownEmpty}>
                       No data
                     </Select.Item>
                   )}
@@ -215,8 +193,7 @@ const FormInput = ({
             rules={rules}
             render={({ field: controllerField }) => {
               const dateValue =
-                controllerField.value instanceof Date &&
-                isValid(controllerField.value)
+                controllerField.value instanceof Date && isValid(controllerField.value)
                   ? format(controllerField.value, "yyyy-MM-dd")
                   : "";
 
@@ -224,16 +201,14 @@ const FormInput = ({
                 <input
                   type="date"
                   value={dateValue}
-                  onChange={(e) => {
+                  onChange={e => {
                     const raw = e.target.value;
                     if (!raw) {
                       controllerField.onChange(undefined);
                       return;
                     }
                     const parsed = parse(raw, "yyyy-MM-dd", new Date());
-                    controllerField.onChange(
-                      isValid(parsed) ? parsed : undefined,
-                    );
+                    controllerField.onChange(isValid(parsed) ? parsed : undefined);
                   }}
                   onBlur={controllerField.onBlur}
                   placeholder={placeholder}
@@ -255,7 +230,7 @@ const FormInput = ({
           <>
             <input
               {...registerRest}
-              onChange={(e) => {
+              onChange={e => {
                 if (isNumber && max !== undefined && e.target.value !== "") {
                   const numericValue = Number(e.target.value);
                   if (!Number.isNaN(numericValue) && numericValue > max) {
@@ -271,12 +246,12 @@ const FormInput = ({
               step={isNumber ? "any" : undefined}
               inputMode={isNumber ? "decimal" : undefined}
               placeholder={placeholder}
-              onKeyDown={(e) => {
+              onKeyDown={e => {
                 if (isNumber && ["-", "+", "e", "E"].includes(e.key)) {
                   e.preventDefault();
                 }
               }}
-              onPaste={(e) => {
+              onPaste={e => {
                 if (!isNumber) return;
 
                 const pastedValue = e.clipboardData.getData("text");
@@ -296,14 +271,10 @@ const FormInput = ({
             {isPassword && (
               <button
                 type="button"
-                onClick={() => setShow((s) => !s)}
+                onClick={() => setShow(s => !s)}
                 className={`shrink-0 transition-colors hover:text-[#DAB025] ${styles.icon}`}
               >
-                {show ? (
-                  <EyeOff className="h-4 w-4" />
-                ) : (
-                  <Eye className="h-4 w-4" />
-                )}
+                {show ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
               </button>
             )}
           </>

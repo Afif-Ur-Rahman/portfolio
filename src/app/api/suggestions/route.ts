@@ -1,7 +1,8 @@
+import { NextRequest, NextResponse } from "next/server";
+
 import { catchAsync, connectDB, sendSuggestionAlert } from "@/lib";
 import { Suggestion } from "@/models";
 import { COOKIE_NAME, resolveVisitorId } from "@/services";
-import { NextRequest, NextResponse } from "next/server";
 
 export const GET = catchAsync(async () => {
   await connectDB();
@@ -23,10 +24,7 @@ export const POST = catchAsync(async (req: NextRequest) => {
   const { visitorId } = resolveVisitorId(req.cookies.get(COOKIE_NAME)?.value);
 
   if (!message?.trim()) {
-    return NextResponse.json(
-      { success: false, message: "Message is required" },
-      { status: 400 },
-    );
+    return NextResponse.json({ success: false, message: "Message is required" }, { status: 400 });
   }
 
   let finalName = name?.trim();

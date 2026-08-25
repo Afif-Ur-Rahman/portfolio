@@ -2,9 +2,7 @@ type SuggestionCardSkeletonProps = {
   withReply?: boolean;
 };
 
-export const SuggestionCardSkeleton = ({
-  withReply = false,
-}: SuggestionCardSkeletonProps) => {
+export const SuggestionCardSkeleton = ({ withReply = false }: SuggestionCardSkeletonProps) => {
   return (
     <div className="animate-pulse rounded-xl border border-gray-200 bg-white p-4">
       <div className="flex items-center gap-3">

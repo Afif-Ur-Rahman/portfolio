@@ -1,15 +1,13 @@
-import { sendEmail } from "../brevo";
 import { suggestionAlertTemplate } from "@/templates";
+
+import { sendEmail } from "../brevo";
 
 type SendSuggestionAlertParams = {
   name?: string;
   message: string;
 };
 
-export const sendSuggestionAlert = async ({
-  name,
-  message,
-}: SendSuggestionAlertParams) => {
+export const sendSuggestionAlert = async ({ name, message }: SendSuggestionAlertParams) => {
   try {
     await sendEmail({
       subject: `New suggestion from ${name || "Anonymous"}`,

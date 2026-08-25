@@ -1,4 +1,5 @@
 import axios from "axios";
+
 import { ADMIN_EMAIL, BREVO, MODE } from "@/constants";
 
 interface IMailInfo {
@@ -8,12 +9,7 @@ interface IMailInfo {
 
 export const sendEmail = async (mailInfo: IMailInfo): Promise<void> => {
   if (MODE === "dev") {
-    console.log(
-      "[Brevo] Skipping email in dev mode:",
-      mailInfo.subject,
-      "->",
-      ADMIN_EMAIL,
-    );
+    console.log("[Brevo] Skipping email in dev mode:", mailInfo.subject, "->", ADMIN_EMAIL);
     return;
   }
 

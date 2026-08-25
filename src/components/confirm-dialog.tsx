@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect } from "react";
 import { AlertTriangle, Loader2 } from "lucide-react";
+import { useEffect } from "react";
 
 type ConfirmDialogProps = {
   open: boolean;
@@ -40,7 +40,7 @@ export const ConfirmDialog = ({
       onClick={onCancel}
     >
       <div
-        onClick={(e) => e.stopPropagation()}
+        onClick={e => e.stopPropagation()}
         className="w-full max-w-sm rounded-2xl border border-[#DAB025]/80 bg-[#09113F] p-6 shadow-xl"
       >
         <div className="flex items-start gap-3">
@@ -59,7 +59,7 @@ export const ConfirmDialog = ({
             type="button"
             onClick={onCancel}
             disabled={isLoading}
-            className="rounded-full border border-white/15 px-4 py-2 text-sm font-semibold text-white/80 transition-colors hover:border-[#DAB025] hover:text-[#DAB025] disabled:opacity-50 cursor-pointer"
+            className="cursor-pointer rounded-full border border-white/15 px-4 py-2 text-sm font-semibold text-white/80 transition-colors hover:border-[#DAB025] hover:text-[#DAB025] disabled:opacity-50"
           >
             Cancel
           </button>
@@ -68,13 +68,9 @@ export const ConfirmDialog = ({
             type="button"
             onClick={onConfirm}
             disabled={isLoading}
-            className="inline-flex items-center gap-1.5 rounded-full bg-[#DAB025] px-4 py-2 text-sm font-bold text-[#09113F] transition-colors hover:bg-[#c7a021] disabled:opacity-50 cursor-pointer"
+            className="inline-flex cursor-pointer items-center gap-1.5 rounded-full bg-[#DAB025] px-4 py-2 text-sm font-bold text-[#09113F] transition-colors hover:bg-[#c7a021] disabled:opacity-50"
           >
-            {isLoading ? (
-              <Loader2 size={14} className="animate-spin" />
-            ) : (
-              "Delete"
-            )}
+            {isLoading ? <Loader2 size={14} className="animate-spin" /> : "Delete"}
           </button>
         </div>
       </div>

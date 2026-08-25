@@ -9,9 +9,9 @@ type AdminStore = {
 
 export const useAdminStore = create<AdminStore>()(
   persist(
-    (set) => ({
+    set => ({
       secret: null,
-      setSecret: (secret) => set({ secret }),
+      setSecret: secret => set({ secret }),
       clearSecret: () => set({ secret: null }),
     }),
     { name: "admin-secret" },

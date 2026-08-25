@@ -1,9 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
 import { Menu, X, Download, ArrowLeft } from "lucide-react";
+import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
+
 import { handleNavClick } from "@/utils";
+
 import { HOME_MENU, PROJECTS_MENU } from "./constants";
 import { MobileSidebar } from "./sidebar";
 
@@ -40,17 +42,17 @@ export const Header = ({
   }, [mobileMenu]);
 
   useEffect(() => {
-    const sectionIds = navLinks.map((item) => item.href.replace("#", ""));
+    const sectionIds = navLinks.map(item => item.href.replace("#", ""));
     const sections = sectionIds
-      .map((id) => document.getElementById(id))
+      .map(id => document.getElementById(id))
       .filter((el): el is HTMLElement => el !== null);
 
     if (sections.length === 0) return;
 
     const observer = new IntersectionObserver(
-      (entries) => {
+      entries => {
         const visible = entries
-          .filter((entry) => entry.isIntersecting)
+          .filter(entry => entry.isIntersecting)
           .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
 
         if (visible.length > 0) {
@@ -63,7 +65,7 @@ export const Header = ({
       },
     );
 
-    sections.forEach((section) => observer.observe(section));
+    sections.forEach(section => observer.observe(section));
 
     return () => observer.disconnect();
   }, [navLinks]);
@@ -91,7 +93,7 @@ export const Header = ({
 
   return (
     <header
-      className={`fixed left-0 top-0 z-50 w-full transition-all duration-300 ease-in-out ${
+      className={`fixed top-0 left-0 z-50 w-full transition-all duration-300 ease-in-out ${
         mobileMenu || isScrolled
           ? `bg-[#09113F] shadow-md ${isHome ? "py-4" : "py-6"}`
           : `transparent ${isHome ? "py-3" : "py-4"}`
@@ -102,14 +104,14 @@ export const Header = ({
           {!isHome && (
             <Link
               href="/#projects"
-              className="inline-flex items-center text-[#DAB025] hover:text-white transition-colors"
+              className="inline-flex items-center text-[#DAB025] transition-colors hover:text-white"
               aria-label="Back to projects"
             >
               <ArrowLeft size={18} />
             </Link>
           )}
           <Link href="#" className="flex items-center gap-2">
-            <span className="font-bold text-white text-md md:text-xl">
+            <span className="text-md font-bold text-white md:text-xl">
               <span className="text-[#DAB025]">{firstName}</span>
               {lastName ? ` ${lastName}` : ""}
             </span>
@@ -118,14 +120,14 @@ export const Header = ({
 
         {/* Desktop Menu */}
         <nav className="relative hidden items-center gap-8 lg:flex">
-          {navLinks.map((item) => (
+          {navLinks.map(item => (
             <Link
               key={item.label}
               href={item.href}
-              ref={(el) => {
+              ref={el => {
                 navRefs.current[item.href] = el;
               }}
-              onClick={(e) => {
+              onClick={e => {
                 setActiveSection(item.href);
                 handleNavClick(e, item.href);
               }}
@@ -160,10 +162,7 @@ export const Header = ({
         )}
 
         {/* Mobile Button */}
-        <button
-          onClick={() => setMobileMenu(!mobileMenu)}
-          className="text-white lg:hidden"
-        >
+        <button onClick={() => setMobileMenu(!mobileMenu)} className="text-white lg:hidden">
           {mobileMenu ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>

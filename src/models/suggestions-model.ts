@@ -24,5 +24,4 @@ const SuggestionSchema = new Schema<ISuggestion>(
 
 SuggestionSchema.index({ isDeleted: 1, createdAt: -1 });
 
-export const Suggestion =
-  models.Suggestion || model<ISuggestion>("Suggestion", SuggestionSchema);
+export const Suggestion = models.Suggestion || model<ISuggestion>("Suggestion", SuggestionSchema);

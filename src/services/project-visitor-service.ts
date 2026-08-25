@@ -6,10 +6,7 @@ export const getProjectVisitorCount = async (projectId: string) => {
   return ProjectVisitor.countDocuments({ projectId });
 };
 
-export const trackProjectVisitor = async (
-  visitorId: string,
-  projectId: string,
-) => {
+export const trackProjectVisitor = async (visitorId: string, projectId: string) => {
   await connectDB();
 
   const isExistingVisitor = await ProjectVisitor.findOne({

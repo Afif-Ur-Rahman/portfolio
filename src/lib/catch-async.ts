@@ -18,8 +18,7 @@ export const catchAsync = <T = Record<string, string>>(
     } catch (error) {
       console.error("API Error:", error);
 
-      const message =
-        error instanceof Error ? error.message : "Something went wrong";
+      const message = error instanceof Error ? error.message : "Something went wrong";
 
       return NextResponse.json({ success: false, message }, { status: 500 });
     }

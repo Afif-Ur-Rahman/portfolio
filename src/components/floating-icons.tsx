@@ -1,6 +1,7 @@
-import Link from "next/link";
 import { Phone, X } from "lucide-react";
+import Link from "next/link";
 import { FaLinkedin, FaGithub, FaWhatsapp } from "react-icons/fa6";
+
 import { GmailIcon } from "@/components/svgs";
 
 export const FloatingIcons = ({
@@ -11,12 +12,12 @@ export const FloatingIcons = ({
   setIsContact: (contact: boolean) => void;
 }) => {
   return (
-    <div className="fixed bottom-6 right-6 z-10 flex flex-col items-end gap-3">
+    <div className="fixed right-6 bottom-6 z-10 flex flex-col items-end gap-3">
       <div
-        className={`flex flex-col gap-3 transition-all duration-300 ease-in-out origin-bottom ${
+        className={`flex origin-bottom flex-col gap-3 transition-all duration-300 ease-in-out ${
           isContact
-            ? "translate-y-0 opacity-100 max-h-75"
-            : "translate-y-4 opacity-0 max-h-0 overflow-hidden pointer-events-none"
+            ? "max-h-75 translate-y-0 opacity-100"
+            : "pointer-events-none max-h-0 translate-y-4 overflow-hidden opacity-0"
         }`}
       >
         <Link
@@ -56,14 +57,10 @@ export const FloatingIcons = ({
 
       <div className="relative flex h-12 w-12 items-center justify-center">
         <div
-          className="relative flex h-12 w-12 items-center justify-center rounded-full bg-[#DAB025] text-white cursor-pointer transition-all duration-300 ease-in-out hover:scale-105"
+          className="relative flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-[#DAB025] text-white transition-all duration-300 ease-in-out hover:scale-105"
           onClick={() => setIsContact(!isContact)}
         >
-          {isContact ? (
-            <X size={26} color="#0A3D91" />
-          ) : (
-            <Phone size={26} color="#0A3D91" />
-          )}
+          {isContact ? <X size={26} color="#0A3D91" /> : <Phone size={26} color="#0A3D91" />}
         </div>
       </div>
     </div>

@@ -1,8 +1,9 @@
 "use client";
 
+import { Send, Loader2, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { FormProvider, useForm, useWatch } from "react-hook-form";
-import { Send, Loader2, X } from "lucide-react";
+
 import { FormInput } from "@/components";
 import type { Suggestion } from "@/hooks";
 
@@ -13,10 +14,7 @@ type SuggestionFormValues = {
 
 type SuggestionFormProps = {
   editingSuggestion: Suggestion | null;
-  onSubmit: (
-    name: string,
-    message: string,
-  ) => Promise<{ success: boolean; message: string }>;
+  onSubmit: (name: string, message: string) => Promise<{ success: boolean; message: string }>;
   onUpdate: (
     id: string,
     data: { name: string; message: string },
@@ -103,9 +101,7 @@ export const SuggestionForm = ({
         />
 
         <div className="flex items-center justify-between">
-          <span className="text-xs text-gray-500">
-            {messageValue.length}/1000
-          </span>
+          <span className="text-xs text-gray-500">{messageValue.length}/1000</span>
 
           <div className="flex items-center gap-2">
             {isEditing && (
@@ -114,7 +110,7 @@ export const SuggestionForm = ({
                 onClick={handleCancel}
                 aria-label="Cancel"
                 title="Cancel"
-                className="inline-flex items-center gap-2 rounded-full border border-gray-200 px-4 py-2 text-sm font-semibold text-gray-500 transition-colors hover:border-gray-300 cursor-pointer sm:px-5"
+                className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-gray-200 px-4 py-2 text-sm font-semibold text-gray-500 transition-colors hover:border-gray-300 sm:px-5"
               >
                 <X size={15} />
                 <span className="hidden sm:inline">Cancel</span>
@@ -127,17 +123,11 @@ export const SuggestionForm = ({
               disabled={isSubmitting || !messageValue.trim()}
               aria-label={isEditing ? "Update" : "Submit"}
               title={isEditing ? "Update" : "Submit"}
-              className="inline-flex items-center gap-2 rounded-full bg-[#DAB025] px-4 py-2 text-sm font-bold text-[#09113F] transition-transform hover:-translate-y-0.5 disabled:opacity-50 disabled:hover:translate-y-0 cursor-pointer sm:px-5"
+              className="inline-flex cursor-pointer items-center gap-2 rounded-full bg-[#DAB025] px-4 py-2 text-sm font-bold text-[#09113F] transition-transform hover:-translate-y-0.5 disabled:opacity-50 disabled:hover:translate-y-0 sm:px-5"
             >
-              {isSubmitting ? (
-                <Loader2 size={15} className="animate-spin" />
-              ) : (
-                <Send size={15} />
-              )}
+              {isSubmitting ? <Loader2 size={15} className="animate-spin" /> : <Send size={15} />}
 
-              <span className="hidden sm:inline">
-                {isEditing ? "Update" : "Submit"}
-              </span>
+              <span className="hidden sm:inline">{isEditing ? "Update" : "Submit"}</span>
             </button>
           </div>
         </div>

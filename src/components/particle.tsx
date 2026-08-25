@@ -1,19 +1,14 @@
 "use client";
 
-import { useMemo } from "react";
 import Particles from "@tsparticles/react";
+import { useMemo } from "react";
+
 import type { ISourceOptions } from "@tsparticles/engine";
 
-export const ParticleBackground = ({
-  variant = "hero",
-}: {
-  variant?: "hero" | "footer";
-}) => {
+export const ParticleBackground = ({ variant = "hero" }: { variant?: "hero" | "footer" }) => {
   const options: ISourceOptions = useMemo(() => {
     const colors =
-      variant === "footer"
-        ? ["#BFA020", "#073A6A", "#FFFFFF"]
-        : ["#DAB025", "#0A4A8A", "#FFFFFF"];
+      variant === "footer" ? ["#BFA020", "#073A6A", "#FFFFFF"] : ["#DAB025", "#0A4A8A", "#FFFFFF"];
 
     return {
       background: { color: { value: "transparent" } },

@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+
 import {
   COOKIE_NAME,
   ONE_YEAR,
@@ -24,9 +25,7 @@ export const POST = async (req: NextRequest, { params }: RouteContext) => {
   try {
     const { projectId } = await params;
 
-    const { visitorId, isNewVisitor } = resolveVisitorId(
-      req.cookies.get(COOKIE_NAME)?.value,
-    );
+    const { visitorId, isNewVisitor } = resolveVisitorId(req.cookies.get(COOKIE_NAME)?.value);
 
     const totalVisitors = await trackProjectVisitor(visitorId, projectId);
 

@@ -13,5 +13,4 @@ const ProjectVisitorSchema = new Schema<IProjectVisitor>({
 ProjectVisitorSchema.index({ visitorId: 1, projectId: 1 }, { unique: true });
 
 export const ProjectVisitor =
-  models.ProjectVisitor ||
-  model<IProjectVisitor>("ProjectVisitor", ProjectVisitorSchema);
+  models.ProjectVisitor || model<IProjectVisitor>("ProjectVisitor", ProjectVisitorSchema);

@@ -32,10 +32,8 @@ export const PROJECTS = [
       "Styled Components",
       "Zustand",
     ],
-    playStoreUrl:
-      "https://play.google.com/store/apps/details?id=com.securevault.hasbi",
-    appStoreUrl:
-      "https://apps.apple.com/us/app/vault-top-security/id6761527136",
+    playStoreUrl: "https://play.google.com/store/apps/details?id=com.securevault.hasbi",
+    appStoreUrl: "https://apps.apple.com/us/app/vault-top-security/id6761527136",
     isMobile: true,
   },
   {
@@ -53,8 +51,7 @@ export const PROJECTS = [
       "Styled Components",
       "Zustand",
     ],
-    playStoreUrl:
-      "https://play.google.com/store/apps/details?id=com.yallahnshoof",
+    playStoreUrl: "https://play.google.com/store/apps/details?id=com.yallahnshoof",
     appStoreUrl: "https://apps.apple.com/us/app/yallahnshoof/id6749572975",
     isMobile: true,
   },
@@ -243,8 +240,7 @@ export const PROJECTS_DETAILS = [
     gallery: [
       {
         title: "Landing",
-        description:
-          "Entry screen with branding and a clear call-to-action to unlock the vault.",
+        description: "Entry screen with branding and a clear call-to-action to unlock the vault.",
         image: "/images/secure-vault/landing.jpg",
       },
       {
@@ -342,8 +338,7 @@ export const PROJECTS_DETAILS = [
     gallery: [
       {
         title: "Landing",
-        description:
-          "Welcome screen introducing the all-in-one marketplace experience.",
+        description: "Welcome screen introducing the all-in-one marketplace experience.",
         image: "/images/yallahnshoof/landing.png",
       },
       {
@@ -358,38 +353,32 @@ export const PROJECTS_DETAILS = [
       },
       {
         title: "Home",
-        description:
-          "Main feed showcasing featured listings and quick access to categories.",
+        description: "Main feed showcasing featured listings and quick access to categories.",
         image: "/images/yallahnshoof/home.png",
       },
       {
         title: "Property Listings",
-        description:
-          "Browse houses, apartments, and plots with clear pricing and details.",
+        description: "Browse houses, apartments, and plots with clear pricing and details.",
         image: "/images/yallahnshoof/property.png",
       },
       {
         title: "Listing Detail",
-        description:
-          "Full property or item details with photos, price, and contact options.",
+        description: "Full property or item details with photos, price, and contact options.",
         image: "/images/yallahnshoof/detail.png",
       },
       {
         title: "Marketplace",
-        description:
-          "Explore a wide range of items available for sale or rent.",
+        description: "Explore a wide range of items available for sale or rent.",
         image: "/images/yallahnshoof/marketplace.png",
       },
       {
         title: "Market Details",
-        description:
-          "Detailed view of marketplace listings with key information and actions.",
+        description: "Detailed view of marketplace listings with key information and actions.",
         image: "/images/yallahnshoof/market-details.png",
       },
       {
         title: "Favorites",
-        description:
-          "Saved listings for quick access to preferred properties and items.",
+        description: "Saved listings for quick access to preferred properties and items.",
         image: "/images/yallahnshoof/favorite.png",
       },
       {
@@ -456,8 +445,7 @@ export const PROJECTS_DETAILS = [
       },
       {
         label: "Profile Management",
-        detail:
-          "Change the account password and update the restaurant logo or cover image.",
+        detail: "Change the account password and update the restaurant logo or cover image.",
       },
     ],
     security: {
@@ -483,8 +471,7 @@ export const PROJECTS_DETAILS = [
     gallery: [
       {
         title: "Login",
-        description:
-          "Secure authentication screen for restaurant staff and admins.",
+        description: "Secure authentication screen for restaurant staff and admins.",
         image: "/images/restaurant/login.png",
       },
       {
@@ -507,14 +494,12 @@ export const PROJECTS_DETAILS = [
       },
       {
         title: "Menu",
-        description:
-          "Add menu items and rearrange the order of items and categories.",
+        description: "Add menu items and rearrange the order of items and categories.",
         image: "/images/restaurant/menu.png",
       },
       {
         title: "Stocks",
-        description:
-          "Add stock items that auto-deduct on order completion and manage wastage.",
+        description: "Add stock items that auto-deduct on order completion and manage wastage.",
         image: "/images/restaurant/stocks.png",
       },
       {
@@ -529,14 +514,12 @@ export const PROJECTS_DETAILS = [
       },
       {
         title: "Configuration",
-        description:
-          "Update language, currency, and the AI API key used for menu suggestions.",
+        description: "Update language, currency, and the AI API key used for menu suggestions.",
         image: "/images/restaurant/configuration.png",
       },
       {
         title: "Profile",
-        description:
-          "Change password and update restaurant logo or cover image.",
+        description: "Change password and update restaurant logo or cover image.",
         image: "/images/restaurant/profile.png",
       },
     ],

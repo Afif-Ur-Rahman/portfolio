@@ -10,5 +10,4 @@ const VisitorSchema = new Schema<IVisitor>({
 
 VisitorSchema.index({ visitorId: 1 }, { unique: true });
 
-export const Visitor =
-  models.Visitor || model<IVisitor>("Visitor", VisitorSchema);
+export const Visitor = models.Visitor || model<IVisitor>("Visitor", VisitorSchema);

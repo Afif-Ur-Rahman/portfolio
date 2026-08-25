@@ -1,9 +1,10 @@
 // components/MobileNavDrawer.tsx
 "use client";
 
-import React from "react";
-import Link from "next/link";
 import { X, Download, ArrowLeft } from "lucide-react";
+import Link from "next/link";
+import React from "react";
+
 import { handleNavClick } from "@/utils";
 
 interface MobileNavDrawerProps {
@@ -31,21 +32,16 @@ export const MobileSidebar: React.FC<MobileNavDrawerProps> = ({
   return (
     <div
       className={`fixed inset-0 z-110 transition-opacity duration-300 lg:hidden ${
-        isOpen
-          ? "pointer-events-auto opacity-100"
-          : "pointer-events-none opacity-0"
+        isOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
       }`}
     >
-      <div
-        className="absolute inset-0 bg-black/60 backdrop-blur-sm"
-        onClick={onClose}
-      />
+      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
 
       <div
-        className={`absolute right-0 top-0 flex h-full min-w-[50%] max-w-xs flex-col justify-between overflow-hidden border-l border-[#DAB025]/10 bg-[linear-gradient(180deg,rgba(2,6,23,0.98)_0%,rgba(9,17,63,0.96)_52%,rgba(2,6,23,0.98)_100%)] shadow-2xl shadow-black/40 backdrop-blur-xl transition-transform duration-500 ${
+        className={`absolute top-0 right-0 flex h-full max-w-xs min-w-[50%] flex-col justify-between overflow-hidden border-l border-[#DAB025]/10 bg-[linear-gradient(180deg,rgba(2,6,23,0.98)_0%,rgba(9,17,63,0.96)_52%,rgba(2,6,23,0.98)_100%)] shadow-2xl shadow-black/40 backdrop-blur-xl transition-transform duration-500 ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
-        onClick={(e) => e.stopPropagation()}
+        onClick={e => e.stopPropagation()}
       >
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(218,176,37,0.12),transparent_30%),radial-gradient(circle_at_bottom_right,rgba(9,17,63,0.20),transparent_35%)]" />
 
@@ -75,14 +71,14 @@ export const MobileSidebar: React.FC<MobileNavDrawerProps> = ({
                   <li key={href}>
                     <Link
                       href={href}
-                      onClick={(e) => {
+                      onClick={e => {
                         onNavigate(href);
                         handleNavClick(e, href);
                         onClose();
                       }}
                       className={`flex w-full items-center gap-3 rounded-2xl px-4 py-3 text-sm font-medium transition-all duration-200 ${
                         isActive
-                          ? "bg-linear-to-r from-[#DAB025]/25 via-[#DAB025]/15 to-[#09113F]/40 text-white shadow-lg shadow-[#DAB025]/10 ring-1 ring-inset ring-[#DAB025]/20"
+                          ? "bg-linear-to-r from-[#DAB025]/25 via-[#DAB025]/15 to-[#09113F]/40 text-white shadow-lg ring-1 shadow-[#DAB025]/10 ring-[#DAB025]/20 ring-inset"
                           : "text-slate-300 hover:bg-white/5 hover:text-white"
                       }`}
                     >
@@ -108,7 +104,7 @@ export const MobileSidebar: React.FC<MobileNavDrawerProps> = ({
             ) : (
               <Link
                 href="/#projects"
-                className="w-full inline-flex items-center justify-center gap-2 rounded-full border-2 border-[#DAB025] px-6 py-3 text-sm text-white transition-colors hover:bg-[#DAB025]"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-[#DAB025] px-6 py-3 text-sm text-white transition-colors hover:bg-[#DAB025]"
               >
                 <ArrowLeft size={15} />
                 Back to All Projects

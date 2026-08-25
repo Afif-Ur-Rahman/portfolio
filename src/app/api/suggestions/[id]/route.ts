@@ -1,8 +1,9 @@
+import { NextRequest, NextResponse } from "next/server";
+
 import { ADMIN_SECRET } from "@/constants";
 import { catchAsync, connectDB } from "@/lib";
 import { Suggestion } from "@/models";
 import { COOKIE_NAME, resolveVisitorId } from "@/services";
-import { NextRequest, NextResponse } from "next/server";
 
 const isAdmin = (req: NextRequest) => {
   const secret = req.headers.get("x-admin-secret");
@@ -42,25 +43,15 @@ export const PATCH = catchAsync<{ id: string }>(async (req, { params }) => {
 
   const owned = await getOwnedSuggestion(req, id);
   if (!owned) {
-    return NextResponse.json(
-      { success: false, message: "Unauthorized" },
-      { status: 401 },
-    );
+    return NextResponse.json({ success: false, message: "Unauthorized" }, { status: 401 });
   }
 
   const { name, message } = await req.json();
   if (!message?.trim()) {
-    return NextResponse.json(
-      { success: false, message: "Message is required" },
-      { status: 400 },
-    );
+    return NextResponse.json({ success: false, message: "Message is required" }, { status: 400 });
   }
 
-  const updated = await Suggestion.findByIdAndUpdate(
-    id,
-    { name, message },
-    { new: true },
-  );
+  const updated = await Suggestion.findByIdAndUpdate(id, { name, message }, { new: true });
 
   return NextResponse.json({
     success: true,
@@ -80,10 +71,7 @@ export const DELETE = catchAsync<{ id: string }>(async (req, { params }) => {
 
   const owned = await getOwnedSuggestion(req, id);
   if (!owned) {
-    return NextResponse.json(
-      { success: false, message: "Unauthorized" },
-      { status: 401 },
-    );
+    return NextResponse.json({ success: false, message: "Unauthorized" }, { status: 401 });
   }
 
   await Suggestion.findByIdAndUpdate(id, { isDeleted: true });

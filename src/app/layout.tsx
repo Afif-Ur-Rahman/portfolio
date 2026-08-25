@@ -1,8 +1,10 @@
 import "./globals.css";
-import type { Metadata } from "next";
 import { Theme } from "@radix-ui/themes";
 import { Poppins } from "next/font/google";
+
 import { ParticlesProviderWrapper } from "@/components/layout";
+
+import type { Metadata } from "next";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -26,8 +28,7 @@ export async function generateMetadata(): Promise<Metadata> {
     metadataBase: new URL("https://afif-ur-rahman.vercel.app/"),
     openGraph: {
       title: "Afif Ur Rahman - Full-Stack Developer",
-      description:
-        "Full-stack developer specializing in Next.js, React, TypeScript, and Node.js.",
+      description: "Full-stack developer specializing in Next.js, React, TypeScript, and Node.js.",
       url: "https://afif-ur-rahman.vercel.app/",
       siteName: "Afif Ur Rahman",
       images: [
@@ -43,8 +44,7 @@ export async function generateMetadata(): Promise<Metadata> {
     twitter: {
       card: "summary_large_image",
       title: "Afif Ur Rahman - Full-Stack Developer",
-      description:
-        "Full-stack developer specializing in Next.js, React, TypeScript, and Node.js.",
+      description: "Full-stack developer specializing in Next.js, React, TypeScript, and Node.js.",
       images: ["/og-image.jpg"],
     },
     robots: {
@@ -75,10 +75,7 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${poppins.variable} antialiased`}
-        suppressHydrationWarning
-      >
+      <body className={`${poppins.variable} antialiased`} suppressHydrationWarning>
         <ParticlesProviderWrapper>
           <Theme>{children}</Theme>
         </ParticlesProviderWrapper>

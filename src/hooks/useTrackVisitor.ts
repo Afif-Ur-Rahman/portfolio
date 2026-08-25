@@ -1,17 +1,17 @@
 "use client";
 
 import { useEffect } from "react";
+
 import { useVisitorStore } from "@/store";
 
 export const useTrackVisitor = () => {
-  const { setSiteCount, setIsLoading, isContact, setIsContact, setVisitorId } =
-    useVisitorStore();
+  const { setSiteCount, setIsLoading, isContact, setIsContact, setVisitorId } = useVisitorStore();
 
   useEffect(() => {
     setIsLoading(true);
     fetch("/api/visitor", { method: "POST" })
-      .then((res) => res.json())
-      .then((data) => {
+      .then(res => res.json())
+      .then(data => {
         if (data.success) {
           setVisitorId(data.visitorId);
           setSiteCount(data.totalVisitors);

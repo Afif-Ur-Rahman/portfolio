@@ -2,8 +2,8 @@ import Image from "next/image";
 
 const Nodata = ({ height = 10 }: { height?: number }) => {
   return (
-    <div className="flex items-center justify-center h-50">
-      <div className="flex items-center flex-col">
+    <div className="flex h-50 items-center justify-center">
+      <div className="flex flex-col items-center">
         <Image
           src="/no-data.gif"
           height="100"

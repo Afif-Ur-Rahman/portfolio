@@ -2,9 +2,7 @@
 
 import { useState } from "react";
 
-export const useConfirmDelete = (
-  onDelete: (id: string) => Promise<unknown>,
-) => {
+export const useConfirmDelete = (onDelete: (id: string) => Promise<unknown>) => {
   const [pendingId, setPendingId] = useState<string | null>(null);
   const [isDeleting, setIsDeleting] = useState(false);
 
