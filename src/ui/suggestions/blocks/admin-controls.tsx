@@ -29,17 +29,17 @@ export const AdminControls = ({
 
   if (!secret) {
     return (
-      <div className="mt-3 flex items-center gap-2">
+      <div className="mt-3 flex flex-wrap items-center gap-2">
         <input
           type="password"
           value={secretInput}
           onChange={e => setSecretInput(e.target.value)}
           placeholder="Admin secret"
-          className="rounded-lg border border-gray-200 bg-gray-50 px-3 py-1.5 text-xs text-[#09113F] focus:border-[#DAB025] focus:outline-none"
+          className="min-w-0 flex-1 rounded-lg border border-gray-200 bg-gray-50 px-3 py-1.5 text-xs text-[#09113F] focus:border-[#DAB025] focus:outline-none"
         />
         <button
           onClick={() => setSecret(secretInput)}
-          className="rounded-full bg-[#DAB025]/10 px-3 py-1.5 text-xs font-semibold text-[#DAB025]"
+          className="shrink-0 cursor-pointer rounded-full bg-[#DAB025]/10 px-3 py-1.5 text-xs font-semibold text-[#DAB025]"
         >
           Unlock
         </button>
@@ -68,7 +68,7 @@ export const AdminControls = ({
             onChange={e => setReplyText(e.target.value)}
             placeholder="Write a reply..."
             disabled={isSending}
-            className="flex-1 rounded-lg border border-gray-200 bg-gray-50 px-3 py-1.5 text-xs text-[#09113F] focus:border-[#DAB025] focus:outline-none disabled:opacity-50"
+            className="min-w-0 flex-1 rounded-lg border border-gray-200 bg-gray-50 px-3 py-1.5 text-xs text-[#09113F] focus:border-[#DAB025] focus:outline-none disabled:opacity-50"
           />
           <button
             onClick={handleSend}
