@@ -93,7 +93,7 @@ export const MobileSidebar: React.FC<MobileNavDrawerProps> = ({
           <div className="px-4 py-5">
             {page === "home" ? (
               <a
-                href="/resume.pdf"
+                href="/assets/Fullstack-Afif-Ur-Rahman.pdf"
                 download
                 onClick={onClose}
                 className="flex w-full items-center justify-center gap-2 rounded-2xl border border-[#DAB025]/20 bg-[#DAB025]/10 px-4 py-3 text-base font-medium text-white transition hover:bg-[#DAB025]/20"
