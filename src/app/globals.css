@@ -1,8 +1,14 @@
 @import "tailwindcss";
 @import "@radix-ui/themes/styles.css";
 
+@theme inline {
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-instrument-serif), Georgia, serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+}
+
 .radix-themes {
-  --default-font-family: var(--font-poppins);
+  --default-font-family: var(--font-dm-sans);
 }
 
 html {
@@ -34,6 +40,8 @@ html {
 
 body {
   overscroll-behavior: contain;
+  font-size: 16px;
+  line-height: 1.6;
 }
 
 input:-webkit-autofill,

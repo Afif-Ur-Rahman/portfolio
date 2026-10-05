@@ -1,6 +1,6 @@
 import "./globals.css";
 import { Theme } from "@radix-ui/themes";
-import { Poppins } from "next/font/google";
+import { DM_Sans, Instrument_Serif, JetBrains_Mono } from "next/font/google";
 
 import { ParticlesProviderWrapper } from "@/components/layout";
 
@@ -61,10 +61,23 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-const poppins = Poppins({
+const dmSans = DM_Sans({
   subsets: ["latin"],
-  weight: ["400", "700", "900"],
-  variable: "--font-poppins",
+  variable: "--font-dm-sans",
+  display: "swap",
+});
+
+const instrumentSerif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+  variable: "--font-instrument-serif",
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains-mono",
   display: "swap",
 });
 
@@ -75,7 +88,10 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${poppins.variable} antialiased`} suppressHydrationWarning>
+      <body
+        className={`${dmSans.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable} font-sans antialiased`}
+        suppressHydrationWarning
+      >
         <ParticlesProviderWrapper>
           <Theme>{children}</Theme>
         </ParticlesProviderWrapper>
