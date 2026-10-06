@@ -137,8 +137,8 @@ export const PROJECTS_DETAILS = [
       {
         title: "Login",
         description: "",
-        image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791305293/login.png",
-        fallback: "/images/zaitoon-height/login.png",
+        image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791310034/zh-login.png",
+        fallback: "/images/zaitoon-height/zh-login.png",
       },
       {
         title: "Customers",
@@ -184,8 +184,8 @@ export const PROJECTS_DETAILS = [
       {
         title: "Profile",
         description: "Secure password update flow with validation.",
-        image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791305291/profile.png",
-        fallback: "/images/zaitoon-height/profile.png",
+        image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791309978/zh-profile.png",
+        fallback: "/images/zaitoon-height/zh-profile.png",
       },
       {
         title: "Calculator",
