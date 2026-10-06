@@ -4,7 +4,7 @@ export const PROJECTS = [
     title: "The Conqueror Developers",
     description:
       "A full-stack real estate management platform with a super-admin dashboard covering leads, payments, receipts, and customer management — built with Next.js, TypeScript, Node.js, Express, and MongoDB.",
-    image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791305293/cover.png",
+    image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791308293/cover.png",
     fallback: "/images/zaitoon-height/cover.png",
     tags: [
       "Next.js",
@@ -23,8 +23,8 @@ export const PROJECTS = [
     title: "Secure Vault - Data",
     description:
       "A secure file-vault mobile app with 3-step authentication (PIN, secret word, pattern) and progressive lockout. Includes file upload, preview, download, deletion, category filtering, and admin tools for user/file management.",
-    image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791305887/logo.png",
-    fallback: "/images/secure-vault/logo.png",
+    image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791308885/sv-logo.png",
+    fallback: "/images/secure-vault/sv-logo.png",
     tags: [
       "React Native",
       "TypeScript",
@@ -137,7 +137,7 @@ export const PROJECTS_DETAILS = [
       {
         title: "Login",
         description: "",
-        image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791305293/cover.png",
+        image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791305293/login.png",
         fallback: "/images/zaitoon-height/login.png",
       },
       {
@@ -178,8 +178,8 @@ export const PROJECTS_DETAILS = [
         title: "Employees",
         description:
           "Add, search, filter, and soft-delete employees with access restricted to authorized roles.",
-        image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791305291/employee.png",
-        fallback: "/images/zaitoon-height/employee.png",
+        image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791308774/zh-employee.png",
+        fallback: "/images/zaitoon-height/zh-employee.png",
       },
       {
         title: "Profile",
@@ -254,8 +254,8 @@ export const PROJECTS_DETAILS = [
       {
         title: "Landing",
         description: "Entry screen with branding and a clear call-to-action to unlock the vault.",
-        image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791305881/landing.jpg",
-        fallback: "/images/secure-vault/landing.jpg",
+        image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791308974/sv-landing.jpg",
+        fallback: "/images/secure-vault/sv-landing.jpg",
       },
       {
         title: "PIN",
@@ -363,8 +363,8 @@ export const PROJECTS_DETAILS = [
       {
         title: "Login",
         description: "Secure authentication screen for existing users.",
-        image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791306278/login.png",
-        fallback: "/images/yallahnshoof/login.png",
+        image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791309120/yn-login.png",
+        fallback: "/images/yallahnshoof/yn-login.png",
       },
       {
         title: "Signup",
@@ -411,8 +411,8 @@ export const PROJECTS_DETAILS = [
       {
         title: "Profile",
         description: "User profile management and account settings.",
-        image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791306281/profile.png",
-        fallback: "/images/yallahnshoof/profile.png",
+        image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791309214/yn-profile.png",
+        fallback: "/images/yallahnshoof/yn-profile.png",
       },
       {
         title: "Poll",
