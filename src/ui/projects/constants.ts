@@ -4,7 +4,8 @@ export const PROJECTS = [
     title: "The Conqueror Developers",
     description:
       "A full-stack real estate management platform with a super-admin dashboard covering leads, payments, receipts, and customer management — built with Next.js, TypeScript, Node.js, Express, and MongoDB.",
-    image: "/images/zaitoon-height/cover.png",
+    image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791305293/cover.png",
+    fallback: "/images/zaitoon-height/cover.png",
     tags: [
       "Next.js",
       "TypeScript",
@@ -22,7 +23,8 @@ export const PROJECTS = [
     title: "Secure Vault - Data",
     description:
       "A secure file-vault mobile app with 3-step authentication (PIN, secret word, pattern) and progressive lockout. Includes file upload, preview, download, deletion, category filtering, and admin tools for user/file management.",
-    image: "/images/secure-vault/logo.png",
+    image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791305887/logo.png",
+    fallback: "/images/secure-vault/logo.png",
     tags: [
       "React Native",
       "TypeScript",
@@ -41,7 +43,8 @@ export const PROJECTS = [
     title: "YallahNshoof",
     description:
       "An all-in-one marketplace app for buying, selling, and renting houses, apartments, cars, and more — connecting buyers, sellers, and renters in a simple and secure way.",
-    image: "/images/yallahnshoof/logo.png",
+    image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791306278/logo.png",
+    fallback: "/images/yallahnshoof/logo.png",
     tags: [
       "React Native",
       "TypeScript",
@@ -60,7 +63,8 @@ export const PROJECTS = [
     title: "Restros",
     description:
       "A role-based restaurant management system with panels for Owners, Chefs, Waiters, Accountants, and Admins. Features order management, menu & employee tools, table assignments, real-time kitchen workflows, and analytics dashboards.",
-    image: "/images/restaurant/cover.jpg",
+    image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791307025/cover.jpg",
+    fallback: "/images/restaurant/cover.jpg",
     tags: [
       "Next.js",
       "TypeScript",
@@ -133,52 +137,61 @@ export const PROJECTS_DETAILS = [
       {
         title: "Login",
         description: "",
-        image: "/images/zaitoon-height/login.png",
+        image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791305293/cover.png",
+        fallback: "/images/zaitoon-height/login.png",
       },
       {
         title: "Customers",
         description:
           "Add, search, filter, and manage customers with instant UI updates, separate loading/submission states, and route-based customer profiles",
-        image: "/images/zaitoon-height/Customer-page.png",
+        image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791305290/Customer-page.png",
+        fallback: "/images/zaitoon-height/Customer-page.png",
       },
       {
         title: "Units Information",
         description:
           "Book units, edit customer information, and manage property details with real-time financial calculations (received, outstanding, hold, and overdue amounts).",
-        image: "/images/zaitoon-height/unit-information.png",
+        image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791305292/unit-information.png",
+        fallback: "/images/zaitoon-height/unit-information.png",
       },
       {
         title: "Payments",
         description:
           "Support custom and installment payment plans, auto-generate installment schedules, record/edit receipts, and automatically synchronize payment and unit balances. Generate printable A4 receipts and customer statements.",
-        image: "/images/zaitoon-height/payments.png",
+        image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791305290/payments.png",
+        fallback: "/images/zaitoon-height/payments.png",
       },
       {
         title: "Receipts",
         description: "Generate printable receipts.",
-        image: "/images/zaitoon-height/all-receipts.png",
+        image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791305291/all-receipts.png",
+        fallback: "/images/zaitoon-height/all-receipts.png",
       },
       {
         title: "Leads",
         description:
           "Track incoming sales leads with pending/contacted statuses, live counters, and notification badges for pending follow-ups.",
-        image: "/images/zaitoon-height/leads.png",
+        image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791305291/leads.png",
+        fallback: "/images/zaitoon-height/leads.png",
       },
       {
         title: "Employees",
         description:
           "Add, search, filter, and soft-delete employees with access restricted to authorized roles.",
-        image: "/images/zaitoon-height/employee.png",
+        image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791305291/employee.png",
+        fallback: "/images/zaitoon-height/employee.png",
       },
       {
         title: "Profile",
         description: "Secure password update flow with validation.",
-        image: "/images/zaitoon-height/profile.png",
+        image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791305291/profile.png",
+        fallback: "/images/zaitoon-height/profile.png",
       },
       {
         title: "Calculator",
         description: "Integrated custom Calculator to enhance calculations.",
-        image: "/images/zaitoon-height/calculator.png",
+        image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791305291/calculator.png",
+        fallback: "/images/zaitoon-height/calculator.png",
       },
     ],
   },
@@ -241,31 +254,36 @@ export const PROJECTS_DETAILS = [
       {
         title: "Landing",
         description: "Entry screen with branding and a clear call-to-action to unlock the vault.",
-        image: "/images/secure-vault/landing.jpg",
+        image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791305881/landing.jpg",
+        fallback: "/images/secure-vault/landing.jpg",
       },
       {
         title: "PIN",
         description:
           "First authentication layer with numeric PIN entry, visual feedback, and progressive lockout on failed attempts.",
-        image: "/images/secure-vault/pin.jpg",
+        image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791305882/pin.jpg",
+        fallback: "/images/secure-vault/pin.jpg",
       },
       {
         title: "Password",
         description:
           "Second authentication layer for the secret word/password with secure input and continued lockout enforcement.",
-        image: "/images/secure-vault/password.jpg",
+        image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791305881/password.jpg",
+        fallback: "/images/secure-vault/password.jpg",
       },
       {
         title: "Pattern",
         description:
           "Final authentication layer using a pattern lock grid with visual trail and error handling before granting vault access.",
-        image: "/images/secure-vault/pattern.jpg",
+        image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791305882/pattern.jpg",
+        fallback: "/images/secure-vault/pattern.jpg",
       },
       {
         title: "Media",
         description:
           "Main vault screen with category tabs (All, Audio, Video, Other), in-app media playback/previews, upload/download, and soft-delete/restore management.",
-        image: "/images/secure-vault/media.jpg",
+        image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791305881/media.jpg",
+        fallback: "/images/secure-vault/media.jpg",
       },
     ],
   },
@@ -339,57 +357,68 @@ export const PROJECTS_DETAILS = [
       {
         title: "Landing",
         description: "Welcome screen introducing the all-in-one marketplace experience.",
-        image: "/images/yallahnshoof/landing.png",
+        image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791306278/landing.png",
+        fallback: "/images/yallahnshoof/landing.png",
       },
       {
         title: "Login",
         description: "Secure authentication screen for existing users.",
-        image: "/images/yallahnshoof/login.png",
+        image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791306278/login.png",
+        fallback: "/images/yallahnshoof/login.png",
       },
       {
         title: "Signup",
         description: "Simple registration flow for new users.",
-        image: "/images/yallahnshoof/signup.png",
+        image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791306284/signup.png",
+        fallback: "/images/yallahnshoof/signup.png",
       },
       {
         title: "Home",
         description: "Main feed showcasing featured listings and quick access to categories.",
-        image: "/images/yallahnshoof/home.png",
+        image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791306277/home.png",
+        fallback: "/images/yallahnshoof/home.png",
       },
       {
         title: "Property Listings",
         description: "Browse houses, apartments, and plots with clear pricing and details.",
-        image: "/images/yallahnshoof/property.png",
+        image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791306284/property.png",
+        fallback: "/images/yallahnshoof/property.png",
       },
       {
         title: "Listing Detail",
         description: "Full property or item details with photos, price, and contact options.",
-        image: "/images/yallahnshoof/detail.png",
+        image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791306276/detail.png",
+        fallback: "/images/yallahnshoof/detail.png",
       },
       {
         title: "Marketplace",
         description: "Explore a wide range of items available for sale or rent.",
-        image: "/images/yallahnshoof/marketplace.png",
+        image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791306278/marketplace.png",
+        fallback: "/images/yallahnshoof/marketplace.png",
       },
       {
         title: "Market Details",
         description: "Detailed view of marketplace listings with key information and actions.",
-        image: "/images/yallahnshoof/market-details.png",
+        image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791306278/market-details.png",
+        fallback: "/images/yallahnshoof/market-details.png",
       },
       {
         title: "Favorites",
         description: "Saved listings for quick access to preferred properties and items.",
-        image: "/images/yallahnshoof/favorite.png",
+        image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791306278/favorite.png",
+        fallback: "/images/yallahnshoof/favorite.png",
       },
       {
         title: "Profile",
         description: "User profile management and account settings.",
-        image: "/images/yallahnshoof/profile.png",
+        image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791306281/profile.png",
+        fallback: "/images/yallahnshoof/profile.png",
       },
       {
         title: "Poll",
         description: "Interactive poll feature for community engagement.",
-        image: "/images/yallahnshoof/poll.png",
+        image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791306279/poll.png",
+        fallback: "/images/yallahnshoof/poll.png",
       },
     ],
   },
@@ -472,55 +501,65 @@ export const PROJECTS_DETAILS = [
       {
         title: "Login",
         description: "Secure authentication screen for restaurant staff and admins.",
-        image: "/images/restaurant/login.png",
+        image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791306815/login.png",
+        fallback: "/images/restaurant/login.png",
       },
       {
         title: "Dashboard",
         description:
           "Overview of total revenue, pending revenue, recent orders, and graphs for orders and payments.",
-        image: "/images/restaurant/dashboard.png",
+        image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791306812/dashboard.png",
+        fallback: "/images/restaurant/dashboard.png",
       },
       {
         title: "Orders",
         description:
           "List of all orders with status (pending, ready, served, etc.) and filters by date, week, or month.",
-        image: "/images/restaurant/orders.png",
+        image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791306815/orders.png",
+        fallback: "/images/restaurant/orders.png",
       },
       {
         title: "Tables",
         description:
           "Manage tables by seating type, assign/unassign waiters, and generate QR codes for customer ordering.",
-        image: "/images/restaurant/tables.png",
+        image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791306818/tables.png",
+        fallback: "/images/restaurant/tables.png",
       },
       {
         title: "Menu",
         description: "Add menu items and rearrange the order of items and categories.",
-        image: "/images/restaurant/menu.png",
+        image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791306816/menu.png",
+        fallback: "/images/restaurant/menu.png",
       },
       {
         title: "Stocks",
         description: "Add stock items that auto-deduct on order completion and manage wastage.",
-        image: "/images/restaurant/stocks.png",
+        image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791306817/stocks.png",
+        fallback: "/images/restaurant/stocks.png",
       },
       {
         title: "Employees",
         description: "Add or delete restaurant employees.",
-        image: "/images/restaurant/employee.png",
+        image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791306814/employee.png",
+        fallback: "/images/restaurant/employee.png",
       },
       {
         title: "Tips",
         description: "Define preset tip values such as 5, 10, and 20.",
-        image: "/images/restaurant/tips.png",
+        image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791306820/tips.png",
+        fallback: "/images/restaurant/tips.png",
       },
       {
         title: "Configuration",
         description: "Update language, currency, and the AI API key used for menu suggestions.",
-        image: "/images/restaurant/configuration.png",
+        image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791306813/configuration.png",
+        fallback: "/images/restaurant/configuration.png",
       },
       {
         title: "Profile",
         description: "Change password and update restaurant logo or cover image.",
-        image: "/images/restaurant/profile.png",
+        image: "https://res.cloudinary.com/yeepb6vh/image/upload/v1791306817/profile.png",
+        fallback: "/images/restaurant/profile.png",
       },
     ],
   },
