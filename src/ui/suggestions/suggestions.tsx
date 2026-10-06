@@ -34,15 +34,11 @@ export const Suggestions = () => {
     <section id="suggestions" className="w-full scroll-mt-8 bg-gray-50">
       <div className="mx-auto max-w-7xl px-6 py-8">
         <div className="flex flex-col gap-4">
-          <span className="inline-block w-fit rounded-full bg-[#DAB025]/10 px-4 py-2 text-sm font-semibold tracking-wider text-[#DAB025] uppercase">
-            Suggestions
-          </span>
-
-          <h2 className="text-2xl leading-tight font-bold text-[#003B73] md:text-5xl">
+          <h2 className="font-display text-4xl leading-[1.05] font-normal tracking-tight text-[#003B73] md:text-6xl">
             Got feedback on the portfolio?
           </h2>
 
-          <p className="text-lg leading-8 text-gray-600">
+          <p className="text-base leading-7 text-gray-600 md:text-lg md:leading-8">
             Drop a suggestion below —{" "}
             <span className="font-semibold text-[#003B73]">I read every one</span> and reply right
             here, so feel free to check back.

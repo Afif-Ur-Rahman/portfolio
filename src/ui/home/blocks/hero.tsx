@@ -37,6 +37,11 @@ export const Hero = () => {
               }`}
               priority
               onLoad={() => setIsLoading(false)}
+              onError={e => {
+                if (!e.currentTarget.src.endsWith("/images/profile.jpg")) {
+                  e.currentTarget.src = "/images/profile.jpg";
+                }
+              }}
             />
           </div>
 

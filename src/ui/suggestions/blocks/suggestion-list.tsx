@@ -113,24 +113,37 @@ export const SuggestionList = ({
                 id={`suggestion-${s._id}`}
                 className="rounded-xl border border-gray-200 bg-white p-4 transition-colors duration-300 hover:border-[#DAB025]"
               >
-                <div className="flex items-center gap-3">
-                  <Avatar size="4" radius="full" fallback={getInitials(s.name)} />
+                <div className="grid grid-cols-[auto_1fr] items-start gap-x-3">
+                  <Avatar
+                    size="4"
+                    radius="full"
+                    fallback={getInitials(s.name)}
+                    className="shrink-0 sm:row-span-2"
+                  />
 
-                  <div className="min-w-0 flex-1">
-                    <div className="flex items-center justify-between gap-3">
-                      <span className="text-sm font-semibold text-[#0A4A8A]">{s.name}</span>
+                  <div className="flex min-w-0 items-start justify-between gap-3">
+                    <div className="flex w-full min-w-0 flex-col justify-between sm:flex-row sm:items-center sm:gap-3">
+                      <span className="truncate text-base font-medium text-[#0A4A8A]">
+                        {s.name}
+                      </span>
+                      <span className="font-mono text-[11px] text-gray-400">
+                        {new Date(s.createdAt).toLocaleDateString()}
+                      </span>
                     </div>
 
-                    <p className="mt-1.5 text-sm text-gray-600">{s.message}</p>
-                  </div>
-                  <div className="flex flex-col items-center gap-3 sm:flex-row">
                     {isOwner && (
-                      <ActionButtons onEdit={() => startEdit(s)} onDelete={() => onDelete(s._id)} />
+                      <div className="shrink-0">
+                        <ActionButtons
+                          onEdit={() => startEdit(s)}
+                          onDelete={() => onDelete(s._id)}
+                        />
+                      </div>
                     )}
-                    <span className="shrink-0 text-xs text-gray-400">
-                      {new Date(s.createdAt).toLocaleDateString()}
-                    </span>
                   </div>
+
+                  <p className="col-span-2 mt-3 text-[15px] leading-6 wrap-break-word text-gray-600 sm:col-span-1 sm:mt-1">
+                    {s.message}
+                  </p>
                 </div>
 
                 <AnimatePresence initial={false}>
@@ -142,8 +155,10 @@ export const SuggestionList = ({
                       transition={{ duration: 0.3, ease: "easeInOut" }}
                       className="overflow-hidden rounded-lg border-l-2 border-[#DAB025] bg-[#DAB025]/5 px-3 py-2"
                     >
-                      <span className="text-xs font-semibold text-[#DAB025]">Owner:</span>
-                      <p className="mt-1 text-sm text-[#09113F]">{s.reply}</p>
+                      <span className="font-mono text-[11px] tracking-wider text-[#DAB025] uppercase">
+                        Owner
+                      </span>
+                      <p className="mt-1 text-[15px] leading-6 text-[#09113F]">{s.reply}</p>
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -166,7 +181,7 @@ export const SuggestionList = ({
           <button
             type="button"
             onClick={toggleShowAll}
-            className="mx-auto flex items-center gap-1.5 rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-[#0A4A8A] transition-all hover:border-[#DAB025] hover:text-[#DAB025]"
+            className="mx-auto flex items-center gap-1.5 rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-[#0A4A8A] transition-all hover:border-[#DAB025] hover:text-[#DAB025]"
           >
             {showAll ? "Show less" : `See more (${suggestions.length - VISIBLE_COUNT})`}
             <ChevronDown

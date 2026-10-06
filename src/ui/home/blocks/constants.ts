@@ -23,7 +23,7 @@ import {
 
 export const COUNTS = [
   { value: 3, suffix: "+", label: "Years Coding" },
-  { value: 8, suffix: "+", label: "Projects Built" },
+  { value: 9, suffix: "+", label: "Projects Built" },
   { value: 10, suffix: "+", label: "Technologies" },
   { value: 100, suffix: "%", label: "Commitment" },
 ];
