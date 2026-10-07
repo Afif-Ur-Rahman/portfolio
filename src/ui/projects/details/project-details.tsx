@@ -28,6 +28,7 @@ export const ProjectDetails = ({ id }: ProjectDetailsProps) => {
         title={project.title}
         description={detail?.description || project.description}
         image={project.image}
+        fallback={project.fallback}
         tags={project.tags}
         liveUrl={project.liveUrl}
         appStoreUrl={project.appStoreUrl}

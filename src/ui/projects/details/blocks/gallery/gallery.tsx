@@ -44,12 +44,13 @@ export const Gallery = ({ gallery, isMobile = false }: GalleryProps) => {
     <section id="gallery" className="w-full bg-white py-8">
       <div className="mx-auto max-w-7xl px-6">
         <div className="flex flex-col gap-3">
-          <span className="w-fit rounded-full bg-[#DAB025]/10 px-4 py-2 text-sm font-semibold tracking-wider text-[#DAB025] uppercase">
-            A Look Inside
-          </span>
-          <h2 className="text-3xl font-bold text-[#003B73] md:text-4xl">Gallery</h2>
+          <h2 className="font-display text-5xl leading-[1.05] font-normal tracking-tight text-[#003B73] md:text-6xl">
+            Gallery
+          </h2>
         </div>
-        <p className="mb-8 max-w-2xl text-[#09113F]/60">Explore the project screen by screen.</p>
+        <p className="mb-8 max-w-2xl text-base text-[#09113F]/60 md:text-lg">
+          Explore the project screen by screen.
+        </p>
 
         {/* Tabs */}
         <div className="scrollbar-hide mb-4 flex gap-2 overflow-x-auto pb-1">
@@ -92,7 +93,7 @@ export const Gallery = ({ gallery, isMobile = false }: GalleryProps) => {
               <div className="absolute top-2 left-1/2 h-4 w-18 -translate-x-1/2 rounded-2xl bg-[#DAB025]/40" />
 
               <div className="flex items-center justify-between px-5 py-2.5">
-                <span className="text-xs font-semibold tracking-wide text-white/90">
+                <span className="font-mono text-xs font-medium tracking-wide text-white/90">
                   {`${new Date().getHours().toString().padStart(2, "0")} : ${new Date().getMinutes().toString().padStart(2, "0")}`}
                 </span>
                 <div className="flex items-center gap-1.5">
@@ -135,13 +136,18 @@ export const Gallery = ({ gallery, isMobile = false }: GalleryProps) => {
                   )}
                   priority={activeIndex === 0}
                   onLoad={() => setIsLoading(false)}
+                  onError={e => {
+                    if (active.fallback && !e.currentTarget.src.endsWith(active.fallback)) {
+                      e.currentTarget.src = active.fallback;
+                    }
+                  }}
                 />
               </motion.div>
             </AnimatePresence>
           </div>
         </div>
 
-        <p className="mt-2 text-[#09113F]/70">{active.description}</p>
+        <p className="mt-3 text-[15px] leading-6 text-[#09113F]/70">{active.description}</p>
       </div>
     </section>
   );

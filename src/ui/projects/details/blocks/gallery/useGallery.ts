@@ -4,6 +4,7 @@ export type GalleryItem = {
   title: string;
   description: string;
   image: string;
+  fallback?: string;
 };
 
 export const useGallery = (gallery: GalleryItem[]) => {

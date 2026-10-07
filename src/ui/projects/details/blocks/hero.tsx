@@ -12,6 +12,7 @@ type ProjectHeaderProps = {
   title: string;
   description: string;
   image: string;
+  fallback?: string;
   tags: string[];
   liveUrl?: string;
   playStoreUrl?: string;
@@ -22,6 +23,7 @@ export const Hero = ({
   title,
   description,
   image,
+  fallback,
   tags,
   liveUrl,
   playStoreUrl,
@@ -49,29 +51,25 @@ export const Hero = ({
       <div className="relative z-10 mx-auto max-w-7xl px-6 py-14">
         <div className="mt-8 grid grid-cols-1 items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
-            <div className="flex flex-wrap items-center gap-3">
-              <span className="inline-block rounded-full bg-[#DAB025]/10 px-4 py-2 text-sm font-semibold tracking-wider text-[#DAB025] uppercase">
-                Case Study
-              </span>
+            <VisitorCounter
+              count={count}
+              label="No. of people visited this project"
+              isLoading={isCountLoading}
+            />
 
-              <VisitorCounter
-                count={count}
-                label="No. of people visited this project"
-                isLoading={isCountLoading}
-              />
-            </div>
-
-            <h1 className="mt-4 text-4xl leading-tight font-bold text-white md:text-5xl">
+            <h1 className="font-display mt-4 text-5xl leading-[1.05] font-normal tracking-tight text-white md:text-6xl">
               {title}
             </h1>
 
-            <p className="mt-4 text-lg leading-8 text-gray-300">{description}</p>
+            <p className="mt-4 text-base leading-7 text-gray-300 md:text-lg md:leading-8">
+              {description}
+            </p>
 
             <div className="mt-6 flex flex-wrap gap-2">
               {tags.map(tag => (
                 <span
                   key={tag}
-                  className="rounded-full border border-[#DAB025]/30 bg-[#DAB025]/10 px-3 py-1 text-xs font-semibold text-[#DAB025]"
+                  className="rounded-full border border-[#DAB025]/30 bg-[#DAB025]/10 px-3 py-1 font-mono text-xs font-medium text-[#DAB025]"
                 >
                   {tag}
                 </span>
@@ -84,7 +82,7 @@ export const Hero = ({
                   href={liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full bg-[#DAB025] px-6 py-3 text-sm font-bold text-[#09113F] transition-transform hover:-translate-y-0.5 hover:shadow-[0_0_20px_2px_rgba(218,176,37,0.4)]"
+                  className="inline-flex items-center gap-2 rounded-full bg-[#DAB025] px-6 py-3 text-sm font-medium tracking-wide text-[#09113F] transition-transform hover:-translate-y-0.5 hover:shadow-[0_0_20px_2px_rgba(218,176,37,0.4)]"
                 >
                   Visit Live Site
                   <ExternalLink size={15} />
@@ -140,6 +138,11 @@ export const Hero = ({
               }`}
               priority
               onLoad={() => setIsLoading(false)}
+              onError={e => {
+                if (fallback && !e.currentTarget.src.endsWith(fallback)) {
+                  e.currentTarget.src = fallback;
+                }
+              }}
             />
           </div>
         </div>
