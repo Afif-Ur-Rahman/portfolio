@@ -34,7 +34,7 @@ export const Suggestions = () => {
     <section id="suggestions" className="w-full scroll-mt-8 bg-gray-50">
       <div className="mx-auto max-w-7xl px-6 py-8">
         <div className="flex flex-col gap-4">
-          <h2 className="font-display text-4xl leading-[1.05] font-normal tracking-tight text-[#003B73] md:text-6xl">
+          <h2 className="font-display text-3xl leading-[1.05] font-normal tracking-tight text-[#003B73] md:text-6xl">
             Got feedback on the portfolio?
           </h2>
 

@@ -7,7 +7,7 @@ export const Skills = () => {
     <section id="skills" className="w-full scroll-mt-8 bg-gray-50">
       <div className="mx-auto flex max-w-7xl flex-col gap-2 p-6">
         <div className="flex flex-col gap-4">
-          <h2 className="font-display text-5xl leading-[1.05] font-normal tracking-tight text-[#003B73] md:text-6xl">
+          <h2 className="font-display text-3xl leading-[1.05] font-normal tracking-tight text-[#003B73] md:text-6xl">
             Tools & Technologies
           </h2>
 
@@ -26,9 +26,9 @@ export const Skills = () => {
           {SKILL_GROUPS.map(group => (
             <div
               key={group.title}
-              className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:border-[#DAB025] hover:shadow-xl"
+              className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm"
             >
-              <h3 className="font-display mb-5 text-2xl font-normal text-[#0A4A8A]">
+              <h3 className="font-display mb-5 text-xl font-normal text-[#0A4A8A]">
                 {group.title}
               </h3>
 

@@ -93,10 +93,8 @@ export const Header = ({
 
   return (
     <header
-      className={`fixed top-0 left-0 z-50 w-full transition-all duration-300 ease-in-out ${
-        mobileMenu || isScrolled
-          ? `bg-[#09113F] shadow-md ${isHome ? "py-4" : "py-6"}`
-          : `transparent ${isHome ? "py-3" : "py-4"}`
+      className={`fixed top-0 left-0 z-50 w-full py-3 transition-all duration-300 ease-in-out ${
+        mobileMenu || isScrolled ? `bg-[#09113F] shadow-md` : `transparent`
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8">
@@ -111,7 +109,9 @@ export const Header = ({
             </Link>
           )}
           <Link href="#" className="flex items-center gap-2">
-            <span className="font-display text-2xl font-normal text-white md:text-3xl">
+            <span
+              className={`font-display ${isHome ? "text-2xl" : "text-xl"} font-normal text-white md:text-3xl`}
+            >
               <span className="text-[#DAB025]">{firstName}</span>
               {lastName ? ` ${lastName}` : ""}
             </span>

@@ -11,7 +11,7 @@ export const AboutMe = () => {
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-8 lg:flex-row lg:gap-10">
             <div className="min-w-0 flex-2">
-              <h2 className="font-display text-5xl leading-[1.05] font-normal tracking-tight text-[#003B73] md:text-6xl">
+              <h2 className="font-display text-3xl leading-[1.05] font-normal tracking-tight text-[#003B73] md:text-6xl">
                 Full-Stack Developer
               </h2>
 
@@ -84,7 +84,7 @@ export const AboutMe = () => {
           <div className="mt-4 grid grid-cols-2 gap-6 rounded-2xl bg-[#003B73] py-8 text-center md:grid-cols-4">
             {COUNTS.map(stat => (
               <div key={stat.label}>
-                <h3 className="font-display text-4xl font-normal text-[#DAB025] md:text-6xl">
+                <h3 className="font-display text-3xl font-normal text-[#DAB025] md:text-6xl">
                   <CountUp end={stat.value} duration={2.5} separator="," suffix={stat.suffix} />
                 </h3>
                 <p className="mt-2 text-sm font-medium text-white md:text-base">{stat.label}</p>

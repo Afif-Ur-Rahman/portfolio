@@ -15,7 +15,7 @@ export const SecurityAutomation = ({ security, automation }: ProjectSecurityAuto
     <section id="security" className="w-full py-8">
       <div className="mx-auto max-w-7xl px-6">
         <div className="flex flex-col gap-3">
-          <h2 className="font-display text-5xl leading-[1.05] font-normal tracking-tight text-[#003B73] md:text-6xl">
+          <h2 className="font-display text-3xl leading-[1.05] font-normal tracking-tight text-[#003B73] md:text-6xl">
             Security & Automation
           </h2>
         </div>

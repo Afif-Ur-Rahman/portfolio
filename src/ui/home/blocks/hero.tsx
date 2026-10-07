@@ -55,7 +55,7 @@ export const Hero = () => {
             Hi, I&apos;m Afif Ur Rahman
           </p>
 
-          <h1 className="font-display max-w-2xl text-5xl leading-[1.08] font-normal tracking-tight text-white sm:text-6xl lg:text-7xl">
+          <h1 className="font-display max-w-2xl text-3xl leading-[1.08] font-normal tracking-tight text-white sm:text-6xl lg:text-7xl">
             <span className="block">I build</span>
             <span className="my-2 flex h-[2.3em] w-full items-center justify-center text-center md:h-[1.2em] md:max-w-[22ch] lg:justify-start lg:text-left">
               <TypeAnimation

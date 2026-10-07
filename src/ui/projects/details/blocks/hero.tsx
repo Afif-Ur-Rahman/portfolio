@@ -51,13 +51,7 @@ export const Hero = ({
       <div className="relative z-10 mx-auto max-w-7xl px-6 py-14">
         <div className="mt-8 grid grid-cols-1 items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
-            <VisitorCounter
-              count={count}
-              label="No. of people visited this project"
-              isLoading={isCountLoading}
-            />
-
-            <h1 className="font-display mt-4 text-5xl leading-[1.05] font-normal tracking-tight text-white md:text-6xl">
+            <h1 className="font-display text-3xl leading-[1.05] font-normal tracking-tight text-white md:text-6xl">
               {title}
             </h1>
 
@@ -122,6 +116,11 @@ export const Hero = ({
                   />
                 </Link>
               )}
+              <VisitorCounter
+                count={count}
+                label="No. of people visited this project"
+                isLoading={isCountLoading}
+              />
             </div>
           </div>
 

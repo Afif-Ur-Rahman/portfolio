@@ -108,7 +108,7 @@ export const ProjectCard = ({
       </div>
 
       <div className="flex flex-1 flex-col p-4">
-        <h3 className="font-display line-clamp-1 text-2xl leading-tight font-normal text-[#003B73]">
+        <h3 className="font-display line-clamp-1 text-xl leading-tight font-normal text-[#003B73] md:text-2xl">
           {title}
         </h3>
 

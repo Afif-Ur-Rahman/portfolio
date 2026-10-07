@@ -12,7 +12,7 @@ export const Features = ({ features }: ProjectFeaturesProps) => {
     <section id="features" className="w-full bg-[#09113F]/3 py-8">
       <div className="mx-auto max-w-7xl px-6">
         <div className="flex flex-col gap-3">
-          <h2 className="font-display text-5xl leading-[1.05] font-normal tracking-tight text-[#003B73] md:text-6xl">
+          <h2 className="font-display text-3xl leading-[1.05] font-normal tracking-tight text-[#003B73] md:text-6xl">
             Core Features
           </h2>
         </div>

@@ -46,8 +46,10 @@ export const MobileSidebar: React.FC<MobileNavDrawerProps> = ({
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(218,176,37,0.12),transparent_30%),radial-gradient(circle_at_bottom_right,rgba(9,17,63,0.20),transparent_35%)]" />
 
         <div className="relative flex h-full flex-col">
-          <div className="flex items-center justify-between border-b border-white/10 px-5 py-4">
-            <span className="font-display text-2xl font-normal text-white">
+          <div className="flex items-center justify-between border-b border-white/10 px-5 py-2">
+            <span
+              className={`font-display ${page === "home" ? "text-2xl" : "text-xl"} font-normal text-white`}
+            >
               <span className="text-[#DAB025]">{firstName}</span>
               {lastName ? ` ${lastName}` : ""}
             </span>
