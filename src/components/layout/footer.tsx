@@ -18,10 +18,10 @@ export const Footer = () => {
       <div className="relative mx-auto max-w-7xl px-6 pt-14 sm:px-10 lg:px-16">
         <div className="grid gap-12 md:grid-cols-[1.3fr_0.8fr_1.3fr]">
           <div>
-            <span className="text-2xl font-bold text-white">
+            <span className="font-display text-3xl font-normal text-white">
               <span className="text-[#DAB025]">Afif</span> Ur Rahman
             </span>
-            <p className="mt-4 max-w-sm leading-relaxed text-white/75">
+            <p className="mt-4 max-w-sm text-[15px] leading-relaxed text-white/75">
               Full-stack developer passionate about crafting modern, scalable, and user-friendly web
               applications. I specialize in building solutions that merge performance with elegant
               design.
@@ -29,14 +29,16 @@ export const Footer = () => {
           </div>
 
           <div>
-            <h3 className="font-semibold tracking-[0.14em] text-white/60 uppercase">Quick Links</h3>
+            <h3 className="font-mono text-xs tracking-[0.14em] text-white/60 uppercase">
+              Quick Links
+            </h3>
             <ul className="mt-4 space-y-3">
               {HOME_MENU.map(link => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
                     onClick={e => handleNavClick(e, link.href)}
-                    className="font-medium text-white/85 transition-all hover:text-[#F2C078] hover:underline"
+                    className="text-[15px] font-medium text-white/85 transition-all hover:text-[#F2C078] hover:underline"
                   >
                     {link.label}
                   </Link>
@@ -46,20 +48,20 @@ export const Footer = () => {
           </div>
 
           <div>
-            <h3 className="font-semibold tracking-[0.14em] text-white/60 uppercase">
+            <h3 className="font-mono text-xs tracking-[0.14em] text-white/60 uppercase">
               Get In Touch
             </h3>
             <ul className="mt-4 space-y-4">
               <li>
                 <a
                   href="mailto:afifurrahman444@gmail.com"
-                  className="flex items-start gap-3 font-medium text-white/85 transition-colors hover:text-[#F2C078] hover:underline"
+                  className="flex items-start gap-3 text-[15px] font-medium text-white/85 transition-colors hover:text-[#F2C078] hover:underline"
                 >
                   <Mail className="h-5 w-5 shrink-0" strokeWidth={1.6} />
                   <span>afifurrahman444@gmail.com</span>
                 </a>
               </li>
-              <li className="flex items-start gap-3 font-medium text-white/85">
+              <li className="flex items-start gap-3 text-[15px] font-medium text-white/85">
                 <MapPin className="h-5 w-5 shrink-0" strokeWidth={1.6} />
                 <span>Lahore, Pakistan</span>
               </li>
@@ -93,7 +95,7 @@ export const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-4 w-full border-t-2 border-white/15 py-6 text-center text-sm text-white/60">
+        <div className="mt-4 w-full border-t-2 border-white/15 py-6 text-center font-mono text-xs text-white/60">
           © {new Date().getFullYear()} Afif Ur Rahman. All rights reserved.
         </div>
       </div>

@@ -8,15 +8,11 @@ export const Projects = () => {
     <section id="projects" className="scroll-mt-8 bg-white">
       <div className="mx-auto max-w-7xl px-6 py-8">
         <div className="flex flex-col gap-4">
-          <span className="inline-block w-fit rounded-full bg-[#DAB025]/10 px-4 py-2 text-sm font-semibold tracking-wider text-[#DAB025] uppercase">
-            Projects
-          </span>
-
-          <h2 className="text-4xl leading-tight font-bold text-[#003B73] md:text-5xl">
+          <h2 className="font-display text-5xl leading-[1.05] font-normal tracking-tight text-[#003B73] md:text-6xl">
             Featured Work
           </h2>
 
-          <p className="text-lg leading-8 text-gray-600">
+          <p className="text-base leading-7 text-gray-600 md:text-lg md:leading-8">
             A selection of projects I&apos;ve built — from polished user interfaces and responsive
             layouts to scalable backends, <span className="font-semibold text-[#003B73]">APIs</span>
             , and databases. Each one prioritizes clean architecture, performance, and

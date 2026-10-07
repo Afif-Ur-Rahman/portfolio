@@ -111,7 +111,7 @@ export const Header = ({
             </Link>
           )}
           <Link href="#" className="flex items-center gap-2">
-            <span className="text-md font-bold text-white md:text-xl">
+            <span className="font-display text-2xl font-normal text-white md:text-3xl">
               <span className="text-[#DAB025]">{firstName}</span>
               {lastName ? ` ${lastName}` : ""}
             </span>
@@ -131,7 +131,7 @@ export const Header = ({
                 setActiveSection(item.href);
                 handleNavClick(e, item.href);
               }}
-              className={`relative font-medium transition-colors duration-300 ease-in-out hover:text-[#DAB025] ${
+              className={`relative text-[15px] font-medium transition-colors duration-300 ease-in-out hover:text-[#DAB025] ${
                 isActive(item.href) ? "text-[#DAB025]" : "text-white"
               }`}
             >
@@ -153,7 +153,7 @@ export const Header = ({
             <a
               href="/assets/Fullstack-Afif-Ur-Rahman.pdf"
               download
-              className="inline-flex items-center gap-2 rounded-md border border-[#DAB025]/60 bg-transparent px-5 py-2.5 text-sm font-semibold text-[#DAB025] transition-all duration-300 hover:border-[#DAB025] hover:bg-[#DAB025]/10 hover:text-[#E8C84A]"
+              className="inline-flex items-center gap-2 rounded-md border border-[#DAB025]/60 bg-transparent px-5 py-2.5 text-sm font-medium tracking-wide text-[#DAB025] transition-all duration-300 hover:border-[#DAB025] hover:bg-[#DAB025]/10 hover:text-[#E8C84A]"
             >
               <Download size={16} />
               Download Resume

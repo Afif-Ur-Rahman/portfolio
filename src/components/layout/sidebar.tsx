@@ -47,7 +47,7 @@ export const MobileSidebar: React.FC<MobileNavDrawerProps> = ({
 
         <div className="relative flex h-full flex-col">
           <div className="flex items-center justify-between border-b border-white/10 px-5 py-4">
-            <span className="text-xl font-bold text-white">
+            <span className="font-display text-2xl font-normal text-white">
               <span className="text-[#DAB025]">{firstName}</span>
               {lastName ? ` ${lastName}` : ""}
             </span>
@@ -76,7 +76,7 @@ export const MobileSidebar: React.FC<MobileNavDrawerProps> = ({
                         handleNavClick(e, href);
                         onClose();
                       }}
-                      className={`flex w-full items-center gap-3 rounded-2xl px-4 py-3 text-sm font-medium transition-all duration-200 ${
+                      className={`flex w-full items-center gap-3 rounded-2xl px-4 py-3 text-[15px] font-medium transition-all duration-200 ${
                         isActive
                           ? "bg-linear-to-r from-[#DAB025]/25 via-[#DAB025]/15 to-[#09113F]/40 text-white shadow-lg ring-1 shadow-[#DAB025]/10 ring-[#DAB025]/20 ring-inset"
                           : "text-slate-300 hover:bg-white/5 hover:text-white"
@@ -96,7 +96,7 @@ export const MobileSidebar: React.FC<MobileNavDrawerProps> = ({
                 href="/assets/Fullstack-Afif-Ur-Rahman.pdf"
                 download
                 onClick={onClose}
-                className="flex w-full items-center justify-center gap-2 rounded-2xl border border-[#DAB025]/20 bg-[#DAB025]/10 px-4 py-3 text-base font-medium text-white transition hover:bg-[#DAB025]/20"
+                className="flex w-full items-center justify-center gap-2 rounded-2xl border border-[#DAB025]/20 bg-[#DAB025]/10 px-4 py-3 text-[15px] font-medium tracking-wide text-white transition hover:bg-[#DAB025]/20"
               >
                 <Download size={18} />
                 Download Resume
@@ -104,7 +104,7 @@ export const MobileSidebar: React.FC<MobileNavDrawerProps> = ({
             ) : (
               <Link
                 href="/#projects"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-[#DAB025] px-6 py-3 text-sm text-white transition-colors hover:bg-[#DAB025]"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-[#DAB025] px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-[#DAB025]"
               >
                 <ArrowLeft size={15} />
                 Back to All Projects

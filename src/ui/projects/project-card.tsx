@@ -14,6 +14,7 @@ type ProjectCardProps = {
   title: string;
   description: string;
   image: string;
+  fallback?: string;
   tags: string[];
   liveUrl?: string;
   playStoreUrl?: string;
@@ -25,6 +26,7 @@ export const ProjectCard = ({
   title,
   description,
   image,
+  fallback,
   tags,
   liveUrl,
   playStoreUrl,
@@ -68,6 +70,11 @@ export const ProjectCard = ({
             isLoading ? "opacity-0" : "opacity-100"
           }`}
           onLoad={() => setIsLoading(false)}
+          onError={e => {
+            if (fallback && !e.currentTarget.src.endsWith(fallback)) {
+              e.currentTarget.src = fallback;
+            }
+          }}
         />
 
         {(playStoreUrl || appStoreUrl) && (
@@ -101,25 +108,27 @@ export const ProjectCard = ({
       </div>
 
       <div className="flex flex-1 flex-col p-4">
-        <h3 className="line-clamp-1 text-base font-bold text-[#003B73]">{title}</h3>
+        <h3 className="font-display line-clamp-1 text-2xl leading-tight font-normal text-[#003B73]">
+          {title}
+        </h3>
 
-        <p className="mt-1.5 line-clamp-3 text-xs leading-5 text-gray-600">{description}</p>
+        <p className="mt-1.5 line-clamp-3 text-[13px] leading-5 text-gray-600">{description}</p>
 
         <div className="mt-3 flex flex-wrap gap-1.5">
           {tags.map(tag => (
             <span
               key={tag}
-              className="rounded-full bg-[#DAB025]/10 px-2 py-0.5 text-[10px] font-semibold text-[#DAB025]"
+              className="rounded-full bg-[#DAB025]/10 px-2 py-0.5 font-mono text-[10px] font-medium text-[#DAB025]"
             >
               {tag}
             </span>
           ))}
         </div>
 
-        <div className="mt-2 flex items-center justify-between gap-3">
+        <div className="mt-3 flex items-center justify-between gap-3">
           <Link
             href={`/project/${id}`}
-            className="flex w-fit items-center gap-1 text-xs font-semibold text-[#0A4A8A] hover:text-[#DAB025] hover:underline"
+            className="flex w-fit items-center gap-1 text-[13px] font-medium text-[#0A4A8A] hover:text-[#DAB025] hover:underline"
             onClick={e => e.stopPropagation()}
           >
             <FileText size={13} />
@@ -130,7 +139,7 @@ export const ProjectCard = ({
               href={liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex w-fit items-center gap-1 text-xs font-semibold text-[#0A4A8A] hover:text-[#DAB025] hover:underline"
+              className="flex w-fit items-center gap-1 text-[13px] font-medium text-[#0A4A8A] hover:text-[#DAB025] hover:underline"
               onClick={e => e.stopPropagation()}
             >
               <ExternalLink size={13} />
