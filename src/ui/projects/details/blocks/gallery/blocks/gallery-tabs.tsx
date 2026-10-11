@@ -4,14 +4,13 @@ import { motion } from "framer-motion";
 
 import { cn } from "@/utils";
 
-import type { GalleryItem } from "./useGallery";
+import { GalleryItem } from "../useGallery";
 
 import type { RefObject } from "react";
 
 type GalleryTabsProps = {
   gallery: GalleryItem[];
   activeIndex: number;
-  isLoading: boolean;
   isHovered: boolean;
   onSelect: (index: number) => void;
   tabRefs: RefObject<(HTMLButtonElement | null)[]>;
@@ -20,7 +19,6 @@ type GalleryTabsProps = {
 export const GalleryTabs = ({
   gallery,
   activeIndex,
-  isLoading,
   isHovered,
   onSelect,
   tabRefs,
@@ -65,16 +63,14 @@ export const GalleryTabs = ({
                   transition={{ type: "spring", stiffness: 400, damping: 32 }}
                   className="absolute inset-x-0 bottom-0 h-0.5 overflow-hidden rounded-full bg-[#DAB025]/25"
                 >
-                  {!isLoading && (
-                    <span
-                      key={`${activeIndex}-${isHovered}`}
-                      className="block h-full bg-[#DAB025]"
-                      style={{
-                        animation: "tab-progress 4s linear forwards",
-                        animationPlayState: isHovered ? "paused" : "running",
-                      }}
-                    />
-                  )}
+                  <span
+                    key={`${activeIndex}-${isHovered}`}
+                    className="block h-full bg-[#DAB025]"
+                    style={{
+                      animation: "tab-progress 4s linear forwards",
+                      animationPlayState: isHovered ? "paused" : "running",
+                    }}
+                  />
                 </motion.span>
               )}
             </button>
