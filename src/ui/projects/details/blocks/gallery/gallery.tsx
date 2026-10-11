@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Battery, Mac, Signal, Wifi } from "@/components/svgs";
 import { cn } from "@/utils";
 
+import { GalleryTabs } from "./gallery-tabs";
 import { GalleryItem, useGallery } from "./useGallery";
 
 type GalleryProps = {
@@ -34,6 +35,7 @@ export const Gallery = ({ gallery, isMobile = false }: GalleryProps) => {
     direction,
     active,
     isLoading,
+    isHovered,
     setIsHovered,
     setIsLoading,
     handleSelect,
@@ -52,33 +54,14 @@ export const Gallery = ({ gallery, isMobile = false }: GalleryProps) => {
           Explore the project screen by screen.
         </p>
 
-        {/* Tabs */}
-        <div className="scrollbar-hide mb-4 flex gap-2 overflow-x-auto pb-1">
-          {gallery.map((item, index) => (
-            <button
-              key={item.title}
-              ref={el => {
-                tabRefs.current[index] = el;
-              }}
-              onClick={() => handleSelect(index)}
-              className={cn(
-                "relative shrink-0 cursor-pointer rounded-full border px-4 py-2 text-sm font-medium whitespace-nowrap transition-colors",
-                index === activeIndex
-                  ? "border-[#DAB025] text-[#09113F]"
-                  : "border-[#09113F]/20 bg-transparent text-[#09113F]/70 hover:border-[#DAB025]/60 hover:text-[#09113F]",
-              )}
-            >
-              {index === activeIndex && (
-                <motion.div
-                  layoutId="active-tab"
-                  className="absolute inset-0 rounded-full bg-[#DAB025]"
-                  transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                />
-              )}
-              <span className="relative z-10">{item.title}</span>
-            </button>
-          ))}
-        </div>
+        <GalleryTabs
+          gallery={gallery}
+          activeIndex={activeIndex}
+          isLoading={isLoading}
+          isHovered={isHovered}
+          onSelect={handleSelect}
+          tabRefs={tabRefs}
+        />
 
         <div
           className={cn(
